@@ -1,0 +1,277 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+:root{
+    --white: #FFF;
+    --background: oklch(0.145 0 0);
+    --lightter-background: #181818;
+    --dark-gray: oklch(0.446 0.03 256.802);
+    --green-bgc: #00C853;
+    --dark-green: #009624;
+    --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
+    --gray: oklch(0.707 0.022 261.325);
+}
+nav{
+    height: 11vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-logo{
+    height: 100%;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+}
+.logo-circle{
+    font-size: 16px;
+    background-color: var(--green-bgc);
+    padding: 6px 6px;
+    border-radius: 12px;
+}
+.logo{
+    color: var(--white);
+}
+.nav-navigation{
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 22px;
+}
+.nav-navigation li a{
+    text-decoration: none;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+}
+.nav-navigation li{
+    list-style: none;
+}
+.nav-navigation li:last-child a{
+    background-color: var(--green-bgc);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 16px;
+    color: var(--background);
+}
+.nav-navigation li a:hover{
+    color: var(--green-bgc);
+}
+.nav-navigation li:last-child a:hover{
+    background-color: var(--dark-green);
+    color: var(--background);
+}
+
+/* for home first page */
+.home-first-page{
+    height: 89vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 26px;
+}
+.home-first-page h1{
+    color: var(--white);
+    font-size: 60px;
+    font-weight: 439;
+    line-height: 1;
+}
+.home-first-page h1 font{
+    color: var(--green-bgc);
+}
+.home-first-page p{
+    font-size: 20px;
+    color: var(--gray);
+}
+.home-first-page-last{
+    font-size: 18px;
+    height: 11vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+.home-first-page-last a{
+    text-decoration: none;
+    padding: 12px 36px;
+    border-radius: 22px;
+    font-weight: 600;
+}
+.home-first-page-last a:first-child{
+    background-color: var(--green-bgc);
+    color: var(--background);
+    transition: all ease-in-out 0.3s;
+}
+.home-first-page-last a:last-child{
+    background-color: var(--white);
+    color: var(--background);
+    transition: all ease-in-out 0.3s;
+}
+.home-first-page-last a:first-child:hover{
+    background-color: var(--dark-green);
+}
+.home-first-page-last a:last-child:hover{
+    background-color: var(--gray);
+}
+
+/* for the home second page */
+.home-second-page{
+    height: 78vh;
+}
+.home-second-page-tittle{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 38px;
+}
+.home-second-page-tittle h2{
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--background);
+}
+.home-second-page-content{
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.home-second-page-content li{
+    width: 30%;
+    height: 46vh;
+    border: 2px solid rgb(231, 231, 231);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 16px;
+    padding-left: 26px;
+    padding-right: 14px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    transition: all ease-in-out 0.3s;
+}
+.home-second-page-content li i{
+    padding: 4px 14px;
+    border-radius: 50%;
+    background-color: rgb(233, 255, 233);
+    color: var(--green-bgc);
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+.home-second-page-content li h3{
+    font-size: 24px;
+    font-weight: 469;
+    color: var(--background);
+}
+.home-second-page-content li p{
+    color: var(--dark-gray);
+}
+.home-second-page-content li:hover{
+    border-color: var(--green-bgc);
+}
+
+/* for home third page */
+.home-third-page{
+    height: 91vh;
+    background-color: var(--lightter-background);
+}
+.home-third-page-upper{
+    height: 54vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+.home-third-page-upper h2{
+    font-size: 36px;
+    font-weight: 469;
+    color: var(--white);
+}
+.home-third-page-upper p{
+    font-size: 20px;
+    color: var(--gray);
+}
+.home-third-page-upper a{
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 30px;
+    background-color: var(--green-bgc);
+    color: var(--background);
+    border-radius: 28px;
+    font-weight: 600;
+    margin-top: 16px;
+    transition: all ease-in-out 0.3s;
+}
+.home-third-page-upper a:hover{
+    background-color: var(--dark-green);
+}
+.home-third-page-lower{
+    height: 37vh;
+    display: flex;
+}
+.home-third-page-lower li{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width: 24.48%;
+    box-sizing: border-box;
+    padding-left: 24px;
+    padding-top: 44px;
+    line-height: 2;
+}
+.wrapper{
+    margin-bottom: 14px;
+}
+.home-third-page-lower li h4{
+    font-size: 16px;
+    font-weight: 469;
+    color: var(--white);
+    margin-bottom: 7px;
+}
+.home-third-page-lower li a,
+.home-third-page-lower li p{
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 14px;
+    transition: all ease-in-out 0.3s;
+}
+.home-third-page-lower li a:hover{
+    color: var(--green-bgc);
+}
+
+/* for footer section */
+footer{
+    height: 17vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--lightter-background);
+}
+footer::before{
+    content: " ";
+    height: 0.2px;
+    width: 96%;
+    background-color: var(--dark-gray);
+    position: absolute;
+    top: 0;
+}
+footer p{
+    font-size: 14px;
+    color: var(--gray);
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillQuest</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="skillquest-logo">
+            <span class="logo-circle">SQ</span>
+            <span class="logo">SkillQuest</span>
+        </div>
+        <form>
+            <div class="form-tittle">
+                <h1>Welcome Back</h1>
+                <span>Login to your account</span>
+            </div>
+            <div class="form-fields">
+                <label for="choose">I am a</label>
+                <select name="choose" id="choose">
+                    <option value="Student" selected>Student</option>
+                    <option value="Teacher">Teacher</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+            <div class="form-fields">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-fields">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password">
+            </div>
+            <a class="form-forgot" href="">Forgot password?</a>
+            <button>Login</button>
+            <div class="form-sign-up">
+                <span>Don't have an account? </span>
+                <a href="">Sign up</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

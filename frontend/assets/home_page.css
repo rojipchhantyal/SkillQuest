@@ -1,0 +1,226 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    height: 16vh;
+    width: 100%;
+    background-color: rgb(190, 45, 45);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 32px 0 32px;    
+    position: fixed;
+}
+.header_logo{
+    height: 80%;
+    width: 200px;
+    /* background-color: rgb(0, 90, 128); */
+}
+.header_logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.header_nav{
+    height: 80%;
+    width: 70%;
+    background-color: blue;
+}
+.header_nav ul{
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 12px;
+}
+.header_nav ul li{
+    list-style: none;
+}
+.header_nav ul li > a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    height: 38px;
+    width: 80px;
+    /* padding: 12px 20px 12px 20px; */
+    background-color: green;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
+.explore_dropdown{
+    position: relative;
+    display: inline-block;
+}
+.explore_dropdown_btn{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+.explore_dropdown_content{
+    height: fit-content;
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgb(0, 0, 0);
+    z-index: 1;
+    flex-direction: column;
+    gap: 2px;
+    border-radius: 4px;
+    padding: 4px;
+}
+.explore_dropdown_content a{
+    background-color: #ececec;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 2px 0 2px 4px;
+    color: black;
+}
+.explore_dropdown_content a:hover{
+    background-color: #e6e6e6;
+}
+.header_nav ul li:first-child{
+    background-color: red;
+    display: flex;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.header_nav ul li:first-child input{
+    height: 38px;
+    width: 220px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    padding: 4px;
+}
+.header_nav ul li:first-child button{
+    height: 38px;
+    padding: 0 16px 0 16px;
+    background-color: black;
+    border: none;
+    color: #e6e6e6;
+    cursor: pointer;
+}
+.header_nav ul li:first-child button:hover{
+    background-color: rgb(24, 24, 24);
+}
+.header_cover{
+    height: 16vh;
+    background-color: green;
+}
+
+
+/* for home page */
+.home_page{
+    height: 106vh;
+    background-color: red;
+}
+.home_page_tittle{
+    background-color: rgb(85, 199, 85);
+    height: 56vh;
+    display: flex;
+    align-items: end;
+    padding-left: 34px;
+    padding-bottom: 22px;
+}
+.home_page_tittle h1{
+    font-size: 72px;
+    color: #fff;
+}
+.home_page_search_bar{
+    background-color: #fff;
+    height: 10vh;
+    width: 56%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-left: 34px;
+}
+.home_page_search_bar input{
+    height: 78%;
+    width: 90%;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 4px;
+    font-size: 16px;
+}
+.home_page_search_bar button{
+    height: 80%;
+    width: 8%;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+.home_page_search_bar button:hover{
+    background-color: rgb(24, 24, 24);
+}
+.home_page_category{
+    margin-top: 16px;
+    height: 10vh;
+    display: flex;
+    padding-left: 34px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.home_page_category li{
+    border: 2px solid #fff;
+    height: 6vh;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px 0 12px;
+    background-color: #ebebeb3c;
+}
+.home_page_category li a{
+    text-decoration: none;
+    list-style: none;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+}
+.home_page_category li span{
+    background: linear-gradient(to right, rgb(179, 179, 56), rgb(223, 223, 58));
+    padding: 0 6px 2px 6px;
+    border-radius: 14px;
+    margin-left: 8px;
+}
+.home_page_last_trust{
+    height: 10vh;
+    display: flex;
+    align-items: end;
+    padding: 34px;
+    color: #fff;
+    font-size: 18px;
+}
+.home_page_last_trust ul{
+    display: flex;
+    margin-left: 36px;
+    gap: 22px;
+}
+.home_page_last_trust ul li{
+    list-style: none;
+    
+}
+
+
+.second_page{
+    height: 100vh;
+}
