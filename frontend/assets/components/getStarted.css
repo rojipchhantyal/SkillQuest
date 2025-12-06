@@ -13,6 +13,7 @@
     --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
     --gray: oklch(0.707 0.022 261.325);
     --black: #0A0A0A;
+    --gray-bgc: oklch(0.928 0.006 264.531);
 }
 main{
     height: 106vh;
@@ -21,6 +22,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 18px;
 }
 .skillquest-logo{
     height: 9%;
@@ -32,21 +34,20 @@ main{
     font-size: 20px;
 }
 .logo-circle{
-    font-size: 18px;
+    font-size: 20px;
     background-color: var(--green-bgc);
     padding: 7px 8px;
     border-radius: 12px;
 }
 .logo{
     color: var(--black);
-    font-size: 22px;
+    font-size: 24px;
 }
 .join-us-loding-steps{
-    background-color: blue;
     height: 8vh;
     width: 52%;
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     box-sizing: border-box;
     padding: 0 26px;
@@ -55,16 +56,26 @@ main{
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: var(--gray);
+    background-color: var(--gray-bgc);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
 }
+#join-us-loding-steps-first-num{
+    background-color: var(--green-bgc);
+}
+#join-us-loding-steps-second-num{
+    color: var(--gray);
+}
+#join-us-loding-steps-third-num{
+    margin-right: 28px;
+    color: var(--gray);
+}
 .join-us-loding-steps-bar{
-    height: 6px;
-    width: 160px;
-    background-color: var(--gray);
+    height: 4px;
+    width: 120px;
+    background-color: var(--gray-bgc);
     border-radius: 8px;
 }
 #join-us-loding-steps-first-num::before{
@@ -73,16 +84,138 @@ main{
     bottom: -26px;
     font-size: 14px;
 }
-#join-us-loding-steps-second-num::before{
-    content: "Details";
+#join-us-loding-steps-second-num-details{
     position: absolute;
-    bottom: -26px;
+    top: 168px;
+    left: 594px;
     font-size: 14px;
+    color: var(--gray);
 }
+
 #join-us-loding-steps-third-num::before{
     content: "Create Account";
     width: 100px;
     position: absolute;
     bottom: -26px;
     font-size: 14px;
+    color: var(--gray);
+}
+.loding-bar{
+    height: 7px;
+    width: 666px;
+    background-color: var(--gray-bgc);
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+.loding-bar-progress{
+    height: 100%;
+    width: 33%;
+    background-color: var(--green-bgc);
+}
+.form-for-choose-role{
+    border: 2px solid var(--gray-bgc);
+    height: 346px;
+    width: 666px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    box-sizing: border-box;
+    padding: 32px;
+    gap: 24px;
+}
+.form-for-choose-role-tittle,
+.form-for-details-tittle{
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+.form-for-choose-role-tittle h1,
+.form-for-details-tittle h1{
+    font-size: 30px;
+    font-weight: inherit;
+    color: var(--black);
+}
+.form-for-choose-role-tittle p,
+.form-for-details-tittle p{
+    font-size: 16px;
+    color: var(--dark-gray);
+}
+.form-for-choose-role-selector,
+.form-for-choose-details{
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.form-for-choose-role-selector label,
+.form-for-choose-details label{
+    font-size: 14px;
+    color: var(--black);
+    font-weight: 500;
+}
+.form-for-choose-role-selector select,
+.form-for-choose-details input{
+    height: 36px;
+    border-radius: 12px;
+    border: none;
+    padding: 0 8px;
+    outline: none;
+    border: 0.2px solid var(--gray-bgc);
+    color: var(--white);
+    font-size: 14px;
+    color: var(--black);
+    transition: all ease-in-out 0.1s;
+}
+.form-for-choose-role-selector select:focus,
+.form-for-choose-details input:focus {
+  outline: 3px solid rgba(0, 128, 0, 0.5);
+}
+.button,
+button{
+    height: 60px;
+    width: 98%;
+    border-radius: 10px;
+    background-color: var(--green-bgc);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all ease-in-out 0.3s;
+    cursor: default;
+}
+.button:hover,
+button:hover{
+    background-color: var(--dark-green);
+}
+.details-buttons{
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#details-back{
+    box-sizing: border-box;
+    background-color: var(--white);
+    border: 2px solid var(--gray-bgc);
+}
+#details-back,
+#details-continue{
+    height: 45px;
+    width: 48.5%;
+}
+.already-have-account span{
+    color: var(--dark-gray);
+}
+.already-have-account a{
+    color: var(--green-bgc);
+    text-decoration: none;
+}
+.already-have-account a:hover{
+    text-decoration: underline;
 }
