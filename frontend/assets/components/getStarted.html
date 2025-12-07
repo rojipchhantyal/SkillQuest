@@ -50,15 +50,76 @@
             <div class="form-for-choose-role-selector" id="form-for-choose-role-selector">
                 <label for="role-sel">I am a</label>
                 <select name="role-sel" id="role-sel">
-                    <option value="student">Student - Looking for work</option>
+                    <option value="student" selected>Student - Looking for work</option>
                     <option value="business">Business - Need to hire</option>
                 </select>
             </div>
 
             <!-- input for the details -->
             <div class="form-for-choose-details" id="form-for-choose-details" style="display: none;">
-                <label for="fullName">Full Name</label>
-                <input type="text" name="fullName" id="fullName" placeholder="enter your full name">
+                <!-- for student user -->
+                <div class="form-for-choose-details-first-row" id="form-for-choose-details-first-row">
+                    <div class="form-for-choose-details-first-row-left" id="form-for-choose-details-first-row-left">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" name="fullName" id="fullName" placeholder="enter your full name" required>
+                    </div>
+
+                    <div class="form-for-choose-details-first-row-right" id="form-for-choose-details-first-row-right">
+                        <label for="userEmail">Email</label>
+                        <input type="email" name="userEmail" id="userEmail" placeholder="enter your email" required>
+                    </div>
+                </div>
+                <div class="form-for-choose-details-second-row" id="form-for-choose-details-second-row">
+                    <label for="userLocation">Location</label>
+                    <input type="text" name="userLocation" id="userLocation" placeholder="city, state" required>
+                </div>
+                <div class="form-for-choose-details-third-row" id="form-for-choose-details-third-row">
+                    <label for="userSkills">Skills
+                        <font style="color: gray;font-weight: 400;">(comma separated)</font>
+                    </label>
+                    <input type="text" name="userSkills" id="userSkills" placeholder="web development, UI/UX design" required>
+                </div>
+                <div class="form-for-choose-details-fourth-row" id="form-for-choose-details-fourth-row">
+                    <div class="form-for-choose-details-fourth-row-left" id="form-for-choose-details-fourth-row-left">
+                        <label for="userPassword">Password</label>
+                        <input type="password" name="userPassword" id="userPassword" required>
+                    </div>
+                    <div class="form-for-choose-details-fourth-row-right" id="form-for-choose-details-fourth-row-right">
+                        <label for="userConfirmPass">Confirm Password</label>
+                        <input type="password" name="userConfirmPass" id="userConfirmPass" required>
+                    </div>
+                </div>
+
+                <!-- form for business -->
+                <div class="form-for-choose-details-business-first-row" id="form-for-choose-details-business-first-row">
+                    <div class="form-for-choose-details-business-first-row-left" id="form-for-choose-details-business-first-row-left">
+                        <label for="busPerson">Contact Person</label>
+                        <input type="text" name="busPerson" id="busPerson" placeholder="enter your contact person" required>
+                    </div>
+
+                    <div class="form-for-choose-details-business-first-row-right" id="form-for-choose-details-business-first-row-right">
+                        <label for="busEmail">Email</label>
+                        <input type="email" name="busEmail" id="busEmail" placeholder="enter your business email" required>
+                    </div>
+                </div>
+                <div class="form-for-choose-details-business-second-row" id="form-for-choose-details-business-second-row">
+                    <label for="busName">Company Name</label>
+                    <input type="text" name="busName" id="busName" placeholder="your company name" required>
+                </div>
+                <div class="form-for-choose-details-business-third-row" id="form-for-choose-details-business-third-row">
+                    <label for="busLocation">Location</label>
+                    <input type="text" name="busLocation" id="busLocation" placeholder="city, state" required>
+                </div>
+                <div class="form-for-choose-details-business-fourth-row" id="form-for-choose-details-business-fourth-row">
+                    <div class="form-for-choose-details-business-fourth-row-left" id="form-for-choose-details-business-fourth-row-left">
+                        <label for="bussPassword">Password</label>
+                        <input type="password" name="bussPassword" id="bussPassword" required>
+                    </div>
+                    <div class="form-for-choose-details-business-fourth-row-right" id="form-for-choose-details-business-fourth-row-right">
+                        <label for="busConfirmPass">Confirm Password</label>
+                        <input type="password" name="busConfirmPass" id="busConfirmPass" required>
+                    </div>
+                </div>
             </div>
 
             <!-- button for choosing the role -->

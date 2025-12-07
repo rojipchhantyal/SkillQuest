@@ -16,13 +16,14 @@
     --gray-bgc: oklch(0.928 0.006 264.531);
 }
 main{
-    height: 106vh;
+    height: auto;
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 18px;
+    padding: 42px;
 }
 .skillquest-logo{
     height: 9%;
@@ -86,7 +87,7 @@ main{
 }
 #join-us-loding-steps-second-num-details{
     position: absolute;
-    top: 168px;
+    top: 156px;
     left: 594px;
     font-size: 14px;
     color: var(--gray);
@@ -116,7 +117,8 @@ main{
 }
 .form-for-choose-role{
     border: 2px solid var(--gray-bgc);
-    height: 346px;
+    /* height: 346px; */
+    height: auto;
     width: 666px;
     border-radius: 16px;
     display: flex;
@@ -124,7 +126,7 @@ main{
     align-items: center;
     justify-content: end;
     box-sizing: border-box;
-    padding: 32px;
+    padding: 38px;
     gap: 24px;
 }
 .form-for-choose-role-tittle,
@@ -151,8 +153,45 @@ main{
     flex-direction: column;
     gap: 6px;
 }
+.form-for-choose-details{
+    gap: 12px;
+}
+.form-for-choose-details-first-row,
+.form-for-choose-details-fourth-row,
+/* for business */
+.form-for-choose-details-business-first-row,
+.form-for-choose-details-business-fourth-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-for-choose-details-first-row-left,
+.form-for-choose-details-first-row-left,
+.form-for-choose-details-fourth-row-left,
+.form-for-choose-details-fourth-row-right,
+/* for business */
+.form-for-choose-details-business-first-row-left,
+.form-for-choose-details-business-first-row-right,
+.form-for-choose-details-business-fourth-row-left,
+.form-for-choose-details-business-fourth-row-right{
+    height: 100%;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.form-for-choose-details-second-row,
+.form-for-choose-details-third-row,
+/*for business  */
+.form-for-choose-details-business-second-row,
+.form-for-choose-details-business-third-row{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 .form-for-choose-role-selector label,
-.form-for-choose-details label{
+.form-for-choose-details label,
+label{
     font-size: 14px;
     color: var(--black);
     font-weight: 500;
@@ -188,6 +227,9 @@ button{
     font-size: 14px;
     transition: all ease-in-out 0.3s;
     cursor: default;
+}
+#done-continue{
+    height: 50px;
 }
 .button:hover,
 button:hover{
