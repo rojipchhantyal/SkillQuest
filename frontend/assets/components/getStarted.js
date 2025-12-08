@@ -90,8 +90,6 @@ roleContnueBtn.addEventListener('click', () => {
         studentFourthLeftRow.style.display = "flex";
         studentFourthRightRow.style.display = "flex";
 
-        
-
         // Hide business details
         businessFirstRow.style.display = "none";
         businessFirstLeftRow.style.display = "none";
@@ -101,14 +99,22 @@ roleContnueBtn.addEventListener('click', () => {
         businessFourthRow.style.display = "none";
         businessFourthLeftRow.style.display = "none";
         businessFourthRightRow.style.display = "none";
-
+        
         //desable the business forms
-        document.getElementById("busPerson").disabled = "true";
-        document.getElementById("busEmail").disabled = "true";
-        document.getElementById("busName").disabled = "true";
-        document.getElementById("busLocation").disabled = "true";
-        document.getElementById("bussPassword").disabled = "true";
-        document.getElementById("busConfirmPass").disabled = "true";
+        document.getElementById("busPerson").disabled = true;
+        document.getElementById("busEmail").disabled = true;
+        document.getElementById("busName").disabled = true;
+        document.getElementById("busLocation").disabled = true;
+        document.getElementById("bussPassword").disabled = true;
+        document.getElementById("busConfirmPass").disabled = true;
+
+        //enable the students form
+        document.getElementById("fullName").disabled = false;
+        document.getElementById("userEmail").disabled = false;
+        document.getElementById("userSkills").disabled = false;
+        document.getElementById("userLocation").disabled = false;
+        document.getElementById("userPassword").disabled = false;
+        document.getElementById("userConfirmPass").disabled = false;
 
     }else{
         console.log("false");
@@ -133,12 +139,20 @@ roleContnueBtn.addEventListener('click', () => {
         studentFourthRightRow.style.display = "none";
 
         //disable the students form
-        document.getElementById("fullName").disabled = "true";
-        document.getElementById("userEmail").disabled = "true";
-        document.getElementById("userSkills").disabled = "true";
-        document.getElementById("userLocation").disabled = "true";
-        document.getElementById("userPassword").disabled = "true";
-        document.getElementById("userConfirmPass").disabled = "true";
+        document.getElementById("fullName").disabled = true;
+        document.getElementById("userEmail").disabled = true;
+        document.getElementById("userSkills").disabled = true;
+        document.getElementById("userLocation").disabled = true;
+        document.getElementById("userPassword").disabled = true;
+        document.getElementById("userConfirmPass").disabled = true;
+
+        //enable the business forms
+        document.getElementById("busPerson").disabled = false;
+        document.getElementById("busEmail").disabled = false;
+        document.getElementById("busName").disabled = false;
+        document.getElementById("busLocation").disabled = false;
+        document.getElementById("bussPassword").disabled = false;
+        document.getElementById("busConfirmPass").disabled = false;
     }   
 });
 

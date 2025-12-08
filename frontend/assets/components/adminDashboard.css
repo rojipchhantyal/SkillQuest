@@ -1,0 +1,103 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+:root{
+    --white: #FFF;
+    --background: oklch(0.145 0 0);
+    --lightter-background: #181818;
+    --dark-gray: oklch(0.446 0.03 256.802);
+    --green-bgc: #00C853;
+    --dark-green: #009624;
+    --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
+    --gray: oklch(0.707 0.022 261.325);
+}
+nav{
+    height: 11vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    border-bottom: 2px solid var(--lightter-background);
+}
+.nav-logo{
+    height: 100%;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+}
+.logo-circle{
+    font-size: 16px;
+    background-color: var(--green-bgc);
+    padding: 6px 6px;
+    border-radius: 12px;
+}
+.logo{
+    color: var(--white);
+}
+.nav-navigation{
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 22px;
+}
+.nav-navigation li a{
+    text-decoration: none;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+}
+.nav-navigation li{
+    list-style: none;
+}
+.nav-navigation li a:hover{
+    color: var(--green-bgc);
+}
+/* cover nav */
+.nav-cover{
+    height: 11vh;
+}
+main{
+    background-color: var(--background);
+}
+/* first page */
+.admin-dashboard-first-page{
+    background-color: var(--background);
+    height: 22vh;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.admin-dashboard-first-page-inners{
+    background-color: gray;
+    width: 22%;
+    height: 20vh;
+    border: 2px solid var(--dark-gray);
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 22px;
+}
+.admin-dashboard-first-page-inners i{
+    font-size: 28px;
+    color: var(--green-bgc);
+}
+.admin-dashboard-first-page-inners-count{
+    font-size: 28px;
+    color: var(--green-bgc);
+    margin-left: 4px;
+}
+.admin-dashboard-first-page-inners-info{
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: inherit;
+}
