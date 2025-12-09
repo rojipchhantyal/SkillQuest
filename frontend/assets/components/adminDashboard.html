@@ -19,7 +19,7 @@
         <nav>
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
-                <span class="logo">SkillQuest Admin</span>
+                <span class="logo">SkillQuest</span>
             </div>
             <ul class="nav-navigation">
                 <li>
@@ -35,31 +35,88 @@
             </ul>
         </nav>
         <div class="nav-cover"></div>
+        <div class="admin-dashboard-tittle">
+            <div class="admin-dashboard-tittle-heading">
+                <i class="ri-shield-line"></i>
+                <h1>Admin Dashboard</h1>
+            </div>
+            <span>Manage users, approvals, and monitor platform activity</span>
+        </div>
         <div class="admin-dashboard-first-page">
             <div class="admin-dashboard-first-page-inners" id="pending-user">
+                <div class="admin-dashboard-first-page-inners-left">
+                    <span class="admin-dashboard-first-page-inners-info">Pending Registrations</span>
+                    <span class="admin-dashboard-first-page-inners-count">3</span>
+                </div>
                 <i class="ri-user-line"></i>
-                <span class="admin-dashboard-first-page-inners-count">3</span>
-                <span class="admin-dashboard-first-page-inners-info">Pending Users</span>
             </div>
 
             <div class="admin-dashboard-first-page-inners" id="pending-user">
+                <div class="admin-dashboard-first-page-inners-left">
+                    <span class="admin-dashboard-first-page-inners-info">Pending Tasks</span>
+                    <span class="admin-dashboard-first-page-inners-count">3</span>
+                </div>
                 <i class="ri-file-list-line"></i>
-                <span class="admin-dashboard-first-page-inners-count">2</span>
-                <span class="admin-dashboard-first-page-inners-info">Pending Tasks</span>
             </div>
 
             <div class="admin-dashboard-first-page-inners" id="pending-user">
-                <i class="ri-group-line"></i>
-                <span class="admin-dashboard-first-page-inners-count">3</span>
-                <span class="admin-dashboard-first-page-inners-info">Total Users</span>
+               <div class="admin-dashboard-first-page-inners-left">
+                    <span class="admin-dashboard-first-page-inners-info">Total Users</span>
+                    <span class="admin-dashboard-first-page-inners-count">3</span>
+                </div>
+                <i class="ri-user-line"></i>
             </div>
 
             <div class="admin-dashboard-first-page-inners" id="pending-user">
+                <div class="admin-dashboard-first-page-inners-left">
+                    <span class="admin-dashboard-first-page-inners-info">Total Tasks</span>
+                    <span class="admin-dashboard-first-page-inners-count">3</span>
+                </div>
                 <i class="ri-file-copy-2-fill"></i>
-                <span class="admin-dashboard-first-page-inners-count">3</span>
-                <span class="admin-dashboard-first-page-inners-info">Total Tasks</span>
+            </div>
+        </div>
+
+        <div class="admin-dashboard-second-page-navigation">
+            <div class="admin-dashboard-second-page-navigation-nav">
+                <div class="admin-dashboard-second-page-navigation-nav-inners">
+                    <i class="ri-group-line"></i>
+                    <span>Registrations</span>
+                </div>
+                <div class="admin-dashboard-second-page-navigation-nav-inners">
+                    <i class="ri-group-line"></i>
+                    <span>Tasks</span>
+                </div>
+                <div class="admin-dashboard-second-page-navigation-nav-inners">
+                    <i class="ri-group-line"></i>
+                    <span>Manages Users</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-dashboard-last-page-registration">
+            <div class="admin-dashboard-last-page-registration-upper">
+                <h2>Pending Registrations</h2>
+                <div class="admin-dashboard-last-page-registration-upper-search" id="admin-dashboard-last-page-registration-upper-search">
+                    <i class="ri-search-line"></i>
+                    <input type="search" name="admin-dashboard-last-page-registration-upper-search-searcher" id="admin-dashboard-last-page-registration-upper-search-searcher" placeholder="Search registrations..">
+                </div>
+            </div>
+            <div class="admin-dashboard-last-page-registration-lower">
+                <!-- ever users info -->
+                <div class="admin-dashboard-last-page-registration-lower-inners">
+                    <div class="admin-dashboard-last-page-registration-lower-inners-icon">
+                        <i class="ri-user-line"></i>
+                    </div>
+                    <div class="admin-dashboard-last-page-registration-lower-inners-info">
+
+                    </div>
+                    <div class="admin-dashboard-last-page-registration-lower-inners-options">
+
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <script src="adminDashboard.js"></script>
 </body>
 </html>

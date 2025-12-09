@@ -66,6 +66,32 @@ nav{
 main{
     background-color: var(--background);
 }
+/* title page */
+.admin-dashboard-tittle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 24px;
+    padding-top: 34px;
+    padding-bottom: 12px;
+    line-height: 1.5;
+}
+.admin-dashboard-tittle-heading{
+    display: flex;
+    align-items: center;
+    color: var(--green-bgc);
+    font-size: 22px;
+    font-weight: 469;
+    gap: 8px;
+}
+.admin-dashboard-tittle-heading i{
+    font-size: 36px;
+    font-weight: 900;
+}
+.admin-dashboard-tittle span{
+    color: var(--gray);
+    font-size: 16px;
+}
 /* first page */
 .admin-dashboard-first-page{
     background-color: var(--background);
@@ -76,23 +102,31 @@ main{
     justify-content: space-evenly;
 }
 .admin-dashboard-first-page-inners{
-    background-color: gray;
-    width: 22%;
+    background-color: var(--background);
+    width: 22.5%;
     height: 20vh;
     border: 2px solid var(--dark-gray);
     box-sizing: border-box;
     border-radius: 12px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     padding-left: 22px;
+    box-sizing: border-box;
+    padding: 24px;
+    line-height: 1.5;
+}
+.admin-dashboard-first-page-inners-left{
+    display: flex;
+    flex-direction: column;
 }
 .admin-dashboard-first-page-inners i{
-    font-size: 28px;
+    font-size: 38px;
     color: var(--green-bgc);
 }
 .admin-dashboard-first-page-inners-count{
-    font-size: 28px;
+    font-size: 18px;
     color: var(--green-bgc);
     margin-left: 4px;
 }
@@ -100,4 +134,115 @@ main{
     font-size: 16px;
     color: var(--gray);
     font-weight: inherit;
+}
+/* for second page */
+.admin-dashboard-second-page-navigation{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.admin-dashboard-second-page-navigation-nav{
+    height: 80%;
+    width: 100%;
+    background-color: var(--background);
+    border-radius: 12px;
+    border: 2px solid var(--dark-gray);
+    overflow: hidden;
+    display: flex;
+}
+.admin-dashboard-second-page-navigation-nav-inners{
+    height: 100%;
+    width: 33.39%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    gap: 4px;
+    font-weight: 500;
+    border: 1px solid black;
+    color: var(--gray);
+    cursor: pointer;
+}
+.admin-dashboard-second-page-navigation-nav-inners i{
+    font-weight: 600;
+}
+.admin-dashboard-second-page-navigation-nav-inners:hover{
+    color: var(--white);
+}
+
+.admin-dashboard-last-page-registration{
+    min-height: 16vh;
+}
+.admin-dashboard-last-page-registration-upper{
+    box-sizing: border-box;
+    height: 10vh;
+    padding: 0 24px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.admin-dashboard-last-page-registration-upper h2{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--white);
+}
+.admin-dashboard-last-page-registration-upper-search{
+    height: 7vh;
+    width: 19%;
+    background-color: var(--background);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 4px 6px 4px;
+    box-sizing: border-box;
+    gap: 4px;
+    border: 1.5px solid var(--gray);
+}
+.admin-dashboard-last-page-registration-upper-search i{
+    height: 84%;
+    width: 10%;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gray);
+}
+.admin-dashboard-last-page-registration-upper-search input{
+    outline: none;
+    height: 84%;
+    width: 86%;
+    font-size: 14px;
+    background-color: var(--background);
+    border: none;
+    color: var(--white);
+}
+.admin-dashboard-last-page-registration-lower{
+    background-color: red;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 0 24px;
+}
+.admin-dashboard-last-page-registration-lower-inners{
+    height: 128px;
+    width: 100%;
+    background-color: blue;
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: 1px solid var(--dark-gray);
+    display: flex;
+}  
+.admin-dashboard-last-page-registration-lower-inners-icon{
+    height: 90%;
+    width: 10%;
+    background-color: red;
+}
+.admin-dashboard-last-page-registration-lower-inners-icon i{
+    padding: 12px;
+    border-radius: 48%;
+    background-color: var(--green-bgc);
+    color: var(--white);
+    margin-top: 120px;
 }
