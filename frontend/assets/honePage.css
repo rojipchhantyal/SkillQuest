@@ -72,7 +72,7 @@ nav{
 
 /* for home first page */
 .home-first-page{
-    height: 89vh;
+    height: 72vh;
     width: 100%;
     background-color: var(--background);
     display: flex;
@@ -80,20 +80,21 @@ nav{
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 26px;
+    gap: 20px;
+    line-height: 1.6;
 }
 .home-first-page h1{
     color: var(--white);
-    font-size: 60px;
-    font-weight: 439;
-    line-height: 1;
-}
-.home-first-page h1 font{
+    font-size: 48px;
+    font-weight: 700;
     color: var(--green-bgc);
+    margin-bottom: -6px;
 }
 .home-first-page p{
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 400;
     color: var(--gray);
+    margin-bottom: 6px;
 }
 .home-first-page-last{
     font-size: 18px;
@@ -101,13 +102,14 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 24px;
 }
 .home-first-page-last a{
     text-decoration: none;
-    padding: 12px 36px;
-    border-radius: 22px;
+    padding: 12px 32px;
+    border-radius: 12px;
     font-weight: 600;
+    box-sizing: border-box;
 }
 .home-first-page-last a:first-child{
     background-color: var(--green-bgc);
@@ -115,153 +117,214 @@ nav{
     transition: all ease-in-out 0.3s;
 }
 .home-first-page-last a:last-child{
-    background-color: var(--white);
-    color: var(--background);
+    background-color: var(--background);
+    color: var(--green-bgc);
+    border: 2px solid var(--green-bgc);
     transition: all ease-in-out 0.3s;
 }
 .home-first-page-last a:first-child:hover{
     background-color: var(--dark-green);
 }
 .home-first-page-last a:last-child:hover{
-    background-color: var(--gray);
-}
-
-/* for the home second page */
-.home-second-page{
-    height: 78vh;
-}
-.home-second-page-tittle{
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 38px;
-}
-.home-second-page-tittle h2{
-    font-size: 36px;
-    font-weight: 400;
-    color: var(--background);
-}
-.home-second-page-content{
-    height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.home-second-page-content li{
-    width: 30%;
-    height: 46vh;
-    border: 2px solid rgb(231, 231, 231);
-    border-radius: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 16px;
-    padding-left: 26px;
-    padding-right: 14px;
-    box-sizing: border-box;
-    line-height: 1.5;
-    transition: all ease-in-out 0.3s;
-}
-.home-second-page-content li i{
-    padding: 4px 14px;
-    border-radius: 50%;
-    background-color: rgb(233, 255, 233);
-    color: var(--green-bgc);
-    font-size: 36px;
-    margin-bottom: 12px;
-}
-.home-second-page-content li h3{
-    font-size: 24px;
-    font-weight: 469;
-    color: var(--background);
-}
-.home-second-page-content li p{
-    color: var(--dark-gray);
-}
-.home-second-page-content li:hover{
-    border-color: var(--green-bgc);
-}
-
-/* for home third page */
-.home-third-page{
-    height: 91vh;
-    background-color: var(--lightter-background);
-}
-.home-third-page-upper{
-    height: 54vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-}
-.home-third-page-upper h2{
-    font-size: 36px;
-    font-weight: 469;
+    background-color: var(--green-bgc);
     color: var(--white);
 }
-.home-third-page-upper p{
+/* for and available task */
+.home-available-task-page{
+    min-height: 40vh;
+    background-color: var(--background);
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.home-available-task-page-search{
+    height: 15vh;
+    width: 100%;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-available-task-page-search-inners{
+    background-color: var(--background);
+    height: 100%;
+    width: 32%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px;
+    gap: 8px;
+}
+.home-available-task-page-search-inners i{
     font-size: 20px;
+    font-weight: 500;
     color: var(--gray);
 }
-.home-third-page-upper a{
-    text-decoration: none;
-    font-size: 18px;
-    padding: 12px 30px;
+.home-available-task-page-search-inners input,
+.home-available-task-page-search-inners select{
+    border: none;
+    outline: none;
+    height: 100%;
+    width: 90%;
+    background-color: var(--background);
+    color: var(--gray);
+    font-size: 16px;
+}
+.home-available-task-page-tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background-color: var(--background);
+}
+.home-available-task-page-tasks-tittle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-available-task-page-tasks-tittle h2{
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--white);
+}
+.home-available-task-page-tasks-tittle span{
+    color: var(--gray);
+    font-size: 16px;
+    font-weight: 500;
+}
+.home-available-task-page-tasks-list{
+    min-height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+.home-available-task-page-tasks-list-inners{
+    height: 354px;
+    width: 386.7px;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.home-available-task-page-tasks-list-inners h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-green);
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+.home-available-task-page-tasks-list-inners p{
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 450;
+    color: var(--gray);
+    margin-bottom: 8px;
+}
+.home-available-task-page-tasks-list-inners ul{
+    line-height: 1.6;
+}
+.home-available-task-page-tasks-list-inners ul li{
+    list-style: none;
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 400;
+    display: flex;
+    gap: 6px;
+}
+.home-available-task-page-tasks-list-inners ul li i{
+    font-size: 16px;
+}
+.home-available-task-page-tasks-list-inners-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+.home-available-task-page-tasks-list-inners-button span{
+    background-color: var(--green-bgc);
+    font-size: 12px;
+    color: var(--background);
+    padding: 2px 12px;
+    border-radius: 12px;
+}
+.home-available-task-page-tasks-list-inners-button button{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 16px;
     background-color: var(--green-bgc);
     color: var(--background);
-    border-radius: 28px;
-    font-weight: 600;
-    margin-top: 16px;
+    border-radius: 12px;
+    border: none;
     transition: all ease-in-out 0.3s;
 }
-.home-third-page-upper a:hover{
+.home-available-task-page-tasks-list-inners-button button:hover{
     background-color: var(--dark-green);
 }
-.home-third-page-lower{
-    height: 37vh;
+/* for the home second page */
+.home-register-page{
+    height: 64vh;
+    padding: 24px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    line-height: 1.6;
+    text-align: center;
 }
-.home-third-page-lower li{
-    list-style: none;
+.home-register-page-inner{
+    width: 100%;
+    height: 74%;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    width: 24.48%;
-    box-sizing: border-box;
-    padding-left: 24px;
-    padding-top: 44px;
-    line-height: 2;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: var(--lightter-background);
 }
-.wrapper{
-    margin-bottom: 14px;
-}
-.home-third-page-lower li h4{
-    font-size: 16px;
-    font-weight: 469;
+.home-register-page h2{
+    font-size: 32px;
     color: var(--white);
-    margin-bottom: 7px;
+    font-weight: 600;
+    margin-bottom: -8px;
 }
-.home-third-page-lower li a,
-.home-third-page-lower li p{
-    text-decoration: none;
+.home-register-page p{
+    font-size: 16px;
+    font-weight: 450;
     color: var(--gray);
-    font-size: 14px;
+    margin-bottom: 4px;
+}
+.home-register-page button{
+    color: var(--background);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 32px;
+    border-radius: 12px;
+    background-color: var(--green-bgc);
+    border: none;
     transition: all ease-in-out 0.3s;
 }
-.home-third-page-lower li a:hover{
-    color: var(--green-bgc);
+.home-register-page button:hover{
+    background-color: var(--dark-green);
 }
 
 /* for footer section */
 footer{
-    height: 17vh;
+    height: 16vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: var(--lightter-background);
+    background-color: var(--background);
 }
 footer::before{
     content: " ";
