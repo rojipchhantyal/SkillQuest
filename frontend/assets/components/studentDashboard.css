@@ -1,0 +1,323 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+:root{
+    --white: #FFF;
+    --background: oklch(0.145 0 0);
+    --lightter-background: #181818;
+    --dark-gray: oklch(0.446 0.03 256.802);
+    --green-bgc: #00C853;
+    --dark-green: #009624;
+    --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
+    --gray: oklch(0.707 0.022 261.325);
+    --red: red;
+}
+nav{
+    height: 11vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 999;
+    border-bottom: 0.1px solid var(--green-bgc);
+}
+.nav-logo{
+    height: 100%;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+}
+.logo-circle{
+    font-size: 16px;
+    background-color: var(--green-bgc);
+    padding: 6px 6px;
+    border-radius: 12px;
+}
+.logo{
+    color: var(--white);
+}
+.nav-navigation{
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 22px;
+}
+.nav-navigation li a{
+    text-decoration: none;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+}
+.nav-navigation li{
+    list-style: none;
+}
+.nav-navigation li a:hover{
+    color: var(--green-bgc);
+}
+/* cover nav */
+.nav-cover{
+    height: 11vh;
+}
+main{
+    background-color: var(--background);
+}
+/* title page */
+.student-dashboard-tittle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 24px;
+    padding-top: 34px;
+    padding-bottom: 12px;
+    line-height: 1.5;
+}
+.student-dashboard-tittle-heading{
+    display: flex;
+    align-items: center;
+    color: var(--green-bgc);
+    font-size: 22px;
+    font-weight: 469;
+    gap: 8px;
+}
+.student-dashboard-tittle span{
+    color: var(--gray);
+    font-size: 16px;
+}
+
+/* first page */
+.student-dashboard-first-page{
+    background-color: var(--background);
+    height: 22vh;
+    margin-top: 16px;
+    display: flex;
+    padding: 0 24px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.student-dashboard-first-page-inners{
+    background-color: var(--lightter-background);
+    width: 32.5%;
+    height: 20vh;
+    box-sizing: border-box;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 22px;
+    box-sizing: border-box;
+    padding: 24px;
+    line-height: 1.5;
+}
+.student-dashboard-first-page-inners-left{
+    display: flex;
+    flex-direction: column;
+}
+.student-dashboard-first-page-inners i{
+    font-size: 38px;
+    color: var(--green-bgc);
+}
+.student-dashboard-first-page-inners-count{
+    font-size: 18px;
+    color: var(--green-bgc);
+    margin-left: 4px;
+}
+.student-dashboard-first-page-inners-info{
+    font-size: 16px;
+    color: var(--gray);
+    font-weight: inherit;
+}
+/* for second page */
+.student-dashboard-second-page-navigation{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+.student-dashboard-second-page-navigation-nav{
+    height: 80%;
+    width: 100%;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+}
+.student-dashboard-second-page-navigation-nav-inners{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    gap: 8px;
+    font-weight: 500;
+    border-bottom: 2.5px solid rgba(255, 0, 0, 0);
+    color: var(--gray);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+#student-dashboard-second-page-navigation-nav-browse-task{
+    color: var(--green-bgc);
+    border-color:  var(--green-bgc);
+}
+.student-dashboard-second-page-navigation-nav-inners i{
+    font-weight: 600;
+}
+.student-dashboard-second-page-navigation-nav-inners:hover{
+    color: var(--white);
+}
+
+/* last page */
+.student-dashboard-last-page-browse-task{
+    min-height: 16vh;
+}
+.student-dashboard-last-page-browse-task-upper{
+    box-sizing: border-box;
+    height: 10vh;
+    padding: 0 24px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+.student-dashboard-last-page-browse-task-upper-search{
+    height: 8vh;
+    width: 100%;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    box-sizing: border-box;
+    gap: 4px;
+}
+.student-dashboard-last-page-browse-task-upper-search i{
+    height: 84%;
+    width: 10%;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gray);
+    height: fit-content;
+    width: fit-content;
+}
+.student-dashboard-last-page-browse-task input{
+    outline: none;
+    height: 99%;
+    width: 86%;
+    font-size: 14px;
+    background-color: var(--lightter-background);
+    border: none;
+    color: var(--white);
+}
+
+.student-dashboard-last-page-browse-task-lower,
+.student-dashboard-last-page-my-tasks{
+    min-height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 24px 24px;
+    box-sizing: border-box;
+}
+.student-dashboard-last-page-browse-task-lower-inners,
+.student-dashboard-last-page-my-tasks-inners{
+    height: 354px;
+    width: 386.7px;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+} 
+.student-dashboard-last-page-browse-task-lower-inners h3,
+.student-dashboard-last-page-my-tasks-inners h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--dark-green);
+    line-height: 1.5;
+    margin-bottom: 6px;
+}
+.student-dashboard-last-page-browse-task-lower-inners p,
+.student-dashboard-last-page-my-tasks-inners p{
+    line-height: 1.6;
+    font-size: 16px;
+    font-weight: 450;
+    color: var(--gray);
+    margin-bottom: 8px;
+}
+.student-dashboard-last-page-browse-task-lower-inners ul,
+.student-dashboard-last-page-my-tasks-inners ul{
+    line-height: 1.6;
+}
+.student-dashboard-last-page-browse-task-lower-inners ul li,
+.student-dashboard-last-page-my-tasks-inners ul li{
+    list-style: none;
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 400;
+    display: flex;
+    gap: 6px;
+}
+.student-dashboard-last-page-browse-task-lower-inners ul li i,
+.student-dashboard-last-page-my-tasks-inners ul li i{
+    font-size: 16px;
+}
+.student-dashboard-last-page-browse-task-lower-inners-button,
+.student-dashboard-last-page-my-tasks-inners-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+.student-dashboard-last-page-browse-task-lower-inners-button span,
+.student-dashboard-last-page-my-tasks-inners-button span{
+    background-color: rgba(0, 128, 0, 0.393);
+    font-size: 12px;
+    color: var(--green-bgc);
+    padding: 2px 12px;
+    border-radius: 12px;
+}
+.student-dashboard-last-page-browse-task-lower-inners-button button,
+.student-dashboard-last-page-my-tasks-inners-button button{
+    font-size: 16px;
+    font-weight: 600;
+    padding: 6px 16px;
+    background-color: var(--green-bgc);
+    color: var(--background);
+    border-radius: 12px;
+    border: none;
+    transition: all ease-in-out 0.3s;
+}
+.student-dashboard-last-page-browse-task-lower-inners-button button:hover,
+.student-dashboard-last-page-my-tasks-inners-button button:hover{
+    background-color: var(--dark-green);
+}
+/* for my task page */
+.student-dashboard-last-page-my-tasks{
+    padding-top: 0;
+}
+.student-dashboard-last-page-my-tasks-inners-tittle{
+    display: flex;
+}
+.student-dashboard-last-page-my-tasks-inners-tittle span{
+    padding: 2px 8px 4px 8px;
+    height: fit-content;
+    background-color: rgba(96, 20, 20, 0.389);
+    color: var(--red);
+    font-size: 12px;
+    border-radius: 8px;
+}

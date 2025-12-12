@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillQuest</title>
+    <link rel="stylesheet" href="studentDashboard.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+</head>
+<body>
+    <main>
+        <nav>
+            <div class="nav-logo">
+                <span class="logo-circle">SQ</span>
+                <span class="logo">SkillQuest</span>
+            </div>
+            <ul class="nav-navigation">
+                <li>
+                    <a href="">
+                        <span>Browse Tasks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./assets/components/login.html">
+                        <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-cover"></div>
+        <div class="student-dashboard-tittle">
+            <div class="student-dashboard-tittle-heading">
+                <h1>Student Dashboard</h1>
+            </div>
+            <span>Welcome back, Alex Johnson!</span>
+        </div>
+
+        <div class="student-dashboard-first-page">
+            <div class="student-dashboard-first-page-inners" id="pending-user">
+                <div class="student-dashboard-first-page-inners-left">
+                    <span class="student-dashboard-first-page-inners-info">Tasks Completed</span>
+                    <span class="student-dashboard-first-page-inners-count">2</span>
+                </div>
+                <i class="ri-gift-2-line"></i>
+            </div>
+
+           <div class="student-dashboard-first-page-inners" id="pending-user">
+                <div class="student-dashboard-first-page-inners-left">
+                    <span class="student-dashboard-first-page-inners-info">Total Earnings</span>
+                    <span class="student-dashboard-first-page-inners-count">$ 3000</span>
+                </div>
+                <i class="ri-money-dollar-circle-line"></i>
+            </div>
+
+            <div class="student-dashboard-first-page-inners" id="pending-user">
+                <div class="student-dashboard-first-page-inners-left">
+                    <span class="student-dashboard-first-page-inners-info">Active Tasks</span>
+                    <span class="student-dashboard-first-page-inners-count">3</span>
+                </div>
+                <i class="ri-history-line"></i>
+            </div>
+        </div>
+
+        <!-- for navigation bars -->
+        <div class="student-dashboard-second-page-navigation">
+            <div class="student-dashboard-second-page-navigation-nav">
+                <div class="student-dashboard-second-page-navigation-nav-inners" id="student-dashboard-second-page-navigation-nav-browse-task">
+                    <i class="ri-search-line"></i>
+                    <span>Browse Tasks</span>
+                </div>
+                <div class="student-dashboard-second-page-navigation-nav-inners" id="student-dashboard-second-page-navigation-nav-my-tasks">
+                    <i class="ri-history-line"></i>
+                    <span>My Tasks</span>
+                </div>
+                <div class="student-dashboard-second-page-navigation-nav-inners" id="student-dashboard-second-page-navigation-nav-completed-task">
+                    <i class="ri-award-line"></i>
+                    <span>Completed</span>
+                </div>
+                <div class="student-dashboard-second-page-navigation-nav-inners" id="student-dashboard-second-page-navigation-nav-profile">
+                    <i class="ri-user-line"></i>
+                    <span>Profile</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- for browseing tasks -->
+        <div style="display: none;" class="student-dashboard-last-page-browse-task" id="student-dashboard-last-page-browse-task">
+            <div class="student-dashboard-last-page-browse-task-upper">
+                <div class="student-dashboard-last-page-browse-task-upper-search" id="student-dashboard-last-page-browse-task-upper-search">
+                    <i class="ri-search-line"></i>
+                    <input type="search" name="admin-dashboard-last-page-registration-upper-search-searcher" id="admin-dashboard-last-page-registration-upper-search-searcher" placeholder="Search Tasks..">
+                </div>
+            </div>
+            <div class="student-dashboard-last-page-browse-task-lower" id="student-dashboard-last-page-browse-task-lower">
+               <!-- all avialable tasks -->
+
+               <div class="student-dashboard-last-page-browse-task-lower-inners">
+                    <h3>Web Development-Ecomerce-Site</h3>
+                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                    <ul>
+                        <li>
+                            <i class="ri-file-list-line"></i>
+                            <span>NewCo Inc.</span>
+                        </li>
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <span>Remote</span>
+                        </li>
+                        <li>
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <span>1000</span>
+                        </li>
+                        <li>
+                            <i class="ri-calendar-event-line"></i>
+                            <span>Deadline: Jan 10, 2026</span>
+                        </li>
+                    </ul>
+                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
+                        <span>Design</span>
+                        <button>Claim Task</button>
+                    </div>
+                </div>
+
+                <div class="student-dashboard-last-page-browse-task-lower-inners">
+                    <h3>Content writer</h3>
+                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                    <ul>
+                        <li>
+                            <i class="ri-file-list-line"></i>
+                            <span>NewCo Inc.</span>
+                        </li>
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <span>Remote</span>
+                        </li>
+                        <li>
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <span>1000</span>
+                        </li>
+                        <li>
+                            <i class="ri-calendar-event-line"></i>
+                            <span>Deadline: Jan 10, 2026</span>
+                        </li>
+                    </ul>
+                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
+                        <span>writing</span>
+                        <button>Claim Task</button>
+                    </div>
+                </div>
+
+                <div class="student-dashboard-last-page-browse-task-lower-inners">
+                    <h3>Content writer</h3>
+                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                    <ul>
+                        <li>
+                            <i class="ri-file-list-line"></i>
+                            <span>NewCo Inc.</span>
+                        </li>
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <span>Remote</span>
+                        </li>
+                        <li>
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <span>1000</span>
+                        </li>
+                        <li>
+                            <i class="ri-calendar-event-line"></i>
+                            <span>Deadline: Jan 10, 2026</span>
+                        </li>
+                    </ul>
+                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
+                        <span>writing</span>
+                        <button>Claim Task</button>
+                    </div>
+                </div>
+
+                <div class="student-dashboard-last-page-browse-task-lower-inners">
+                    <h3>Content writer</h3>
+                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                    <ul>
+                        <li>
+                            <i class="ri-file-list-line"></i>
+                            <span>NewCo Inc.</span>
+                        </li>
+                        <li>
+                            <i class="ri-map-pin-line"></i>
+                            <span>Remote</span>
+                        </li>
+                        <li>
+                            <i class="ri-money-dollar-circle-line"></i>
+                            <span>1000</span>
+                        </li>
+                        <li>
+                            <i class="ri-calendar-event-line"></i>
+                            <span>Deadline: Jan 10, 2026</span>
+                        </li>
+                    </ul>
+                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
+                        <span>writing</span>
+                        <button>Claim Task</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- for my Tasks -->
+        <div class="student-dashboard-last-page-my-tasks" id="student-dashboard-last-page-my-tasks">
+            <!-- my task lists -->
+            <div class="student-dashboard-last-page-my-tasks-inners">
+                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
+                    <h3>Web Development-Ecomerce-Site</h3>
+                    <span>in_progres</span>
+                </div>
+                
+                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                <ul>
+                    <li>
+                        <i class="ri-file-list-line"></i>
+                        <span>NewCo Inc.</span>
+                    </li>
+                    <li>
+                        <i class="ri-map-pin-line"></i>
+                        <span>Remote</span>
+                    </li>
+                    <li>
+                        <i class="ri-money-dollar-circle-line"></i>
+                        <span>1000</span>
+                    </li>
+                    <li>
+                        <i class="ri-calendar-event-line"></i>
+                        <span>Deadline: Jan 10, 2026</span>
+                    </li>
+                </ul>
+                <div class="student-dashboard-last-page-my-tasks-inners-button">
+                    <span>Design</span>
+                    <button>Mark Complete</button>
+                </div>
+            </div>
+
+            <div class="student-dashboard-last-page-my-tasks-inners">
+                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
+                    <h3>Web Development-Ecomerce-Site</h3>
+                    <span>in_progres</span>
+                </div>
+                
+                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                <ul>
+                    <li>
+                        <i class="ri-file-list-line"></i>
+                        <span>NewCo Inc.</span>
+                    </li>
+                    <li>
+                        <i class="ri-map-pin-line"></i>
+                        <span>Remote</span>
+                    </li>
+                    <li>
+                        <i class="ri-money-dollar-circle-line"></i>
+                        <span>1000</span>
+                    </li>
+                    <li>
+                        <i class="ri-calendar-event-line"></i>
+                        <span>Deadline: Jan 10, 2026</span>
+                    </li>
+                </ul>
+                <div class="student-dashboard-last-page-my-tasks-inners-button">
+                    <span>Design</span>
+                    <button>Mark Complete</button>
+                </div>
+            </div>
+
+            <div class="student-dashboard-last-page-my-tasks-inners">
+                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
+                    <h3>Web Development-Ecomerce-Site</h3>
+                    <span>in_progres</span>
+                </div>
+                
+                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                <ul>
+                    <li>
+                        <i class="ri-file-list-line"></i>
+                        <span>NewCo Inc.</span>
+                    </li>
+                    <li>
+                        <i class="ri-map-pin-line"></i>
+                        <span>Remote</span>
+                    </li>
+                    <li>
+                        <i class="ri-money-dollar-circle-line"></i>
+                        <span>1000</span>
+                    </li>
+                    <li>
+                        <i class="ri-calendar-event-line"></i>
+                        <span>Deadline: Jan 10, 2026</span>
+                    </li>
+                </ul>
+                <div class="student-dashboard-last-page-my-tasks-inners-button">
+                    <span>Design</span>
+                    <button>Mark Complete</button>
+                </div>
+            </div>
+
+            <div class="student-dashboard-last-page-my-tasks-inners">
+                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
+                    <h3>Web Development-Ecomerce-Site</h3>
+                    <span>in_progres</span>
+                </div>
+                
+                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                <ul>
+                    <li>
+                        <i class="ri-file-list-line"></i>
+                        <span>NewCo Inc.</span>
+                    </li>
+                    <li>
+                        <i class="ri-map-pin-line"></i>
+                        <span>Remote</span>
+                    </li>
+                    <li>
+                        <i class="ri-money-dollar-circle-line"></i>
+                        <span>1000</span>
+                    </li>
+                    <li>
+                        <i class="ri-calendar-event-line"></i>
+                        <span>Deadline: Jan 10, 2026</span>
+                    </li>
+                </ul>
+                <div class="student-dashboard-last-page-my-tasks-inners-button">
+                    <span>Design</span>
+                    <button>Mark Complete</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- for user mantenance -->
+         <div style="display: none;" class="admin-dashboard-last-page-users" id="admin-dashboard-last-page-users">
+            <div class="admin-dashboard-last-page-users-upper">
+                <h2>Manage Users</h2>
+                <div class="admin-dashboard-last-page-users-upper-search" id="admin-dashboard-last-page-users-upper-search">
+                    <i class="ri-search-line"></i>
+                    <input type="search" name="admin-dashboard-last-page-users-upper-search-searcher" id="admin-dashboard-last-page-users-upper-search-searcher" placeholder="Search Users..">
+                </div>
+            </div>
+
+            <div class="admin-dashboard-last-page-users-lower" id="admin-dashboard-last-page-users-lower">
+                <!-- ever users info -->
+                <div class="admin-dashboard-last-page-users-lower-inners">
+                    <div class="admin-dashboard-last-page-users-lower-inners-icon">
+                        <i class="ri-user-line"></i>
+                    </div>
+                    <div class="admin-dashboard-last-page-users-lower-inners-info">
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
+                            <h3>Rojip Chhantyal</h3>
+                            <span>studnet</span>
+                        </div>
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-email">
+                            <span>rejanchhantyal@gmail.com</span>
+                        </div>
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
+                            <span>Tasks Completed: 5</span>
+                        </div>
+                    </div>
+                    <div class="admin-dashboard-last-page-users-lower-inners-options">
+                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
+                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                    </div>
+                </div>
+
+                <div class="admin-dashboard-last-page-users-lower-inners">
+                    <div class="admin-dashboard-last-page-users-lower-inners-icon">
+                        <i class="ri-building-4-line"></i>
+                    </div>
+                    <div class="admin-dashboard-last-page-users-lower-inners-info">
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
+                            <h3>TechVenture Ltd</h3>
+                            <span>business</span>
+                        </div>
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-email">
+                            <span>ontact@techventure.com</span>
+                        </div>
+                        <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
+                            <span>Tasks Posted: 8</span>
+                        </div>
+                    </div>
+                    <div class="admin-dashboard-last-page-users-lower-inners-options">
+                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
+                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="studentDashboard.js"></script>
+</body>
+</html>
