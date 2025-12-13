@@ -97,7 +97,7 @@ main{
 /* first page */
 .admin-dashboard-first-page{
     background-color: var(--background);
-    height: 22vh;
+    height: 20vh;
     margin-top: 16px;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@ main{
 .admin-dashboard-first-page-inners{
     background-color: var(--lightter-background);
     width: 22.5%;
-    height: 20vh;
+    height: 18vh;
     border: 0.1px solid var(--green-bgc);
     box-sizing: border-box;
     border-radius: 12px;

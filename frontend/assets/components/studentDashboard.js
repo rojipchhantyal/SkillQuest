@@ -1,77 +1,112 @@
 // second page navigations
 const browseTaskNav = document.getElementById("student-dashboard-second-page-navigation-nav-browse-task");
-const myTasknav = document.getElementById("student-dashboard-second-page-navigation-nav-my-tasks");
-const completedTasknav = document.getElementById("student-dashboard-second-page-navigation-nav-completed-task");
-const profileNave = document.getElementById("student-dashboard-second-page-navigation-nav-profile");
+const myTaskNav = document.getElementById("student-dashboard-second-page-navigation-nav-my-tasks");
+const completedTaskNav = document.getElementById("student-dashboard-second-page-navigation-nav-completed-task");
+const profileNav = document.getElementById("student-dashboard-second-page-navigation-nav-profile");
 
 
 //navigation contents
-const browseTaskContent = document.getElementById("student-dashboard-last-page-browse-task");
-const taskConetent = document.getElementById("admin-dashboard-last-page-tasks");
-const manageUserContent = document.getElementById("admin-dashboard-last-page-users");
+const browseTaskConetent = document.getElementById("student-dashboard-last-page-browse-task");
+const myTaskConetent= document.getElementById("student-dashboard-last-page-my-tasks");
+const completedTaskConetent = document.getElementById("student-dashboard-last-page-completed-tasks");
+const profileConetent= document.getElementById("student-dashboard-last-page-profile");
 
-myTasknav.addEventListener('click', () => {
+myTaskNav.addEventListener('click', () => {
   console.log("my task");
   //change the elements
-  myTasknav.style.color = "#00C853";
-  myTasknav.style.borderColor = "#00C853";
+  myTaskNav.style.color = "#00C853";
+  myTaskNav.style.borderColor = "#00C853";
 
-//   //hide the other navitation conetent
-//   browseTaskNav.style.display = "none";
-//   browseTaskNav.style.display = "none";
+  //hide the other navitation conetent
+  browseTaskConetent.style.display = "none";
+  completedTaskConetent.style.display = "none";
+  profileConetent.style.display = "none";
 
   //show the task content
-  browseTaskContent.style.display = "block";
+  myTaskConetent.style.display = "flex";
 
   //make default to other elements
   browseTaskNav.style.color = "oklch(0.707 0.022 261.325)";
   browseTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 
-  completedTasknav.style.color = "oklch(0.707 0.022 261.325)";
-  completedTasknav.style.borderColor = "rgba(255, 0, 0, 0)";
+  completedTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  completedTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 
-  profileNave.style.color = "oklch(0.707 0.022 261.325)";
-  profileNave.style.borderColor = "rgba(255, 0, 0, 0)";
+  profileNav.style.color = "oklch(0.707 0.022 261.325)";
+  profileNav.style.borderColor = "rgba(255, 0, 0, 0)";
 });
 
-manageUserNav.addEventListener('click', () => {
-  console.log("manage user");
+completedTaskNav.addEventListener('click', () => {
+  console.log("complete task");
   //change the elements
-  manageUserNav.style.color = "#00C853";
-  manageUserNav.style.borderColor = "#00C853";
+  completedTaskNav.style.color = "#00C853";
+  completedTaskNav.style.borderColor = "#00C853";
 
-  // hide the other content
-  taskConetent.style.display = "none";
-  registerationContent.style.display = "none";
+  //hide the other navitation conetent
+  browseTaskConetent.style.display = "none";
+  myTaskConetent.style.display = "none";
+  profileConetent.style.display = "none";
 
-  //show the own content
-  manageUserContent.style.display = "block";
+  //show the task content
+  completedTaskConetent.style.display = "flex";
 
   //make default to other elements
-  registrationNav.style.color = "oklch(0.707 0.022 261.325)";
-  registrationNav.style.borderColor = "rgba(255, 0, 0, 0)";
+  browseTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  browseTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 
-  taskNav.style.color = "oklch(0.707 0.022 261.325)";
-  taskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+  myTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  myTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+  profileNav.style.color = "oklch(0.707 0.022 261.325)";
+  profileNav.style.borderColor = "rgba(255, 0, 0, 0)";
 });
 
-registrationNav.addEventListener('click', () => {
-  console.log("registeration");
+profileNav.addEventListener('click', () => {
+  console.log("profile");
   //change the elements
-  registrationNav.style.color = "#00C853";
-  registrationNav.style.borderColor = "#00C853";
+  profileNav.style.color = "#00C853";
+  profileNav.style.borderColor = "#00C853";
 
-  //hide other contents
-  taskConetent.style.display = "none";
-  manageUserContent.style.display = "none";
+  //hide the other navitation conetent
+  browseTaskConetent.style.display = "none";
+  completedTaskConetent.style.display = "none";
+  browseTaskConetent.style.display = "none";
 
-  //show your contents
-  registerationContent.style.display = "block";
+  //show the task content
+  profileConetent.style.display = "flex";
 
   //make default to other elements
-  taskNav.style.color = "oklch(0.707 0.022 261.325)";
-  taskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+  browseTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  browseTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 
-  manageUserNav.style.color = "oklch(0.707 0.022 261.325)";
-  manageUserNav.borderColor = "rgba(255, 0, 0, 0)";
+  completedTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  completedTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+  browseTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  browseTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+});
+
+browseTaskNav.addEventListener('click', () => {
+  console.log("browse task");
+  //change the elements
+  browseTaskNav.style.color = "#00C853";
+  browseTaskNav.style.borderColor = "#00C853";
+
+  //hide the other navitation conetent
+  myTaskConetent.style.display = "none";
+  completedTaskConetent.style.display = "none";
+  profileConetent.style.display = "none";
+
+  //show the task content
+  browseTaskConetent.style.display = "block";
+
+  //make default to other elements
+  myTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  myTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+  completedTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+  completedTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+  profileNav.style.color = "oklch(0.707 0.022 261.325)";
+  profileNav.style.borderColor = "rgba(255, 0, 0, 0)";
 });
