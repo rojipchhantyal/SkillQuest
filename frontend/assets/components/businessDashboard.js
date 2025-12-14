@@ -157,3 +157,18 @@ allTaskNav.addEventListener('click', () => {
   pendingTaskNav.style.color = "oklch(0.707 0.022 261.325)";
   pendingTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 });
+
+// for form to open when which in the add post and close when click in the close button
+// form content
+const form = document.getElementById("business-dashboard-post-task-wrapper");
+
+// function for opening the form
+function openAddTask(){
+  console.log("opeing the add task form");
+  form.style.display = "flex";
+}
+// function for close the add task form
+function closeAddTask(){
+  console.log("closing the add task form");
+  form.style.display = "none";
+}

@@ -41,10 +41,81 @@
             </div>
             <span>Welcome back, TechStartup Inc.!</span>
 
-            <button>
+            <button onclick="openAddTask()">
                 <i class="ri-add-line"></i>
                 Post New Task
             </button>
+        </div>
+
+        <!-- form for posting the tasks -->
+        <div style="display: none;" class="business-dashboard-post-task-wrapper" id="business-dashboard-post-task-wrapper">
+            <div class="business-dashboard-post-task">
+                <div class="business-dashboard-post-task-tittle">
+                    <h2>Post New Task</h2>
+                </div>
+                <div class="business-dashboard-post-task-tittle-cover">a</div>
+                <form>
+                    <div class="form-fields">
+                        <label for="">Task Title</label>
+                        <input type="text" name="" id="" placeholder="e.g., Mobile app UI/UX Design">
+                    </div>
+
+                    <div class="form-fields">
+                        <label for="">Description</label>
+                        <textarea name="" id="" placeholder="Describe the task in details.."></textarea>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <label for="">Task Type</label>
+                            <select name="" id="">
+                                <option value="">Design</option>
+                                <option value="">Design</option>
+                                <option value="">Design</option>
+                                <option value="">Design</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="location">Location</label>
+                            <div class="inputs">
+                                <i class="ri-map-pin-line"></i>
+                                <input type="text" name="location" id="location" placeholder="e.g., Remote, Kathmandu Nepal">
+                            </div>
+                        </li>
+                        <li>
+                            <label for="budget">Budget</label>
+                            <div class="inputs">
+                                <i class="ri-money-dollar-circle-line"></i>
+                                <input type="number" name="location" id="location" placeholder="100">
+                            </div>
+                        </li>
+                        <li>
+                            <label for="deadline">DeadLine</label>
+                            <div class="inputs">
+                                <i class="ri-calendar-2-line"></i>
+                                <input type="date" name="location" id="location">
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="form-fields" id="form-fields-note">
+                    <p>
+                        <strong>Note:</strong>
+                        Your task will be submitted for admin approval before it becomes visible to students.
+                    </p>
+                    </div>
+
+                    <div class="form-button-field">
+                        <button onclick="closeAddTask()" id="form-button-field-cancle" type="button">Cancle</button>
+                        <button id="form-button-field-submit">Subimt for Approval</button>
+                    </div>
+                </form>
+
+                <!-- form hider button -->
+                <div class="business-dashboard-post-task-hider" onclick="closeAddTask()">
+                    <i class="ri-close-line"></i>
+                </div>
+            </div>
         </div>
 
         <div class="business-dashboard-first-page">
