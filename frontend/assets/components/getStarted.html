@@ -15,126 +15,195 @@
 </head>
 <body>
     <main>
+        <nav>
+            <div class="nav-logo">
+                <span class="logo-circle">SQ</span>
+                <span class="logo">SkillQuest</span>
+            </div>
+            <ul class="nav-navigation">
+                <li>
+                    <a href="">
+                        <span>Browse Tasks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-cover"></div>
         <div class="skillquest-logo">
-            <span class="logo-circle">SQ</span>
-            <span class="logo">SkillQuest</span>
+            <span class="logo-circlee">SQ</span>
+            <h2>Join SkillQuest</h2>
+            <p>Create your account and start your journey</p>
         </div>
-        <div class="join-us-loding-steps">
-            <span id="join-us-loding-steps-first-num" class="join-us-loding-steps-count">1</span>
-            <div class="join-us-loding-steps-bar" id="join-us-loding-steps-bar-first"></div>
-            <span id="join-us-loding-steps-second-num" class="join-us-loding-steps-count">2</span>
-            <span id="join-us-loding-steps-second-num-details">Details</span>
-
-            <div class="join-us-loding-steps-bar"></div>
-            <span id="join-us-loding-steps-third-num" class="join-us-loding-steps-count">3</span>
-        </div>
-        <div class="loding-bar">
-            <div class="loding-bar-progress" id="loding-bar-progress">
-
-            </div>
-        </div>
-        <form class="form-for-choose-role" method="get">
-            <!-- tittle for choosing the role -->
-            <div class="form-for-choose-role-tittle" id="form-for-choose-role-tittle">
-                <h1>Choose Your Role</h1>
-                <p>Select how you'll use SkillQuest</p>
+        
+        <!-- form to register -->
+        <div class="form-outer-main">
+            <div class="form-outer-selector-main">
+                <label>Register as</label>
+                <div class="form-outer-selector">
+                    <div class="form-outer-selector-student" id="form-outer-selector-student">
+                        <i class="ri-user-line"></i>
+                        <span class="form-outer-selector-type-span">Studnet</span>
+                        <p class="form-outer-selector-type-p">Find and complete tasks.</p>
+                    </div>
+                    <div class="form-outer-selector-business" id="form-outer-selector-business">
+                        <i class="ri-building-4-line"></i>
+                        <span id="form-outer-selector-type-span">Business</span>
+                        <p class="form-outer-selector-type-p">Post task and hire.</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- tittle for the details -->
-            <div class="form-for-details-tittle" id="form-for-details-tittle" style="display: none;">
-                <h1>Tell Us About Yourself</h1>
-                <p>We need a few more details</p>
-            </div>
 
-            <!-- select for choosing the role -->
-            <div class="form-for-choose-role-selector" id="form-for-choose-role-selector">
-                <label for="role-sel">I am a</label>
-                <select name="role-sel" id="role-sel">
-                    <option value="student" selected>Student - Looking for work</option>
-                    <option value="business">Business - Need to hire</option>
-                </select>
-            </div>
-
-            <!-- input for the details -->
-            <div class="form-for-choose-details" id="form-for-choose-details" style="display: none;">
-                <!-- for student user -->
-                <div class="form-for-choose-details-first-row" id="form-for-choose-details-first-row">
-                    <div class="form-for-choose-details-first-row-left" id="form-for-choose-details-first-row-left">
+            <!-- for student registration -->
+            <form class="form-for-student" action="" id="form-for-student">
+                <ul class="form-for-student-field-outer">
+                    <li>
                         <label for="fullName">Full Name</label>
-                        <input type="text" name="fullName" id="fullName" placeholder="enter your full name" required>
-                    </div>
+                        <div class="student-input-wrapper">
+                            <i class="ri-user-line"></i>
+                            <input type="text" name="fullName" id="fullName" placeholder="Rojip Chhantyal">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="emailStuent">Email</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" name="emailStuent" placeholder="your@email.com">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="university">University</label>
+                        <div class="student-input-wrapper">
+                            <input style="padding-left: 8px;" type="text" name="university" id="university" placeholder="Your University">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="major">Major</label>
+                        <div class="student-input-wrapper">
+                            <input style="padding-left: 8px;" type="text" name="major" id="major" placeholder="BCA">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="phoneStudent">Phone</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-phone-line"></i>
+                            <input type="tel" name="phone" id="phoneStudent" placeholder="9700000000">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="locationStudent">Location</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-map-pin-line"></i>
+                            <input type="text" name="location" id="locationStudent" placeholder="Kathmandu, Nepal">
+                        </div>
+                    </li>
+                    <!-- for passwords -->
+                    <li>
+                        <label for="firstPasswordStudent">Password</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="firstPassword" id="firstPasswordStudent" placeholder=".........">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="confirmPasswordStudent">Password</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="confirmPassword" id="confirmPasswordStudent" placeholder=".........">
+                        </div>
+                    </li>
+                </ul>
+                <button>Register</button>
+            </form>
 
-                    <div class="form-for-choose-details-first-row-right" id="form-for-choose-details-first-row-right">
-                        <label for="userEmail">Email</label>
-                        <input type="email" name="userEmail" id="userEmail" placeholder="enter your email" required>
-                    </div>
-                </div>
-                <div class="form-for-choose-details-second-row" id="form-for-choose-details-second-row">
-                    <label for="userLocation">Location</label>
-                    <input type="text" name="userLocation" id="userLocation" placeholder="city, state" required>
-                </div>
-                <div class="form-for-choose-details-third-row" id="form-for-choose-details-third-row">
-                    <label for="userSkills">Skills
-                        <font style="color: gray;font-weight: 400;">(comma separated)</font>
-                    </label>
-                    <input type="text" name="userSkills" id="userSkills" placeholder="web development, UI/UX design" required>
-                </div>
-                <div class="form-for-choose-details-fourth-row" id="form-for-choose-details-fourth-row">
-                    <div class="form-for-choose-details-fourth-row-left" id="form-for-choose-details-fourth-row-left">
-                        <label for="userPassword">Password</label>
-                        <input type="password" name="userPassword" id="userPassword" required>
-                    </div>
-                    <div class="form-for-choose-details-fourth-row-right" id="form-for-choose-details-fourth-row-right">
-                        <label for="userConfirmPass">Confirm Password</label>
-                        <input type="password" name="userConfirmPass" id="userConfirmPass" required>
-                    </div>
-                </div>
+            <!-- registration form for business-->
+            <form style="display: none;" class="form-for-business" action="" id="form-for-business">
+                <ul class="form-for-business-field-outer">
+                    <li>
+                        <label for="contactName">Contact Name</label>
+                        <div class="business-input-wrapper">
+                            <i class="ri-user-line"></i>
+                            <input type="text" name="contactName" id="contactName" placeholder="Rejan Chhantyal">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="emailBusiness">Email</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" name="email" id="emailBusiness" placeholder="your@email.com">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="businessName">Business Name</label>
+                        <div class="student-input-wrapper">
+                            <input style="padding-left: 8px;" type="text" name="businessName" id="businessName" placeholder="SkillQuest">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="businessType">Business Type</label>
+                        <div class="student-input-wrapper">
+                            <select style="padding-left: 8px;" name="businessType" id="businessType">
+                                <option value="" selected disabled>--Select Type--</option>
+                                <option value="startUp">Startup</option>
+                                <option value="smallBusiness">Small Business</option>
+                                <option value="enterPrise">Enterprise</option>
+                                <option value="nonProfit">Non-Profit</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="phoneBusiness">Phone</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-phone-line"></i>
+                            <input type="tel" name="phone" id="phoneBusiness" placeholder="9700000000">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="locationBusiness">Location</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-map-pin-line"></i>
+                            <input type="text" name="location" id="locationBusiness" placeholder="Kathmandu, Nepal">
+                        </div>
+                    </li>
+                    <!-- for passwords -->
+                    <li>
+                        <label for="firstPasswordBusiness">Password</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="firstPassword" id="firstPasswordBusiness" placeholder=".........">
+                        </div>
+                    </li>
+                    <li>
+                        <label for="confirmPasswordBusiness">Password</label>
+                        <div class="student-input-wrapper">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="confirmPassword" id="confirmPasswordBusiness" placeholder=".........">
+                        </div>
+                    </li>
+                </ul>
+                <button>Register</button>
+            </form>
 
-                <!-- form for business -->
-                <div class="form-for-choose-details-business-first-row" id="form-for-choose-details-business-first-row">
-                    <div class="form-for-choose-details-business-first-row-left" id="form-for-choose-details-business-first-row-left">
-                        <label for="busPerson">Contact Person</label>
-                        <input type="text" name="busPerson" id="busPerson" placeholder="enter your contact person" required>
-                    </div>
-
-                    <div class="form-for-choose-details-business-first-row-right" id="form-for-choose-details-business-first-row-right">
-                        <label for="busEmail">Email</label>
-                        <input type="email" name="busEmail" id="busEmail" placeholder="enter your business email" required>
-                    </div>
-                </div>
-                <div class="form-for-choose-details-business-second-row" id="form-for-choose-details-business-second-row">
-                    <label for="busName">Company Name</label>
-                    <input type="text" name="busName" id="busName" placeholder="your company name" required>
-                </div>
-                <div class="form-for-choose-details-business-third-row" id="form-for-choose-details-business-third-row">
-                    <label for="busLocation">Location</label>
-                    <input type="text" name="busLocation" id="busLocation" placeholder="city, state" required>
-                </div>
-                <div class="form-for-choose-details-business-fourth-row" id="form-for-choose-details-business-fourth-row">
-                    <div class="form-for-choose-details-business-fourth-row-left" id="form-for-choose-details-business-fourth-row-left">
-                        <label for="bussPassword">Password</label>
-                        <input type="password" name="bussPassword" id="bussPassword" required>
-                    </div>
-                    <div class="form-for-choose-details-business-fourth-row-right" id="form-for-choose-details-business-fourth-row-right">
-                        <label for="busConfirmPass">Confirm Password</label>
-                        <input type="password" name="busConfirmPass" id="busConfirmPass" required>
-                    </div>
-                </div>
+            <div class="form-outer-main-or-line">
+                <span>or</span>
             </div>
+            <p class="form-outer-main-p">
+                Already have an account?
+                <a href="./login.html">Login here</a>
+            </p>
+        </div>
 
-            <!-- button for choosing the role -->
-            <div class="button" id="done-continue">Continue</div>
-
-            <!-- buttons for the details -->
-            <div class="details-buttons" style="display: none;" id="details-duttons">
-                <div class="button" id="details-back">Back</div>
-                <button id="details-continue">Continue</button>
-            </div>
-            <div class="already-have-account">
-                <span>Already have an account?</span>
-                <a href="login.html">Login</a>
-            </div>
-        </form>
+        <div class="note-for-user">
+            <p>
+                <strong>Note: </strong>
+                Your registration will be reviewed by our admin team. You can able to login once your account is approved.
+            </p>
+        </div>
     </main>
 </body>
 <script src="getStarted.js"></script>

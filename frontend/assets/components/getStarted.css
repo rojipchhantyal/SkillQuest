@@ -17,247 +17,299 @@
 }
 main{
     height: auto;
-    background-color: var(--white);
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    padding: 42px;
+    gap: 24px;
+    padding: 32px;
+}
+nav{
+    top: 0;
+    height: 11vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 999;
+    border-bottom: 0.1px solid var(--green-bgc);
+}
+.nav-logo{
+    height: 100%;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+}
+.logo-circle{
+    font-size: 16px;
+    background-color: var(--green-bgc);
+    padding: 6px 6px;
+    border-radius: 12px;
+}
+.logo{
+    color: var(--white);
+}
+.nav-navigation{
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 22px;
+}
+.nav-navigation li a{
+    text-decoration: none;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+}
+.nav-navigation li{
+    list-style: none;
+}
+.nav-navigation li a:hover{
+    color: var(--green-bgc);
+}
+/* cover nav */
+.nav-cover{
+    height: 11vh;
 }
 .skillquest-logo{
     height: 9%;
     width: 28%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
     font-size: 20px;
 }
-.logo-circle{
+.logo-circlee{
     font-size: 20px;
     background-color: var(--green-bgc);
     padding: 7px 8px;
     border-radius: 12px;
+    margin-bottom: 12px;
 }
-.logo{
-    color: var(--black);
-    font-size: 24px;
+.skillquest-logo h2{
+    font-size: 32px;
+    color: var(--green-bgc);
+    font-weight: 500;
+    margin-bottom: 4px;
 }
-.join-us-loding-steps{
-    height: 8vh;
-    width: 52%;
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 26px;
-}
-.join-us-loding-steps-count{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    background-color: var(--gray-bgc);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-#join-us-loding-steps-first-num{
-    background-color: var(--green-bgc);
-}
-#join-us-loding-steps-second-num{
-    color: var(--gray);
-}
-#join-us-loding-steps-third-num{
-    margin-right: 28px;
-    color: var(--gray);
-}
-.join-us-loding-steps-bar{
-    height: 4px;
-    width: 120px;
-    background-color: var(--gray-bgc);
-    border-radius: 8px;
-}
-#join-us-loding-steps-first-num::before{
-    content: "Role";
-    position: absolute;
-    bottom: -26px;
-    font-size: 14px;
-}
-#join-us-loding-steps-second-num-details{
-    position: absolute;
-    top: 156px;
-    left: 594px;
-    font-size: 14px;
+.skillquest-logo p{
+    font-size: 16px;
     color: var(--gray);
 }
 
-#join-us-loding-steps-third-num::before{
-    content: "Create Account";
-    width: 100px;
-    position: absolute;
-    bottom: -26px;
-    font-size: 14px;
-    color: var(--gray);
-}
-.loding-bar{
-    height: 7px;
-    width: 666px;
-    background-color: var(--gray-bgc);
-    margin-top: 20px;
+.form-outer-main{
+    height: 742px;
+    width: 672px;
+    background-color: var(--lightter-background);
     border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 14px;
-}
-.loding-bar-progress{
-    height: 100%;
-    width: 33%;
-    background-color: var(--green-bgc);
-}
-.form-for-choose-role{
-    border: 2px solid var(--gray-bgc);
-    /* height: 346px; */
-    height: auto;
-    width: 666px;
-    border-radius: 16px;
+    padding: 32px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: end;
-    box-sizing: border-box;
-    padding: 38px;
-    gap: 24px;
+    justify-content: center;
+    gap: 20px;
 }
-.form-for-choose-role-tittle,
-.form-for-details-tittle{
-    text-align: center;
-    margin-bottom: 10px;
-    line-height: 1.5;
-}
-.form-for-choose-role-tittle h1,
-.form-for-details-tittle h1{
-    font-size: 30px;
-    font-weight: inherit;
-    color: var(--black);
-}
-.form-for-choose-role-tittle p,
-.form-for-details-tittle p{
-    font-size: 16px;
-    color: var(--dark-gray);
-}
-.form-for-choose-role-selector,
-.form-for-choose-details{
-    width: 98%;
+.form-outer-selector-main{
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    width: 100%;
 }
-.form-for-choose-details{
-    gap: 12px;
-}
-.form-for-choose-details-first-row,
-.form-for-choose-details-fourth-row,
-/* for business */
-.form-for-choose-details-business-first-row,
-.form-for-choose-details-business-fourth-row{
+.form-outer-selector{
+    height: 112px;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
-.form-for-choose-details-first-row-left,
-.form-for-choose-details-first-row-left,
-.form-for-choose-details-fourth-row-left,
-.form-for-choose-details-fourth-row-right,
-/* for business */
-.form-for-choose-details-business-first-row-left,
-.form-for-choose-details-business-first-row-right,
-.form-for-choose-details-business-fourth-row-left,
-.form-for-choose-details-business-fourth-row-right{
-    height: 100%;
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.form-for-choose-details-second-row,
-.form-for-choose-details-third-row,
-/*for business  */
-.form-for-choose-details-business-second-row,
-.form-for-choose-details-business-third-row{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.form-for-choose-role-selector label,
-.form-for-choose-details label,
-label{
+.form-outer-selector-main label{
     font-size: 14px;
-    color: var(--black);
+    font-weight: 600;
+    color: var(--white);
+}
+.form-outer-selector-student,
+.form-outer-selector-business{
+    height: 100%;
+    width: 48.6%;
+    background-color: var(--background);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    color: var(--white);
+    box-sizing: border-box;
+    transition: all ease-in-out 0.3s;
+    line-height: 1.6;
+}
+#form-outer-selector-student{
+    background-color: var(--green-bgc);
+    color: var(--background);
+}
+.form-outer-selector-student i,
+.form-outer-selector-business i{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.form-outer-selector-type-span,
+.form-outer-selector-type-span{
+    font-size: 16px;
     font-weight: 500;
 }
-.form-for-choose-role-selector select,
-.form-for-choose-details input{
-    height: 36px;
-    border-radius: 12px;
-    border: none;
-    padding: 0 8px;
-    outline: none;
-    border: 0.2px solid var(--gray-bgc);
-    color: var(--white);
+.form-outer-selector-type-p,
+.form-outer-selector-type-p{
+    font-size: 12px;
+    font-weight: 400;
+}
+.form-outer-selector-student:hover,
+.form-outer-selector-business:hover{
+    border: 1px solid var(--green-bgc);
+}
+/* for forms */
+.form-for-student,
+.form-for-business{
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 12px;
+}
+.form-for-student-field-outer,
+.form-for-business-field-outer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 14px;
+}
+.form-for-student-field-outer li,
+.form-for-business-field-outer li{
+    height: 70px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.form-for-student-field-outer label,
+.form-for-business-field-outer label{
     font-size: 14px;
-    color: var(--black);
-    transition: all ease-in-out 0.1s;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
 }
-.form-for-choose-role-selector select:focus,
-.form-for-choose-details input:focus {
-  outline: 3px solid rgba(0, 128, 0, 0.5);
+.student-input-wrapper,
+.business-input-wrapper{
+    background-color: var(--background);
+    border-radius: 8px;
+    overflow: hidden;
 }
-.button,
-button{
-    height: 60px;
-    width: 98%;
-    border-radius: 10px;
-    background-color: var(--green-bgc);
+.student-input-wrapper i,
+.business-input-wrapper i{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray);
+    padding-left: 8px;
+}
+.student-input-wrapper input,
+.business-input-wrapper input,
+select{
+    width: 70%;
+    padding: 0 12px 4px 0;
+    font-size: 14px;
+    height: 40px;
+    outline: none;
     border: none;
+    background-color: var(--background);
+    color: var(--white);
+    box-sizing: border-box;
+}
+select{
+    width: 96%;
+}
+.form-for-student button,
+.form-for-business button{
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    background-color: var(--green-bgc);
+    transition: all ease-in-out 0.3s;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 0;
+}
+.form-for-student button:hover,
+.form-for-business button:hover{
+    background-color: var(--dark-green);
+}
+.form-outer-main-or-line{
+    height: 20px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
+    overflow: hidden;
+    margin-top: 12px;
+}
+.form-outer-main-or-line span{
     font-size: 14px;
-    transition: all ease-in-out 0.3s;
-    cursor: default;
-}
-#done-continue{
-    height: 50px;
-}
-.button:hover,
-button:hover{
-    background-color: var(--dark-green);
-}
-.details-buttons{
-    width: 98%;
+    color: var(--gray);
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
-#details-back{
-    box-sizing: border-box;
-    background-color: var(--white);
-    border: 2px solid var(--gray-bgc);
+.form-outer-main-or-line span::after{
+    content: "";
+    height: 1px;
+    width: 293px;
+    background-color: var(--green-bgc);
+    position: absolute;
+    border-radius: 24px;
+    right: -297px;
+    top: 10px;
 }
-#details-back,
-#details-continue{
-    height: 45px;
-    width: 48.5%;
+.form-outer-main-or-line span::before{
+    content: "";
+    height: 1px;
+    width: 293px;
+    background-color: var(--green-bgc);
+    position: absolute;
+    border-radius: 24px;
+    left: -297px;
+    top: 10px;
 }
-.already-have-account span{
-    color: var(--dark-gray);
+.form-outer-main-p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 12px;
 }
-.already-have-account a{
-    color: var(--green-bgc);
+.form-outer-main-p a{
+    font-size: 18px;
     text-decoration: none;
+    color: var(--green-bgc);
+    font-weight: 600;
 }
-.already-have-account a:hover{
+.form-outer-main-p a:hover{
     text-decoration: underline;
+}
+.note-for-user{
+    width: 672px;
+    background-color: rgba(4, 55, 4, 0.403);
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--green-bgc);
 }
