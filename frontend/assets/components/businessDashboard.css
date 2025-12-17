@@ -22,6 +22,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
     position: fixed;
     z-index: 999;
     border-bottom: 0.1px solid var(--green-bgc);
@@ -62,54 +63,84 @@ nav{
 .nav-navigation li a:hover{
     color: var(--green-bgc);
 }
-/* cover nav */
-.nav-cover{
-    height: 11vh;
-}
 main{
     background-color: var(--background);
+    display: flex;
+    justify-content: center;
+    padding-top: 11vh;
 }
+
 /* title page */
 .business-dashboard-tittle{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: 24px;
-    padding-top: 34px;
-    padding-bottom: 12px;
-    line-height: 1.5;
-    position: relative;
+    align-items: start;
+    justify-content: start;
+    padding: 0 24px;
+    gap: 14px;
 }
+.business-dashboard-tittle-compartment{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+/* #business-dashboard-tittle-compartment-btn{
+    align-items: end;
+} */
 .business-dashboard-tittle-heading{
     display: flex;
     align-items: center;
     color: var(--green-bgc);
-    font-size: 22px;
-    font-weight: 469;
+    font-size: 14px;
+    font-weight: 300;
     gap: 8px;
+    line-height: 1.1;
 }
 .business-dashboard-tittle span{
     color: var(--gray);
     font-size: 16px;
 }
 .business-dashboard-tittle button{
-    width: fit-content;
+    width: 100%;
     color: var(--background);
-    padding: 12px 24px;
     background-color: var(--green-bgc);
     border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 500;
-    position: absolute;
-    right: 24px;
+    padding: 6px 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
     transition: all ease-in-out 0.3s;
 }
 .business-dashboard-tittle button i{
+    font-size: 16px;
     font-weight: 600;
 }
 .business-dashboard-tittle button:hover{
     background-color: var(--dark-green);
+}
+
+/* dashboard left nav */
+.business-dashboard-left-nav{
+    height: 100vh;
+    position: fixed;
+    width: 26%;
+    left: 0;
+    padding: 16px 0 24px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background);
+    overflow-x: scroll;
+}
+.business-dashboard-left-nav-cover{
+    height: 10vh;
+    width: 26%;
+}
+.business-dashboard-last-page-main{
+    min-height: 10vh;
+    width: 76%;
+    box-sizing: border-box;
+    background-color: var(--lightter-background);
 }
 
 /* task posting form */
@@ -277,75 +308,67 @@ form ul li{
 
 /* first page */
 .business-dashboard-first-page{
-    background-color: var(--background);
-    height: 20vh;
-    margin-top: 16px;
     display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 20px;
     padding: 0 24px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+}
+.business-dashboard-first-page-compartments{
+    display: flex;
+    gap: 18px;
 }
 .business-dashboard-first-page-inners{
-    background-color: var(--lightter-background);
-    width: 25%;
-    height: 18vh;
-    box-sizing: border-box;
-    border-radius: 12px;
+    width: 100%;
+    height: 52px;
     display: flex;
-    justify-content: center;
     align-items: center;
     justify-content: space-between;
-    padding-left: 22px;
     box-sizing: border-box;
-    padding: 24px;
     line-height: 1.5;
+    padding: 6px;
+    background-color: var(--lightter-background);
+    border-radius: 8px;
 }
 .business-dashboard-first-page-inners-left{
     display: flex;
     flex-direction: column;
 }
 .business-dashboard-first-page-inners i{
-    font-size: 38px;
+    font-size: 22px;
     color: var(--green-bgc);
 }
 .business-dashboard-first-page-inners-count{
     font-size: 18px;
     color: var(--green-bgc);
-    margin-left: 4px;
+    margin-left: 8px;
 }
 .business-dashboard-first-page-inners-info{
     font-size: 16px;
-    color: var(--gray);
-    font-weight: inherit;
+    color: var(--white);
+    font-weight: 500;
 }
+
 /* for second page */
 .business-dashboard-second-page-navigation{
-    height: 20vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    box-sizing: border-box;
+    margin-top: 20px;
 }
 .business-dashboard-second-page-navigation-nav{
-    height: 80%;
     width: 100%;
-    background-color: var(--lightter-background);
-    border-radius: 12px;
-    overflow: hidden;
+    box-sizing: border-box;
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 24px;
 }
 .business-dashboard-second-page-navigation-nav-inners{
-    height: 100%;
-    width: 25%;
+    height: 38px;
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     font-size: 16px;
     gap: 8px;
-    font-weight: 500;
+    font-weight: 400;
     border-bottom: 2.5px solid rgba(255, 0, 0, 0);
     color: var(--gray);
     cursor: pointer;
@@ -356,7 +379,7 @@ form ul li{
     border-color:  var(--green-bgc);
 }
 .business-dashboard-second-page-navigation-nav-inners i{
-    font-weight: 600;
+    font-weight: 500;
 }
 .business-dashboard-second-page-navigation-nav-inners:hover{
     color: var(--white);
@@ -367,12 +390,12 @@ form ul li{
 .business-dashboard-last-page-pending-tasks,
 .business-dashboard-last-page-active-tasks,
 .business-dashboard-last-page-completed-tasks{
-    min-height: 20vh;
+    min-height: 90vh;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 24px 24px;
+    padding: 24px;
     box-sizing: border-box;
 }
 .business-dashboard-last-page-all-task-lower-inners,
@@ -380,8 +403,8 @@ form ul li{
 .business-dashboard-last-page-active-tasks-inners,
 .business-dashboard-last-page-completed-tasks-inners{
     height: 354px;
-    width: 386.7px;
-    background-color: var(--lightter-background);
+    width: 432px;
+    background-color: var(--background);
     border-radius: 12px;
     box-sizing: border-box;
     padding: 24px;
@@ -504,20 +527,22 @@ form ul li{
 #delete-pending-task:hover{
     background-color: rgba(114, 4, 4, 0.429);
 }
+
 /* for profile */
 .business-dashboard-last-page-profile{
     padding: 24px;
     padding-top: 0;
+    padding-top: 24px;
 }
 .business-dashboard-last-page-profile-inner{
     min-height: 80vh;
-    width: 62%;
+    width: 82%;
     border-radius: 12px;
     padding: 24px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    background-color: var(--lightter-background);
+    background-color: var(--background);
 }
 .business-dashboard-last-page-profile-inner-top{
     height: 96px;
@@ -564,9 +589,9 @@ form ul li{
 #business-dashboard-last-page-profile-inner-top-tittle-content-last{
     color: var(--green-bgc);
 }
-.business-dashboard-last-page-profile-inner-top-button{
+/* .business-dashboard-last-page-profile-inner-top-button{
 
-}
+} */
 .business-dashboard-last-page-profile-inner-top-button button{
     color: var(--green-bgc);
     font-size: 16px;
@@ -621,9 +646,9 @@ form ul li{
     font-size: 16px;
     font-weight: 400;
 }
-.business-dashboard-last-page-profile-inner-skills{
+/* .business-dashboard-last-page-profile-inner-skills{
 
-}
+} */
 .business-dashboard-last-page-profile-inner-skills p{
     font-size: 14px;
     color: var(--white);
