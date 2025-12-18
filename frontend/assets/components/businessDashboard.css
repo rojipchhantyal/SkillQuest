@@ -68,6 +68,7 @@ main{
     display: flex;
     justify-content: center;
     padding-top: 11vh;
+    position: relative;
 }
 
 /* title page */
@@ -147,7 +148,7 @@ main{
 .business-dashboard-post-task-wrapper{
     height: 100vh;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.503);
+    background-color: rgba(0, 0, 0, 0.744);
     position: fixed;
     z-index: 9999999999;
     top: 0;
