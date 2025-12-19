@@ -110,3 +110,27 @@ browseTaskNav.addEventListener('click', () => {
   profileNav.style.color = "oklch(0.707 0.022 261.325)";
   profileNav.style.borderColor = "rgba(255, 0, 0, 0)";
 });
+
+// for submit task forms
+const form = document.getElementById("student-dashboard-last-page-my-task-inners-form-outer");
+const submitBtn = document.getElementById("pending-task-submit");
+
+// function for opening the form
+submitBtn.addEventListener('click', () => {
+  console.log("open the form to submit the task");
+  console.log(form);
+
+  //collect the data send form btn dataset
+  const taskId = submitBtn.dataset.taskId;
+  console.log(taskId);
+
+  //button will send the id and title disc of the task got form db and send here from here we will show the form with this data
+  form.style.display = "flex";
+
+
+});
+// function for close the add task form
+function closeSubmitTask(){
+  console.log("closing the form to submit the task");
+  form.style.display = "none";
+}

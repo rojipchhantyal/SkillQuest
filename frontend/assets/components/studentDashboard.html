@@ -250,7 +250,10 @@
                 </ul>
                 <div class="student-dashboard-last-page-my-tasks-inners-button">
                     <span>Design</span>
-                    <button>Mark Complete</button>
+                    <button id="pending-task-submit"
+                        data-task-id="1"
+                    >
+                    Submit Task</button>
                 </div>
             </div>
 
@@ -281,7 +284,7 @@
                 </ul>
                 <div class="student-dashboard-last-page-my-tasks-inners-button">
                     <span>Design</span>
-                    <button>Mark Complete</button>
+                    <button>Submit Task</button>
                 </div>
             </div>
 
@@ -312,7 +315,7 @@
                 </ul>
                 <div class="student-dashboard-last-page-my-tasks-inners-button">
                     <span>Design</span>
-                    <button>Mark Complete</button>
+                    <button>Submit Task</button>
                 </div>
             </div>
 
@@ -343,7 +346,7 @@
                 </ul>
                 <div class="student-dashboard-last-page-my-tasks-inners-button">
                     <span>Design</span>
-                    <button>Mark Complete</button>
+                    <button>Submit Task</button>
                 </div>
             </div>
         </div>
@@ -532,6 +535,48 @@
                 </div>
             </div>
         </div>
+        </div>
+        <!-- form to submit the done task -->
+        <div style="display: none;" class="student-dashboard-last-page-my-task-inners-form-outer" id="student-dashboard-last-page-my-task-inners-form-outer">
+            <div class="student-dashboard-last-page-my-task-inners-form">
+                <div class="student-dashboard-last-page-my-task-inners-form-tittle">
+                    <h2>Submit Your Task</h2>
+                    <!-- form hider button -->
+                    <div  class="student-dashboard-last-page-my-task-inners-form-hider" onclick="closeSubmitTask()">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
+                <form>
+                    <div class="form-task-info">
+                        <h2>Web Development-Ecomerce-Site</h2>
+                        <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                    </div>
+
+                    <div class="form-fields">
+                        <!-- for file to upload -->
+                        <label for="task-file">Upload File</label>
+                        <input type="file" name="task-file" id="task-file">
+                    </div>
+                    
+                    <div class="form-fields">
+                        <!-- to add the discription -->
+                        <label for="message-business">Message To Business</label>
+                        <textarea name="message-business" id="message-business" placeholder="Describle your completed task, any chalanges faced, or aditional note.."></textarea>
+                    </div>
+                        
+                    <div class="form-fields">
+                        <!-- for projects links -->
+                        <label for="github-link">Send Github Project Link</label>
+                        <input type="text" name="github-link" id="github-link" placeholder="https://github.com/rojipchhantyal/SkillQuest">
+                    </div>
+
+                    <!-- buttons to send and  cancle the task -->
+                    <div" class="form-buttons">
+                        <button onclick="closeSubmitTask()" id="form-buttons-cancle" type="button">Cancle Task</button>
+                        <button id="form-buttons-submit">Submit Task</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </main>
     <script src="studentDashboard.js"></script>

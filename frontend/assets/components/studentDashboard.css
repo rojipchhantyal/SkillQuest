@@ -349,6 +349,143 @@ main{
 .student-dashboard-last-page-completed-tasks{
     padding-top: 0;
 }
+/* for submit the done task*/
+.student-dashboard-last-page-my-task-inners-form-outer{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.744);
+    z-index: 999999;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.student-dashboard-last-page-my-task-inners-form{
+    height: 86vh;
+    width: 54%;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.student-dashboard-last-page-my-task-inners-form-tittle{
+    padding: 24px;
+    border-bottom: 1px solid var(--green-bgc);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+.student-dashboard-last-page-my-task-inners-form-tittle h2{
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--white);
+}
+form{
+    width: 100%;
+    padding:  18px 24px 28px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 18px;
+    overflow-x: hidden;
+}
+.form-task-info h2{
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--green-bgc);
+}
+.form-task-info p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 4px;
+}
+.form-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+form label{
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 500;
+}
+form textarea{
+    height: 24vh;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--background);
+    color: var(--gray);
+    border-radius: 12px;
+    resize: none;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+form input{
+    height: 36px;
+    border: none;
+    outline: none;
+    color: var(--gray);
+    background-color: var(--background);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+}
+.form-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+.form-buttons button{
+    height: 48px;
+    width: 50%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: all ease-in-out 0.3s;
+}
+#form-buttons-cancle{
+    border: 1px solid rgba(6, 81, 6, 0.505);
+    color: var(--gray);
+    background-color: var(--lightter-background);
+}
+#form-buttons-submit{
+    background-color: var(--green-bgc);
+    color: var(--lightter-background);
+}
+#form-buttons-cancle:hover{
+    border: 1px solid var(--green-bgc);
+    color: var(--white);
+}
+#form-buttons-submit:hover{
+    background-color: var(--dark-green);
+}
+.student-dashboard-last-page-my-task-inners-form-hider{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+.student-dashboard-last-page-my-task-inners-form-hider i{
+    color: gray;
+    font-size: 30px;
+    font-weight: 500;
+}
+.student-dashboard-last-page-my-task-inners-form-hider:hover i{
+    color: var(--white);
+}
 /* for profile */
 .student-dashboard-last-page-profile{
     height: 92vh;
