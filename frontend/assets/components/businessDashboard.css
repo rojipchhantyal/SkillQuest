@@ -501,7 +501,8 @@ form ul li{
     display: flex;
     gap: 8px;
 }
-.business-dashboard-last-page-pending-tasks-inners-button-right button{
+.business-dashboard-last-page-pending-tasks-inners-button-right button,
+.business-dashboard-last-page-completed-tasks-inners-button button{
     font-size: 16px;
     font-weight: 600;
     padding: 4px 16px;
@@ -511,6 +512,12 @@ form ul li{
     border: none;
     transition: all ease-in-out 0.3s;
     box-sizing: border-box;
+}
+.business-dashboard-last-page-completed-tasks-inners-button button{
+    padding: 6px 16px;
+}
+.business-dashboard-last-page-completed-tasks-inners-button button:hover{
+    background-color: var(--dark-green);
 }
 #edit-pending-task{
     border: 1px solid var(--orange);
