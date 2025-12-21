@@ -172,3 +172,17 @@ function closeAddTask(){
   console.log("closing the add task form");
   form.style.display = "none";
 }
+
+// for view details
+const inDetailsTask = document.getElementById("business-dashboard-last-page-completed-tasks-outer");
+
+function openViewDetailTask(id){
+  console.log(id+"\nOpen view details");
+
+  inDetailsTask.style.display = "flex";
+}
+function closevewDetailTask(){
+  console.log("closing the view details");
+  
+  inDetailsTask.style.display = "none";
+}

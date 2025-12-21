@@ -677,3 +677,160 @@ form ul li{
     color: var(--green-bgc);
     border: 0.2px solid var(--green-bgc);
 }
+/* view in details adn download task panel  */
+.business-dashboard-last-page-completed-tasks-outer{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.744);
+    z-index: 999999;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners{
+    height: 86vh;
+    width: 54%;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 12px;
+    overflow: hidden;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-title{
+    padding: 24px;
+    border-bottom: 1px solid var(--green-bgc);
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-title h2{
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--white);
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-info{
+    width: 100%;
+    padding:  18px 24px 28px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    gap: 18px;
+    overflow-x: hidden;
+}
+.completed-task-view-details-fields h2{
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--green-bgc);
+}
+.completed-task-view-details-fields p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 4px;
+}
+.completed-task-view-details-fields{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-info label{
+    font-size: 14px;
+    color: var(--white);
+    font-weight: 500;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-info ul{
+    display: flex;
+    flex-direction: column;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-info ul li{
+    list-style: none;
+    font-size: 16px;
+    font-weight: inherit;
+    color: var(--gray);
+    line-height: 1.6;
+}
+#completed-task-view-details-fields-type-of-task{
+    align-items: end;
+}
+.completed-task-view-details-fields span{
+    width: fit-content;
+    background-color: rgba(0, 128, 0, 0.393);
+    font-size: 12px;
+    color: var(--green-bgc);
+    padding: 2px 12px;
+    border-radius: 12px;
+}
+.completed-task-view-details-fields button{
+    height: 38px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    box-sizing: border-box;
+    transition: all ease-in-out 0.3s;
+    background-color: var(--green-bgc);
+    color: var(--lightter-background);
+    margin-top: 2px;
+}
+.completed-task-view-details-fields button:hover{
+    background-color: var(--dark-green);
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-info textarea{
+    height: 24vh;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: var(--background);
+    color: var(--gray);
+    border-radius: 12px;
+    resize: none;
+    padding: 12px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.completed-task-view-details-fields a{
+    height: 38px;
+    padding: 2px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--green-bgc);
+    transition: all ease-in-out 0.3s;
+}
+.completed-task-view-details-fields a:hover{
+    background-color: var(--dark-green);
+    color: var(--background);
+}
+#completed-task-view-details-fields-last{
+    display: flex;
+    align-items: end;
+}
+#close-completed-view-detail{
+    width: 100%;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-hider{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-hider i{
+    color: gray;
+    font-size: 30px;
+    font-weight: 500;
+}
+.business-dashboard-last-page-completed-tasks-outer-inners-hider:hover i{
+    color: var(--white);
+}
