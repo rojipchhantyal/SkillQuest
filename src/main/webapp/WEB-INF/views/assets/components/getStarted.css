@@ -1,0 +1,315 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+}
+:root{
+    --white: #FFF;
+    --background: oklch(0.145 0 0);
+    --lightter-background: #181818;
+    --dark-gray: oklch(0.446 0.03 256.802);
+    --green-bgc: #00C853;
+    --dark-green: #009624;
+    --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
+    --gray: oklch(0.707 0.022 261.325);
+    --black: #0A0A0A;
+    --gray-bgc: oklch(0.928 0.006 264.531);
+}
+main{
+    height: auto;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 32px;
+}
+nav{
+    top: 0;
+    height: 11vh;
+    width: 100%;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 999;
+    border-bottom: 0.1px solid var(--green-bgc);
+}
+.nav-logo{
+    height: 100%;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 20px;
+}
+.logo-circle{
+    font-size: 16px;
+    background-color: var(--green-bgc);
+    padding: 6px 6px;
+    border-radius: 12px;
+}
+.logo{
+    color: var(--white);
+}
+.nav-navigation{
+    height: 100%;
+    width: 68%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 22px;
+}
+.nav-navigation li a{
+    text-decoration: none;
+    color: var(--white);
+    transition: all ease-in-out 0.3s;
+}
+.nav-navigation li{
+    list-style: none;
+}
+.nav-navigation li a:hover{
+    color: var(--green-bgc);
+}
+/* cover nav */
+.nav-cover{
+    height: 11vh;
+}
+.skillquest-logo{
+    height: 9%;
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.logo-circlee{
+    font-size: 20px;
+    background-color: var(--green-bgc);
+    padding: 7px 8px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+.skillquest-logo h2{
+    font-size: 32px;
+    color: var(--green-bgc);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.skillquest-logo p{
+    font-size: 16px;
+    color: var(--gray);
+}
+
+.form-outer-main{
+    height: 742px;
+    width: 672px;
+    background-color: var(--lightter-background);
+    border-radius: 12px;
+    padding: 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.form-outer-selector-main{
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+.form-outer-selector{
+    height: 112px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.form-outer-selector-main label{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+}
+.form-outer-selector-student,
+.form-outer-selector-business{
+    height: 100%;
+    width: 48.6%;
+    background-color: var(--background);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+    color: var(--white);
+    box-sizing: border-box;
+    transition: all ease-in-out 0.3s;
+    line-height: 1.6;
+}
+#form-outer-selector-student{
+    background-color: var(--green-bgc);
+    color: var(--background);
+}
+.form-outer-selector-student i,
+.form-outer-selector-business i{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.form-outer-selector-type-span,
+.form-outer-selector-type-span{
+    font-size: 16px;
+    font-weight: 500;
+}
+.form-outer-selector-type-p,
+.form-outer-selector-type-p{
+    font-size: 12px;
+    font-weight: 400;
+}
+.form-outer-selector-student:hover,
+.form-outer-selector-business:hover{
+    border: 1px solid var(--green-bgc);
+}
+/* for forms */
+.form-for-student,
+.form-for-business{
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 12px;
+}
+.form-for-student-field-outer,
+.form-for-business-field-outer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap: 14px;
+}
+.form-for-student-field-outer li,
+.form-for-business-field-outer li{
+    height: 70px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.form-for-student-field-outer label,
+.form-for-business-field-outer label{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+.student-input-wrapper,
+.business-input-wrapper{
+    background-color: var(--background);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.student-input-wrapper i,
+.business-input-wrapper i{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray);
+    padding-left: 8px;
+}
+.student-input-wrapper input,
+.business-input-wrapper input,
+select{
+    width: 70%;
+    padding: 0 12px 4px 0;
+    font-size: 14px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background-color: var(--background);
+    color: var(--white);
+    box-sizing: border-box;
+}
+select{
+    width: 96%;
+}
+.form-for-student button,
+.form-for-business button{
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    background-color: var(--green-bgc);
+    transition: all ease-in-out 0.3s;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 0;
+}
+.form-for-student button:hover,
+.form-for-business button:hover{
+    background-color: var(--dark-green);
+}
+.form-outer-main-or-line{
+    height: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 12px;
+}
+.form-outer-main-or-line span{
+    font-size: 14px;
+    color: var(--gray);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-outer-main-or-line span::after{
+    content: "";
+    height: 1px;
+    width: 293px;
+    background-color: var(--green-bgc);
+    position: absolute;
+    border-radius: 24px;
+    right: -297px;
+    top: 10px;
+}
+.form-outer-main-or-line span::before{
+    content: "";
+    height: 1px;
+    width: 293px;
+    background-color: var(--green-bgc);
+    position: absolute;
+    border-radius: 24px;
+    left: -297px;
+    top: 10px;
+}
+.form-outer-main-p{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray);
+    margin-top: 12px;
+}
+.form-outer-main-p a{
+    font-size: 18px;
+    text-decoration: none;
+    color: var(--green-bgc);
+    font-weight: 600;
+}
+.form-outer-main-p a:hover{
+    text-decoration: underline;
+}
+.note-for-user{
+    width: 672px;
+    background-color: rgba(4, 55, 4, 0.403);
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--green-bgc);
+}
