@@ -36,3 +36,31 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Maven build output
+/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# SmartTomcat plugin
+.smarttomcat/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Compiled classes
+*.class
+
+# Packaged artifacts
+*.war
+*.ear
+
+# OS-specific files
+.DS_Store
+Thumbs.db
