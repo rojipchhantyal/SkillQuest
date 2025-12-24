@@ -107,14 +107,14 @@
                         <label for="firstPasswordStudent">Password</label>
                         <div class="student-input-wrapper">
                             <i class="ri-lock-line"></i>
-                            <input type="password" name="firstPassword" id="firstPasswordStudent" placeholder=".........">
+                            <input type="password" name="firstPassword" id="firstPasswordStudent" placeholder="🔑🔑🔑">
                         </div>
                     </li>
                     <li>
                         <label for="confirmPasswordStudent">Password</label>
                         <div class="student-input-wrapper">
                             <i class="ri-lock-line"></i>
-                            <input type="password" name="confirmPassword" id="confirmPasswordStudent" placeholder=".........">
+                            <input type="password" name="confirmPassword" id="confirmPasswordStudent" placeholder="🔑🔑🔑">
                         </div>
                     </li>
                 </ul>
@@ -194,7 +194,7 @@
             </div>
             <p class="form-outer-main-p">
                 Already have an account?
-                <a href="login.html">Login here</a>
+                <a href="login.jsp">Login here</a>
             </p>
         </div>
 

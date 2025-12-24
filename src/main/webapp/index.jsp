@@ -27,12 +27,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./assets/components/login.html">
+                    <a href="<%= application.getContextPath() %>/components/login.jsp">
                         <span>Login</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./assets/components/getStarted.html">
+                    <a href="<%= application.getContextPath() %>/components/getStarted.jsp">
                         <span>Get Started</span>
                     </a>
                 </li>
@@ -42,8 +42,8 @@
             <h1>Find Your Next Quest</h1>
             <p>Discover opportunities, showcase your skills, and earn while you learn. Join thousands of <br>students and businesses.</p>
             <div class="home-first-page-last">
-                <a href="">Get Started</a>
-                <a href="">Login</a>
+                <a href="<%= application.getContextPath() %>/components/getStarted.jsp">Get Started</a>
+                <a href="<%= application.getContextPath() %>/components/login.jsp">Login</a>
             </div>
         </div>
         <div class="home-available-task-page">
@@ -244,7 +244,9 @@
             <div class="home-register-page-inner">
                 <h2>Ready to Start Your Quest?</h2>
                 <p>Join SkillQuest today and connect with opportunities that match your skills. Students earn, <br>businesses grow.</p>
-                <button>Register Now</button>
+                <a href="<%= application.getContextPath() %>/components/getStarted.jsp">
+                    <button>Register Now</button>
+                </a>
             </div>
         </div>
     </main>
