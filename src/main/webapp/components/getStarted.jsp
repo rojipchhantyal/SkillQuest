@@ -60,7 +60,7 @@
 
 
             <!-- for student registration -->
-            <form class="form-for-student" action="" id="form-for-student">
+            <form class="form-for-student" action="${pageContext.request.contextPath}/registerStudents" method="post" id="form-for-student">
                 <ul class="form-for-student-field-outer">
                     <li>
                         <label for="fullName">Full Name</label>
@@ -73,7 +73,7 @@
                         <label for="emailStuent">Email</label>
                         <div class="student-input-wrapper">
                             <i class="ri-mail-line"></i>
-                            <input type="email" name="emailStuent" placeholder="your@email.com">
+                            <input type="email" name="email" placeholder="your@email.com">
                         </div>
                     </li>
                     <li>
