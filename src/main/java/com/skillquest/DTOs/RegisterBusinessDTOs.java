@@ -7,7 +7,7 @@ public class RegisterBusinessDTOs {
     private String email;
     private String businessName;
     private String businesstype;
-    private int phone;
+    private long phone;
     private String location;
     private String password;
     private String confirmPassword;
@@ -54,11 +54,11 @@ public class RegisterBusinessDTOs {
         this.businesstype = businesstype;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 

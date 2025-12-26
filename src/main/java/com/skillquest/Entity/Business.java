@@ -8,7 +8,7 @@ public class Business {
     private String email;
     private String businessName;
     private String businesstype;
-    private int phone;
+    private long phone;
     private String location;
     private String password;
 
@@ -54,11 +54,11 @@ public class Business {
         this.businesstype = businesstype;
     }
 
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -76,5 +76,19 @@ public class Business {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Business{" +
+                "businessId=" + businessId +
+                ", contactName='" + contactName + '\'' +
+                ", email='" + email + '\'' +
+                ", businessName='" + businessName + '\'' +
+                ", businesstype='" + businesstype + '\'' +
+                ", phone=" + phone +
+                ", location='" + location + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

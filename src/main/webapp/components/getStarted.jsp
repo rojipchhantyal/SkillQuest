@@ -122,7 +122,7 @@
             </form>
 
             <!-- registration form for business-->
-            <form style="display: none;" class="form-for-business" action="" id="form-for-business">
+            <form style="display: none;" class="form-for-business" action="${pageContext.request.contextPath}/registerBusiness"  method="post" id="form-for-business">
                 <ul class="form-for-business-field-outer">
                     <li>
                         <label for="contactName">Contact Name</label>
