@@ -8,10 +8,10 @@ public class Student {
     private String email;
     private String universityName;
     private String major;
-    private long phone;
+    private String phone;
     private String location;
     private String password;
-
+    private final String role = "student";
 
     public int getStudentId() {
         return studentId;
@@ -53,11 +53,11 @@ public class Student {
         this.major = major;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -75,5 +75,9 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole(){
+        return role;
     }
 }

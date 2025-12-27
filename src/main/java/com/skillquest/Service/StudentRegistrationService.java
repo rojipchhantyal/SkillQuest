@@ -20,6 +20,8 @@ public class StudentRegistrationService {
         student.setLocation(registerStudentDTOs.getLocation());
         student.setPassword(registerStudentDTOs.getPassword());
 
+        studentRegistrationRepository.saveStudent(student);
+
         return null;
     }
 }

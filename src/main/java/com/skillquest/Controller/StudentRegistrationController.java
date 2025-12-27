@@ -25,7 +25,7 @@ public class StudentRegistrationController extends HttpServlet {
         studentDTOs.setEmail(req.getParameter("email"));
         studentDTOs.setUniversityName(req.getParameter("university"));
         studentDTOs.setMajor(req.getParameter("major"));
-        studentDTOs.setPhone(Long.parseLong(req.getParameter("phone")));
+        studentDTOs.setPhone(req.getParameter("phone"));
         studentDTOs.setLocation(req.getParameter("location"));
         studentDTOs.setPassword(req.getParameter("firstPassword"));
         studentDTOs.setConfirmPassword(req.getParameter("confirmPassword"));

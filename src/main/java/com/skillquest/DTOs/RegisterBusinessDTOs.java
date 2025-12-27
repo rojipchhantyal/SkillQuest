@@ -7,10 +7,11 @@ public class RegisterBusinessDTOs {
     private String email;
     private String businessName;
     private String businesstype;
-    private long phone;
+    private String phone;
     private String location;
     private String password;
     private String confirmPassword;
+    private String role;
 
 //  methods to access to fields
 
@@ -54,11 +55,11 @@ public class RegisterBusinessDTOs {
         this.businesstype = businesstype;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -84,5 +85,13 @@ public class RegisterBusinessDTOs {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

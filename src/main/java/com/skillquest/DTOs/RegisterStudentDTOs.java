@@ -8,10 +8,11 @@ public class RegisterStudentDTOs {
     private String email;
     private String universityName;
     private String major;
-    private long phone;
+    private String phone;
     private String location;
     private String password;
     private String confirmPassword;
+    private String role;
 
     public int getStudentId() {
         return studentId;
@@ -53,11 +54,11 @@ public class RegisterStudentDTOs {
         this.major = major;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -83,5 +84,13 @@ public class RegisterStudentDTOs {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

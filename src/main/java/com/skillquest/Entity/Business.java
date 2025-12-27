@@ -8,9 +8,10 @@ public class Business {
     private String email;
     private String businessName;
     private String businesstype;
-    private long phone;
+    private String phone;
     private String location;
     private String password;
+    private final String role = "business";
 
 //  methods to access to fields
 
@@ -54,11 +55,11 @@ public class Business {
         this.businesstype = businesstype;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -76,6 +77,10 @@ public class Business {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole(){
+        return role;
     }
 
     @Override

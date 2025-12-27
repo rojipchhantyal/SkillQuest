@@ -24,7 +24,7 @@ public class BusinessRegistrationController extends HttpServlet {
         businessDTOs.setEmail(req.getParameter("email"));
         businessDTOs.setBusinessName(req.getParameter("businessName"));
         businessDTOs.setBusinesstype(req.getParameter("businessType"));
-        businessDTOs.setPhone(Long.parseLong(req.getParameter("phone")));
+        businessDTOs.setPhone(req.getParameter("phone"));
         businessDTOs.setLocation(req.getParameter("location"));
         businessDTOs.setPassword(req.getParameter("firstPassword"));
         businessDTOs.setConfirmPassword(req.getParameter("confirmPassword"));
