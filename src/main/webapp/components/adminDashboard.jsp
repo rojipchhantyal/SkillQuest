@@ -1,10 +1,13 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.skillquest.Entity.Student" %>
+<%@ page import="com.skillquest.Entity.Business" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillQuest</title>
-    <link rel="stylesheet" href="../css/adminDashboard.css">
+    <link rel="stylesheet" href="<%= application.getContextPath() %>/css/adminDashboard.css">
     <link
         href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
         rel="stylesheet"
@@ -114,73 +117,88 @@
                     </div>
                 </div>
                 <div class="admin-dashboard-last-page-registration-lower" id="admin-dashboard-last-page-registration-lower">
-                    
-                    <!-- ever users info -->
-                    <div class="admin-dashboard-last-page-registration-lower-inners">
-                        <div class="admin-dashboard-last-page-registration-lower-inners-icon">
-                            <i class="ri-user-line"></i>
-                        </div>
-                        <div class="admin-dashboard-last-page-registration-lower-inners-info">
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
-                                <h3>Rojip Chhantyal</h3>
-                                <span>studnet</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
-                                <span>rejanchhantyal@gmail.com</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
-                                <span>MIT</span>
-                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                <span>Computer Science</span>
-                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                <span>Kathmandu, Nepal</span>
-                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                <span>Registered: 9 dec 2025</span>
-                            </div>
-                        </div>
-                        <div class="admin-dashboard-last-page-registration-lower-inners-options">
-                            <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
-                                <i class="ri-check-line"></i>
-                                Approve
-                            </button>
-                            <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
-                                <i class="ri-close-line"></i>
-                                Reject
-                            </button>
-                        </div>
-                    </div>
 
-                    <div class="admin-dashboard-last-page-registration-lower-inners">
-                        <div class="admin-dashboard-last-page-registration-lower-inners-icon">
-                            <i class="ri-building-4-line"></i>
-                        </div>
-                        <div class="admin-dashboard-last-page-registration-lower-inners-info">
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
-                                <h3>TechVenture Ltd</h3>
-                                <span>business</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
-                                <span>ontact@techventure.com</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
-                                <span>Startup</span>
-                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                <span>Kathmandu, Nepal</span>
-                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                <span>Registered: 9 dec 2025</span>
-                            </div>
-                        </div>
-                        <div class="admin-dashboard-last-page-registration-lower-inners-options">
-                            <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
-                                <i class="ri-check-line"></i>
-                                Approve
-                            </button>
-                            <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
-                                <i class="ri-close-line"></i>
-                                Reject
-                            </button>
-                        </div>
-                    </div>
+                    <%
+                    List<Object> allPandingUsers = (List<Object>) request.getAttribute("allpendingUsers");
+
+                    if(allPandingUsers != null){
+
+                        for(Object user : allPandingUsers){
+                            if(user instanceof Student){
+                                %>
+                                    <div class="admin-dashboard-last-page-registration-lower-inners">
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-icon">
+                                            <i class="ri-user-line"></i>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-info">
+                                            <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
+                                                <h3>Rojip Chhantyal</h3>
+                                                <span>studnet</span>
+                                            </div>
+                                            <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
+                                                <span>rejanchhantyal@gmail.com</span>
+                                            </div>
+                                            <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
+                                                <span>MIT</span>
+                                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
+                                                <span>Computer Science</span>
+                                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
+                                                <span>Kathmandu, Nepal</span>
+                                                <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
+                                                <span>Registered: 9 dec 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-options">
+                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
+                                                <i class="ri-check-line"></i>
+                                                Approve
+                                            </button>
+                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
+                                                <i class="ri-close-line"></i>
+                                                Reject
+                                            </button>
+                                        </div>
+                                    </div>
+                                <%
+                            }
+                            else if(user instanceof Business){
+                            %>
+                                <div class="admin-dashboard-last-page-registration-lower-inners">
+                                    <div class="admin-dashboard-last-page-registration-lower-inners-icon">
+                                        <i class="ri-building-4-line"></i>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-registration-lower-inners-info">
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
+                                            <h3>TechVenture Ltd</h3>
+                                            <span>business</span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
+                                            <span>ontact@techventure.com</span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
+                                            <span>Startup</span>
+                                            <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
+                                            <span>Kathmandu, Nepal</span>
+                                            <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
+                                            <span>Registered: 9 dec 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-registration-lower-inners-options">
+                                        <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
+                                            <i class="ri-check-line"></i>
+                                            Approve
+                                        </button>
+                                        <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
+                                            <i class="ri-close-line"></i>
+                                            Reject
+                                        </button>
+                                    </div>
+                                </div>
+                            <%
+                            }
+                        }
+                    }
+                    %>
                 </div>
             </div>
 
@@ -332,6 +350,6 @@
         </div>
         
     </main>
-    <script src="../js/adminDashboard.js"></script>
+    <script src="<%= application.getContextPath() %>/js//adminDashboard.js"></script>
 </body>
 </html>

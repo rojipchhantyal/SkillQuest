@@ -1,7 +1,9 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.RegisterStudentDTOs;
+import com.skillquest.Repository.StudentRegistrationRepository;
 import com.skillquest.Service.StudentRegistrationService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,8 +32,18 @@ public class StudentRegistrationController extends HttpServlet {
         studentDTOs.setPassword(req.getParameter("firstPassword"));
         studentDTOs.setConfirmPassword(req.getParameter("confirmPassword"));
 
-        System.out.println(studentDTOs.getFullName()+"\n"+studentDTOs.getPassword());
-
         registrationService.registerStudent(studentDTOs);
+
+        if (StudentRegistrationRepository.isSuccessfullyExcuted) {
+            req.setAttribute("message", "student registered successfully! wait for admin approval to login");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+
+            dispatcher.forward(req, resp);
+        } else {
+            req.setAttribute("error", "Registration failed. Please try again letter.");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+
+            dispatcher.forward(req, resp);
+        }
     }
 }

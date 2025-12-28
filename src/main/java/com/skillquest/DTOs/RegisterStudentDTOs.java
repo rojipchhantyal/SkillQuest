@@ -13,6 +13,7 @@ public class RegisterStudentDTOs {
     private String password;
     private String confirmPassword;
     private String role;
+    private String status = "panding";
 
     public int getStudentId() {
         return studentId;
@@ -92,5 +93,13 @@ public class RegisterStudentDTOs {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

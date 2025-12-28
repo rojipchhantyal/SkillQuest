@@ -2,10 +2,13 @@ package com.skillquest.Service;
 
 import com.skillquest.DTOs.RegisterBusinessDTOs;
 import com.skillquest.Entity.Business;
+import com.skillquest.Repository.BusinessRegistrationRepository;
 
 public class BusinessRegistrationService {
 
-    public RegisterBusinessDTOs registerBusiness(RegisterBusinessDTOs registerBusinessDTOs){
+    BusinessRegistrationRepository businessRegistrationRepository = new BusinessRegistrationRepository();
+
+    public void registerBusiness(RegisterBusinessDTOs registerBusinessDTOs){
 
         Business business = new Business();
 
@@ -16,9 +19,11 @@ public class BusinessRegistrationService {
         business.setPhone(registerBusinessDTOs.getPhone());
         business.setLocation(registerBusinessDTOs.getLocation());
         business.setPassword(registerBusinessDTOs.getPassword());
+        business.setStatus(registerBusinessDTOs.getStatus());
 
+        System.out.println("working service layer");
+
+        businessRegistrationRepository.saveBusiness(business);
         System.out.println(business);
-
-        return null;
     }
 }

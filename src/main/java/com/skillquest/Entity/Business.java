@@ -12,6 +12,7 @@ public class Business {
     private String location;
     private String password;
     private final String role = "business";
+    private String status;
 
 //  methods to access to fields
 
@@ -83,17 +84,11 @@ public class Business {
         return role;
     }
 
-    @Override
-    public String toString() {
-        return "Business{" +
-                "businessId=" + businessId +
-                ", contactName='" + contactName + '\'' +
-                ", email='" + email + '\'' +
-                ", businessName='" + businessName + '\'' +
-                ", businesstype='" + businesstype + '\'' +
-                ", phone=" + phone +
-                ", location='" + location + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

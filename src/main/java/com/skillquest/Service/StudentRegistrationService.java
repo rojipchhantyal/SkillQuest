@@ -8,7 +8,7 @@ public class StudentRegistrationService {
 
     StudentRegistrationRepository studentRegistrationRepository = new StudentRegistrationRepository();
 
-    public RegisterStudentDTOs registerStudent(RegisterStudentDTOs registerStudentDTOs){
+    public void registerStudent(RegisterStudentDTOs registerStudentDTOs){
 
         Student student = new Student();
 
@@ -19,9 +19,8 @@ public class StudentRegistrationService {
         student.setPhone(registerStudentDTOs.getPhone());
         student.setLocation(registerStudentDTOs.getLocation());
         student.setPassword(registerStudentDTOs.getPassword());
+        student.setStatus(registerStudentDTOs.getStatus());
 
         studentRegistrationRepository.saveStudent(student);
-
-        return null;
     }
 }

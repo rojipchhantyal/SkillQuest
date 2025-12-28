@@ -15,6 +15,24 @@
 </head>
 <body>
     <main>
+        <%
+            String message = (String) request.getAttribute("message");
+            String error = (String) request.getAttribute("error");
+
+            if (message != null && !message.isEmpty()) {
+            %>
+                <p style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%); translate z-index: 9999999999; color:green">
+                    <%= message %>
+                </p>
+            <%
+                } else if (error != null && !error.isEmpty()) {
+            %>
+                <p style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 9999999999; color:red">
+                    <%= error %>
+                </p>
+            <%
+            }
+        %>
         <nav>
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>

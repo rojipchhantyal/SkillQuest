@@ -15,7 +15,7 @@
             <span class="logo-circle">SQ</span>
             <span class="logo">SkillQuest</span>
         </div>
-        <form>
+        <form action="<%= application.getContextPath() %>/login" method="post">
             <div class="form-tittle">
                 <h1>Welcome Back</h1>
                 <span>Login to your account</span>
@@ -23,9 +23,9 @@
             <div class="form-fields">
                 <label for="choose">I am a</label>
                 <select name="choose" id="choose">
-                    <option value="Student" selected>Student</option>
-                    <option value="Teacher">Teacher</option>
-                    <option value="Admin">Admin</option>
+                    <option value="student" selected>Student</option>
+                    <option value="business">Teacher</option>
+                    <option value="admin">Admin</option>
                 </select>
             </div>
             <div class="form-fields">
