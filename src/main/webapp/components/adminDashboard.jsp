@@ -19,6 +19,24 @@
 </head>
 <body>
     <main>
+           <%
+                String success = (String) request.getAttribute("success");
+                String failed = (String) request.getAttribute("failed");
+
+                if (success != null && !success.isEmpty()) {
+                %>
+                    <p style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%); translate z-index: 9999999999; color:green">
+                        <%= success %>
+                    </p>
+                <%
+                    } else if (failed != null && !failed.isEmpty()) {
+                %>
+                    <p style="position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 9999999999; color:red">
+                        <%= failed %>
+                    </p>
+                <%
+                }
+            %>
         <nav>
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
@@ -149,14 +167,18 @@
                                             </div>
                                         </div>
                                         <div class="admin-dashboard-last-page-registration-lower-inners-options">
-                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
-                                                <i class="ri-check-line"></i>
-                                                Approve
-                                            </button>
-                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
-                                                <i class="ri-close-line"></i>
-                                                Reject
-                                            </button>
+                                            <form action="<%= application.getContextPath() %>/approveRegistration/<%= ((Student)user).getStudentId() %>" method="post">
+                                                <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
+                                                    <i class="ri-check-line"></i>
+                                                    Approve
+                                                </button>S
+                                            </form>
+                                            <form action="<%= application.getContextPath() %>/rejectRegistration/<%= ((Student)user).getStudentId() %>" method="post">
+                                                <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
+                                                    <i class="ri-close-line"></i>
+                                                    Reject
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 <%
@@ -184,14 +206,18 @@
                                         </div>
                                     </div>
                                     <div class="admin-dashboard-last-page-registration-lower-inners-options">
-                                        <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
-                                            <i class="ri-check-line"></i>
-                                            Approve
-                                        </button>
-                                        <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
-                                            <i class="ri-close-line"></i>
-                                            Reject
-                                        </button>
+                                        <form action="<%= application.getContextPath() %>/approveRegistration/<%= ((Business)user).getBusinessId() %>" method="post">
+                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-accept">
+                                                <i class="ri-check-line"></i>
+                                                Approve
+                                            </button>S
+                                        </form>
+                                        <form action="<%= application.getContextPath() %>/rejectRegistration/<%= ((Business)user).getBusinessId() %>" method="post">
+                                            <button id="admin-dashboard-last-page-registration-lower-inners-options-reject">
+                                                <i class="ri-close-line"></i>
+                                                Reject
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             <%
