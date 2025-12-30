@@ -47,7 +47,18 @@ public class LoginController extends HttpServlet {
                         System.out.println(list instanceof Business);
                     }
 
+                    // getting all the users
+                    List<Object> allUsers = loginService.getALlUsers();
+                    for(Object obj : allUsers){
+                        if(obj instanceof Business){
+                            System.out.println("business");
+                        }
+                        else{
+                            System.out.println("student");
+                        }
+                    }
                     req.setAttribute("allpendingUsers", allpendingUsers);
+                    req.setAttribute("allUsers", allUsers);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
                     dispatcher.forward(req, resp);
                     break;

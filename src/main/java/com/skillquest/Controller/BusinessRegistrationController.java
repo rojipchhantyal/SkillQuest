@@ -2,8 +2,8 @@ package com.skillquest.Controller;
 
 import com.skillquest.DTOs.RegisterBusinessDTOs;
 import com.skillquest.Repository.BusinessRegistrationRepository;
-import com.skillquest.Repository.StudentRegistrationRepository;
 import com.skillquest.Service.BusinessRegistrationService;
+import com.skillquest.Util.CurrentTimeInFormated;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +31,7 @@ public class BusinessRegistrationController extends HttpServlet {
         businessDTOs.setLocation(req.getParameter("location"));
         businessDTOs.setPassword(req.getParameter("firstPassword"));
         businessDTOs.setConfirmPassword(req.getParameter("confirmPassword"));
+        businessDTOs.setRegistredDate(CurrentTimeInFormated.getCurrentTimeInFormated());
 
         businessRegistrationService.registerBusiness(businessDTOs);
 

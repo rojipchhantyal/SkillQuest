@@ -15,7 +15,7 @@ public class BusinessRegistrationRepository extends DBConnection {
     public static boolean isSuccessfullyExcuted = false;
 
     public void saveBusiness(Business business){
-        String query = "INSERT INTO users(name, email, university_businessName, major_businessType, phone, location, password, role, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users(name, email, university_businessName, major_businessType, phone, location, password, role, status, registredDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -28,6 +28,7 @@ public class BusinessRegistrationRepository extends DBConnection {
             ps.setString(7, business.getPassword());
             ps.setString(8, business.getRole());
             ps.setString(9, business.getStatus());
+            ps.setString(10, business.getRegistredDate());
 
             System.out.println("helllo");
             //excute query
@@ -40,7 +41,7 @@ public class BusinessRegistrationRepository extends DBConnection {
 
     public List<Business> getAllBusiness(){
 
-        String query = "SELECT id, name, email, university_businessName, major_businessType, phone, location, status FROM users";
+        String query = "SELECT id, name, email, university_businessName, major_businessType, phone, location, status, registredDate FROM users";
 
         List<Business> businessesList = new ArrayList<>();
 
@@ -60,6 +61,7 @@ public class BusinessRegistrationRepository extends DBConnection {
                 business.setPhone(rs.getString("phone"));
                 business.setLocation(rs.getString("location"));
                 business.setStatus(rs.getString("status"));
+                business.setRegistredDate(rs.getString("registredDate"));
 
                 //Adding to the List
                 businessesList.add(business);

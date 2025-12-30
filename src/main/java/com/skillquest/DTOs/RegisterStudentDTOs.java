@@ -14,6 +14,7 @@ public class RegisterStudentDTOs {
     private String confirmPassword;
     private String role;
     private String status = "panding";
+    private String registredDate;
 
     public int getStudentId() {
         return studentId;
@@ -101,5 +102,13 @@ public class RegisterStudentDTOs {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getRegistredDate() {
+        return registredDate;
+    }
+
+    public void setRegistredDate(String registredDate) {
+        this.registredDate = registredDate;
     }
 }

@@ -3,6 +3,7 @@ package com.skillquest.Controller;
 import com.skillquest.DTOs.RegisterStudentDTOs;
 import com.skillquest.Repository.StudentRegistrationRepository;
 import com.skillquest.Service.StudentRegistrationService;
+import com.skillquest.Util.CurrentTimeInFormated;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +32,7 @@ public class StudentRegistrationController extends HttpServlet {
         studentDTOs.setLocation(req.getParameter("location"));
         studentDTOs.setPassword(req.getParameter("firstPassword"));
         studentDTOs.setConfirmPassword(req.getParameter("confirmPassword"));
+        studentDTOs.setRegistredDate(CurrentTimeInFormated.getCurrentTimeInFormated());
 
         registrationService.registerStudent(studentDTOs);
 

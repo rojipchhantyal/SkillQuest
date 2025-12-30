@@ -16,4 +16,8 @@ public class RejectRegistrationService {
 
         return rejectRegistrationRepository.getAllPendingUsers();
     }
+    public List<Object> getAllUsers(){
+
+        return rejectRegistrationRepository.getAllusers();
+    }
 }

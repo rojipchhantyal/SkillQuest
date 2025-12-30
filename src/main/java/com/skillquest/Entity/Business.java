@@ -13,6 +13,7 @@ public class Business {
     private String password;
     private final String role = "business";
     private String status;
+    private String registredDate;
 
 //  methods to access to fields
 
@@ -90,5 +91,13 @@ public class Business {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getRegistredDate() {
+        return registredDate;
+    }
+
+    public void setRegistredDate(String registredDate) {
+        this.registredDate = registredDate;
     }
 }

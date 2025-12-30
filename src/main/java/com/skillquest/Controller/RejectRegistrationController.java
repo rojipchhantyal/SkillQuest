@@ -37,6 +37,8 @@ public class RejectRegistrationController extends HttpServlet {
             List<Object> allpendingUsers = registrationService.getAllPendingUsers();
             req.setAttribute("allpendingUsers", allpendingUsers);
 
+            List<Object> allUsers = registrationService.getAllUsers();
+            req.setAttribute("allUsers", allUsers);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }

@@ -143,6 +143,9 @@
 
                         for(Object user : allPandingUsers){
                             if(user instanceof Student){
+
+                                Student student = (Student)user;
+
                                 %>
                                     <div class="admin-dashboard-last-page-registration-lower-inners">
                                         <div class="admin-dashboard-last-page-registration-lower-inners-icon">
@@ -150,20 +153,31 @@
                                         </div>
                                         <div class="admin-dashboard-last-page-registration-lower-inners-info">
                                             <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
-                                                <h3>Rojip Chhantyal</h3>
+                                                <h3>
+                                                    <%= student.getFullName() %>
+                                                </h3>
                                                 <span>studnet</span>
                                             </div>
                                             <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
-                                                <span>rejanchhantyal@gmail.com</span>
+                                                <span>
+                                                    <%= student.getEmail() %>
+                                                </span>
                                             </div>
                                             <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
-                                                <span>MIT</span>
+                                                <span>
+                                                    <%= student.getUniversityName() %>
+                                                </span>
                                                 <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                                <span>Computer Science</span>
+                                                <span>
+                                                    <%= student.getMajor() %>
+                                                </span>
                                                 <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                                <span>Kathmandu, Nepal</span>
+                                                <span>
+                                                    <%= student.getLocation() %>
+                                                </span>
                                                 <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                                <span>Registered: 9 dec 2025</span>
+                                                <span>Registered: <%= student.getRegistredDate() %>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="admin-dashboard-last-page-registration-lower-inners-options">
@@ -184,6 +198,9 @@
                                 <%
                             }
                             else if(user instanceof Business){
+
+                                Business business = (Business)user;
+
                             %>
                                 <div class="admin-dashboard-last-page-registration-lower-inners">
                                     <div class="admin-dashboard-last-page-registration-lower-inners-icon">
@@ -191,18 +208,27 @@
                                     </div>
                                     <div class="admin-dashboard-last-page-registration-lower-inners-info">
                                         <div class="admin-dashboard-last-page-registration-lower-inners-info-name-role">
-                                            <h3>TechVenture Ltd</h3>
+                                            <h3>
+                                                <%= business.getBusinessName() %>
+                                            </h3>
                                             <span>business</span>
                                         </div>
                                         <div class="admin-dashboard-last-page-registration-lower-inners-info-email">
-                                            <span>ontact@techventure.com</span>
+                                            <span>
+                                                <%= business.getEmail() %>
+                                            </span>
                                         </div>
                                         <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info">
-                                            <span>Startup</span>
+                                            <span>
+                                                <%= business.getBusinesstype() %>
+                                            </span>
                                             <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                            <span>Kathmandu, Nepal</span>
+                                            <span>
+                                                <%= business.getLocation() %>
+                                            </span>
                                             <div class="admin-dashboard-last-page-registration-lower-inners-info-extra-info-dots"></div>
-                                            <span>Registered: 9 dec 2025</span>
+                                            <span>Registered: <%= business.getRegistredDate() %>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="admin-dashboard-last-page-registration-lower-inners-options">
@@ -327,50 +353,76 @@
                 </div>
 
                 <div class="admin-dashboard-last-page-users-lower" id="admin-dashboard-last-page-users-lower">
-                    <!-- ever users info -->
-                    <div class="admin-dashboard-last-page-users-lower-inners">
-                        <div class="admin-dashboard-last-page-users-lower-inners-icon">
-                            <i class="ri-user-line"></i>
-                        </div>
-                        <div class="admin-dashboard-last-page-users-lower-inners-info">
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
-                                <h3>Rojip Chhantyal</h3>
-                                <span>studnet</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-email">
-                                <span>rejanchhantyal@gmail.com</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
-                                <span>Tasks Completed: 5</span>
-                            </div>
-                        </div>
-                        <div class="admin-dashboard-last-page-users-lower-inners-options">
-                            <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
-                            <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
-                        </div>
-                    </div>
+                    <%
+                    List<Object> allUsers = (List<Object>) request.getAttribute("allUsers");
 
-                    <div class="admin-dashboard-last-page-users-lower-inners">
-                        <div class="admin-dashboard-last-page-users-lower-inners-icon">
-                            <i class="ri-building-4-line"></i>
-                        </div>
-                        <div class="admin-dashboard-last-page-users-lower-inners-info">
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
-                                <h3>TechVenture Ltd</h3>
-                                <span>business</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-email">
-                                <span>ontact@techventure.com</span>
-                            </div>
-                            <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
-                                <span>Tasks Posted: 8</span>
-                            </div>
-                        </div>
-                        <div class="admin-dashboard-last-page-users-lower-inners-options">
-                            <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
-                            <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
-                        </div>
-                    </div>
+                    if(allUsers != null){
+
+                        for(Object user : allUsers){
+                            if(user instanceof Student){
+                                Student student = (Student)user;
+                            %>
+
+                                <div class="admin-dashboard-last-page-users-lower-inners">
+                                    <div class="admin-dashboard-last-page-users-lower-inners-icon">
+                                        <i class="ri-user-line"></i>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-users-lower-inners-info">
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
+                                            <h3>
+                                                <%= student.getFullName() %>
+                                            </h3>
+                                            <span>studnet</span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-email">
+                                            <span>
+                                                <%= student.getEmail() %>
+                                            </span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
+                                            <span>Tasks Completed: 5</span>
+                                        </div>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-users-lower-inners-options">
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                                    </div>
+                                </div>
+                                <%
+                            }
+                            else if(user instanceof Business){
+                                Business business = (Business)user;
+                            %>
+                                <div class="admin-dashboard-last-page-users-lower-inners">
+                                    <div class="admin-dashboard-last-page-users-lower-inners-icon">
+                                        <i class="ri-building-4-line"></i>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-users-lower-inners-info">
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-name-role">
+                                            <h3>
+                                                <%= business.getBusinessName() %>
+                                            </h3>
+                                            <span>business</span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-email">
+                                            <span>
+                                                <%= business.getEmail() %>
+                                            </span>
+                                        </div>
+                                        <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
+                                            <span>Tasks Posted: 8</span>
+                                        </div>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-users-lower-inners-options">
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                                    </div>
+                                </div>
+                                <%
+                            }
+                        }
+                    }
+                    %>
                 </div>
             </div>
         </div>

@@ -20,6 +20,7 @@ public class BusinessRegistrationService {
         business.setLocation(registerBusinessDTOs.getLocation());
         business.setPassword(registerBusinessDTOs.getPassword());
         business.setStatus(registerBusinessDTOs.getStatus());
+        business.setRegistredDate(registerBusinessDTOs.getRegistredDate());
 
         System.out.println("working service layer");
 

@@ -13,6 +13,7 @@ public class RegisterBusinessDTOs {
     private String confirmPassword;
     private String role;
     private String status = "panding";
+    private String registredDate;
 
 //  methods to access to fields
 
@@ -102,5 +103,13 @@ public class RegisterBusinessDTOs {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getRegistredDate() {
+        return registredDate;
+    }
+
+    public void setRegistredDate(String registredDate) {
+        this.registredDate = registredDate;
     }
 }

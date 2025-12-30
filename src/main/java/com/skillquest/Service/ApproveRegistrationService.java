@@ -14,4 +14,9 @@ public class ApproveRegistrationService {
     public List<Object> getAllPendingUsers(){
         return approveRegistrationRepository.getAllPendingUsers();
     }
+
+    public List<Object> getAllUsers(){
+
+        return approveRegistrationRepository.getAllusers();
+    }
 }

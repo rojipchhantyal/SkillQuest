@@ -1,5 +1,9 @@
 package com.skillquest.Entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Student {
 
 //    creating the fields the students have
@@ -13,6 +17,8 @@ public class Student {
     private String password;
     private final String role = "student";
     private String status;
+    private String registredDate;
+
 
     public int getStudentId() {
         return studentId;
@@ -88,5 +94,13 @@ public class Student {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getRegistredDate() {
+        return registredDate;
+    }
+
+    public void setRegistredDate(String registredDate) {
+        this.registredDate = registredDate;
     }
 }

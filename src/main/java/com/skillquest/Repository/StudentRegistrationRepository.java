@@ -15,7 +15,7 @@ public class StudentRegistrationRepository extends DBConnection {
     public static boolean isSuccessfullyExcuted = false;
 
     public void saveStudent(Student student){
-        String query = "INSERT INTO users(name, email, university_businessName, major_businessType, phone, location, password, role, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users(name, email, university_businessName, major_businessType, phone, location, password, role, status, registredDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -28,6 +28,7 @@ public class StudentRegistrationRepository extends DBConnection {
             ps.setString(7, student.getPassword());
             ps.setString(8, student.getRole());
             ps.setString(9, student.getStatus());
+            ps.setString(10, student.getRegistredDate());
 
             //excute query
             ps.executeUpdate();
@@ -39,7 +40,7 @@ public class StudentRegistrationRepository extends DBConnection {
 
     public List<Student> getAllStudent(){
 
-        String query = "SELECT id, name, email, university_businessName, major_businessType, phone, location, status FROM users";
+        String query = "SELECT id, name, email, university_businessName, major_businessType, phone, location, status, registredDate FROM users";
 
         List<Student> studentList = new ArrayList<>();
 
@@ -59,6 +60,7 @@ public class StudentRegistrationRepository extends DBConnection {
                 student.setPhone(rs.getString("phone"));
                 student.setLocation(rs.getString("location"));
                 student.setStatus(rs.getString("status"));
+                student.setRegistredDate(rs.getString("registredDate"));
 
                 //Adding to the List
                 studentList.add(student);

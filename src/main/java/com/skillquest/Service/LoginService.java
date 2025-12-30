@@ -13,8 +13,14 @@ public class LoginService {
 
         return loginRepository.findUser(loginDTOs);
     }
+
     public List<Object> getAllPendingUsers(){
 
         return loginRepository.getAllPendingUsers();
+    }
+
+    public List<Object> getALlUsers(){
+
+        return loginRepository.getAllUsers();
     }
 }

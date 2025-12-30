@@ -15,7 +15,7 @@ import java.util.List;
 public class LoginRepository extends DBConnection {
 
     public boolean findUser(LoginDTOs loginDTOs){
-        String query = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ? AND role = ?";
+        String query = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ? AND role = ? AND (status = 'approved' OR status = 'admin')";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -56,6 +56,7 @@ public class LoginRepository extends DBConnection {
                     student.setPhone(rs.getString("phone"));
                     student.setLocation(rs.getString("location"));
                     student.setStatus(rs.getString("status"));
+                    student.setRegistredDate(rs.getString("registredDate"));
 
                     System.out.println("adding student");
                     allPandingUsers.add(student);
@@ -70,6 +71,7 @@ public class LoginRepository extends DBConnection {
                     business.setPhone(rs.getString("phone"));
                     business.setLocation(rs.getString("location"));
                     business.setStatus(rs.getString("status"));
+                    business.setRegistredDate(rs.getString("registredDate"));
                     System.out.println("adding business");
 
                     allPandingUsers.add(business);
@@ -81,5 +83,55 @@ public class LoginRepository extends DBConnection {
         }
 
         return allPandingUsers;
+    }
+
+    public List<Object> getAllUsers(){
+        String query = "SELECT * FROM users WHERE status = 'approved' AND  `role` <> 'admin'";
+
+        List<Object> allUsers = new ArrayList<>();
+
+        try(Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(query)){
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+
+                //check if its student or business
+                if(rs.getString("role").equals("student")){
+                    Student student = new Student();
+                    student.setStudentId(rs.getInt("id"));
+                    student.setFullName(rs.getString("name"));
+                    student.setEmail(rs.getString("email"));
+                    student.setUniversityName(rs.getString("university_businessName"));
+                    student.setMajor(rs.getString("major_businessType"));
+                    student.setPhone(rs.getString("phone"));
+                    student.setLocation(rs.getString("location"));
+                    student.setStatus(rs.getString("status"));
+                    student.setRegistredDate(rs.getString("registredDate"));
+
+                    System.out.println("\n\n\n\nstudent with approved");
+                    allUsers.add(student);
+                }
+                else{
+                    Business business = new Business();
+                    business.setBusinessId(rs.getInt("id"));
+                    business.setContactName(rs.getString("name"));
+                    business.setEmail(rs.getString("email"));
+                    business.setBusinessName(rs.getString("university_businessName"));
+                    business.setBusinesstype(rs.getString("major_businessType"));
+                    business.setPhone(rs.getString("phone"));
+                    business.setLocation(rs.getString("location"));
+                    business.setStatus(rs.getString("status"));
+                    business.setRegistredDate(rs.getString("registredDate"));
+                    System.out.println("\n\n\n\nbusiness with approved");
+
+                    allUsers.add(business);
+                }
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return allUsers;
     }
 }

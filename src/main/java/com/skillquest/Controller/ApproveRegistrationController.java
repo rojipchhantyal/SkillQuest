@@ -35,8 +35,10 @@ public class ApproveRegistrationController extends HttpServlet {
             System.out.println("excuted");
 
             List<Object> allpendingUsers = approveRegistrationService.getAllPendingUsers();
-            req.setAttribute("allpendingUsers", allpendingUsers);
+            List<Object> allUsers = approveRegistrationService.getAllUsers();
 
+            req.setAttribute("allpendingUsers", allpendingUsers);
+            req.setAttribute("allUsers", allUsers);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }
@@ -45,8 +47,10 @@ public class ApproveRegistrationController extends HttpServlet {
             System.out.println("problem");
 
             List<Object> allpendingUsers = approveRegistrationService.getAllPendingUsers();
-            req.setAttribute("allpendingUsers", allpendingUsers);
+            List<Object> allUsers = approveRegistrationService.getAllUsers();
 
+            req.setAttribute("allpendingUsers", allpendingUsers);
+            req.setAttribute("allUsers", allUsers);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }
