@@ -127,25 +127,27 @@
                     <h2>Post New Task</h2>
                 </div>
                 <div class="business-dashboard-post-task-tittle-cover">a</div>
-                <form>
+                <form action = "<%= application.getContextPath() %>/postTask" method="post">
+
+                    <input type="text" value = "<% %>">
                     <div class="form-fields">
-                        <label for="">Task Title</label>
-                        <input type="text" name="" id="" placeholder="e.g., Mobile app UI/UX Design">
+                        <label for="taskTittle">Task Title</label>
+                        <input type="text" name="taskTittle" id="taskTittle" placeholder="e.g., Mobile app UI/UX Design">
                     </div>
 
                     <div class="form-fields">
-                        <label for="">Description</label>
-                        <textarea name="" id="" placeholder="Describe the task in details.."></textarea>
+                        <label for="taskDescription">Description</label>
+                        <textarea name="taskDescription" id="taskDescription" placeholder="Describe the task in details.."></textarea>
                     </div>
 
                     <ul>
                         <li>
-                            <label for="">Task Type</label>
-                            <select name="" id="">
-                                <option value="">Design</option>
-                                <option value="">Design</option>
-                                <option value="">Design</option>
-                                <option value="">Design</option>
+                            <label for="taskType">Task Type</label>
+                            <select name="taskType" id="taskType">
+                                <option value="Design">Design</option>
+                                <option value="Development">Development</option>
+                                <option value="Writing">Writing</option>
+                                <option value="Writing">Writing</option>
                             </select>
                         </li>
                         <li>
@@ -159,14 +161,14 @@
                             <label for="budget">Budget</label>
                             <div class="inputs">
                                 <i class="ri-money-dollar-circle-line"></i>
-                                <input type="number" name="location" id="location" placeholder="100">
+                                <input type="number" name="budget" id="budget" placeholder="100">
                             </div>
                         </li>
                         <li>
                             <label for="deadline">DeadLine</label>
                             <div class="inputs">
                                 <i class="ri-calendar-2-line"></i>
-                                <input type="date" name="location" id="location">
+                                <input type="date" name="deadline" id="deadline">
                             </div>
                         </li>
                     </ul>

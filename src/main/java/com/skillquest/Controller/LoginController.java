@@ -70,6 +70,8 @@ public class LoginController extends HttpServlet {
                     break;
                 }
                 case "business" :{
+                    //send id to page
+
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/businessDashboard.jsp");
                     dispatcher.forward(req, resp);
                     break;
