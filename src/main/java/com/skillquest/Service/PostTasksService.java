@@ -13,6 +13,7 @@ public class PostTasksService {
 
         Tasks tasks = new Tasks();
 
+        tasks.setBusiness_id(tasksDTOs.getBusiness_id());
         tasks.setTitle(tasksDTOs.getTitle());
         tasks.setDescription(tasksDTOs.getDescription());
         tasks.setTask_type(tasksDTOs.getTask_type());

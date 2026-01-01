@@ -1,8 +1,11 @@
 package com.skillquest.Repository;
 
 import com.skillquest.DTOs.LoginDTOs;
+import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Entity.Business;
 import com.skillquest.Entity.Student;
+import com.skillquest.Entity.Tasks;
 import com.skillquest.Util.DBConnection;
 
 import java.sql.Connection;
@@ -14,8 +17,10 @@ import java.util.List;
 
 public class LoginRepository extends DBConnection {
 
-    public boolean findUser(LoginDTOs loginDTOs){
-        String query = "SELECT COUNT(*) FROM users WHERE email = ? AND password = ? AND role = ? AND (status = 'approved' OR status = 'admin')";
+    public static boolean isFound = false;
+
+    public UserInfoDTOs findUser(LoginDTOs loginDTOs){
+        String query = "SELECT id, name, university_businessName, role FROM users WHERE email = ? AND password = ? AND role = ? AND (status = 'approved' OR status = 'admin')";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -25,14 +30,21 @@ public class LoginRepository extends DBConnection {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                int count = rs.getInt(1);
-                return count > 0;
+
+                UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
+                userInfoDTOs.setId(rs.getInt("id"));
+                userInfoDTOs.setName(rs.getString("name"));
+                userInfoDTOs.setBusinessName(rs.getString("university_businessName"));
+                userInfoDTOs.setRole(rs.getString("role"));
+
+                isFound = true;
+                return userInfoDTOs;
             }
 
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
     public List<Object> getAllPendingUsers(){
 
@@ -133,5 +145,38 @@ public class LoginRepository extends DBConnection {
             e.printStackTrace();
         }
         return allUsers;
+    }
+
+    public List<TasksDTOs> getAllPendingTasks() {
+
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget " +
+                "FROM tasks t JOIN users u ON t.business_id = u.id";
+
+
+        List<TasksDTOs> allTasks = new ArrayList<>();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                //check if its student or business
+                TasksDTOs tasks = new TasksDTOs();
+                tasks.setId(rs.getInt("task_id"));
+                tasks.setBusiness_id(rs.getInt("business_id"));
+                tasks.setBusinessName(rs.getString("university_businessName"));
+                tasks.setTitle(rs.getString("title"));
+                tasks.setDescription(rs.getString("description"));
+                tasks.setTask_type(rs.getString("task_type"));
+                tasks.setBudget(String.valueOf(rs.getFloat("budget")));
+
+                System.out.println("\n\n\n\nPending tasks");
+                allTasks.add(tasks);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allTasks;
     }
 }

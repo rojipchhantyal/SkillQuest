@@ -4,6 +4,7 @@ public class Tasks {
 
     private int id;
     private int business_id;
+    private  String businessName;
     private int student_id;
     private String title;
     private String description;
@@ -29,6 +30,14 @@ public class Tasks {
 
     public void setBusiness_id(int business_id) {
         this.business_id = business_id;
+    }
+
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
     public int getStudent_id() {

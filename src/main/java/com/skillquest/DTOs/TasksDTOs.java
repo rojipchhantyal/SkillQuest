@@ -4,6 +4,7 @@ public class TasksDTOs {
 
     private int id;
     private int business_id;
+    private String businessName;
     private int student_id;
     private String title;
     private String description;
@@ -31,6 +32,14 @@ public class TasksDTOs {
 
     public int getStudent_id() {
         return student_id;
+    }
+
+    public String getBusinessName() {
+        return businessName;
+    }
+
+    public void setBusinessName(String businessName) {
+        this.businessName = businessName;
     }
 
     public void setStudent_id(int student_id) {

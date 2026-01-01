@@ -1,3 +1,4 @@
+<%@ page import="com.skillquest.DTOs.UserInfoDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,10 @@
 </head>
 <body>
     <main>
+
+        <%
+            UserInfoDTOs userInfo = (UserInfoDTOs) request.getAttribute("userInfo");
+        %>
         <nav>
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
@@ -43,7 +48,7 @@
                     <div class="business-dashboard-tittle-heading">
                         <h1>Business Dashboard</h1>
                     </div>
-                    <span>Welcome back, TechStartup Inc.!</span>
+                    <span>Welcome back, <%=userInfo.getBusinessName()%>.!</span>
                 </div>
 
                 <div class="business-dashboard-tittle-compartment" id="business-dashboard-tittle-compartment-btn">
@@ -129,7 +134,7 @@
                 <div class="business-dashboard-post-task-tittle-cover">a</div>
                 <form action = "<%= application.getContextPath() %>/postTask" method="post">
 
-                    <input type="text" value = "<% %>">
+                    <input style="display: none" type="text" name="id" value = "<%= userInfo.getId()%>">
                     <div class="form-fields">
                         <label for="taskTittle">Task Title</label>
                         <input type="text" name="taskTittle" id="taskTittle" placeholder="e.g., Mobile app UI/UX Design">

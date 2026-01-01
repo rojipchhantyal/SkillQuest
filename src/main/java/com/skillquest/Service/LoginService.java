@@ -1,6 +1,8 @@
 package com.skillquest.Service;
 
 import com.skillquest.DTOs.LoginDTOs;
+import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Repository.LoginRepository;
 
 import java.util.List;
@@ -9,7 +11,7 @@ public class LoginService {
 
     LoginRepository loginRepository = new LoginRepository();
 
-    public boolean loginUsers(LoginDTOs loginDTOs){
+    public UserInfoDTOs loginUsers(LoginDTOs loginDTOs){
 
         return loginRepository.findUser(loginDTOs);
     }
@@ -22,5 +24,10 @@ public class LoginService {
     public List<Object> getALlUsers(){
 
         return loginRepository.getAllUsers();
+    }
+
+    public List<TasksDTOs> getAllPendingTasks(){
+
+        return loginRepository.getAllPendingTasks();
     }
 }

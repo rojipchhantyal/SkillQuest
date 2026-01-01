@@ -21,6 +21,7 @@ public class PostTasksController extends HttpServlet {
         System.out.println("hello");
 
         // Collecting the form data
+        tasksDTOs.setBusiness_id(Integer.parseInt(req.getParameter("id")));
         tasksDTOs.setTitle(req.getParameter("taskTittle"));
         tasksDTOs.setDescription(req.getParameter("taskDescription"));
         tasksDTOs.setTask_type(req.getParameter("taskType"));

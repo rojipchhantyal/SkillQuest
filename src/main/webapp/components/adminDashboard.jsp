@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.skillquest.Entity.Student" %>
 <%@ page import="com.skillquest.Entity.Business" %>
+<%@ page import="com.skillquest.DTOs.TasksDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -260,47 +261,58 @@
                     <h2>Pending Task Approvals</h2>
                 </div>
                 <div class="admin-dashboard-last-page-tasks-lower" id="admin-dashboard-last-page-tasks-lower">
-                    
-                    <!-- ever users info -->
-                    <div class="admin-dashboard-last-page-tasks-lower-inners">
-                        <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
-                            <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">
-                                <h3>Logo Design for New Startup</h3>
-                                <span>panding</span>
-                            </div>
-                            <p>Need a creative logo designer to create a modern brand identity.</p>
-                            <ul>
-                                <li>
-                                    <i class="ri-file-list-line"></i>
-                                    <span>NewCo Inc.</span>
-                                </li>
-                                <li>
-                                    <i class="ri-map-pin-line"></i>
-                                    <span>Remote</span>
-                                </li>
-                                <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
-                                    <span>1000</span>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-event-line"></i>
-                                    <span>Deadline: Jan 10, 2026</span>
-                                </li>
-                            </ul>
-                            <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type">Design</span>
-                        </div>
-                        <div class="admin-dashboard-last-page-tasks-lower-inners-options">
-                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
-                                <i class="ri-check-line"></i>
-                                Approve
-                            </button>
-                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
-                                <i class="ri-close-line"></i>
-                                Reject
-                            </button>
-                        </div>
-                    </div>
 
+                    <%
+                        List<TasksDTOs> allTasks = (List<TasksDTOs>) request.getAttribute("allpendingTasks");
+
+                        if(allTasks != null){
+
+                            for(TasksDTOs tasks : allTasks){
+                                %>
+
+                                <!-- ever users info -->
+                                <div class="admin-dashboard-last-page-tasks-lower-inners">
+                                    <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
+                                        <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">
+                                            <h3>Logo Design for New Startup</h3>
+                                            <span>panding</span>
+                                        </div>
+                                        <p>Need a creative logo designer to create a modern brand identity.</p>
+                                        <ul>
+                                            <li>
+                                                <i class="ri-file-list-line"></i>
+                                                <span>NewCo Inc.</span>
+                                            </li>
+                                            <li>
+                                                <i class="ri-map-pin-line"></i>
+                                                <span>Remote</span>
+                                            </li>
+                                            <li>
+                                                <i class="ri-money-dollar-circle-line"></i>
+                                                <span>1000</span>
+                                            </li>
+                                            <li>
+                                                <i class="ri-calendar-event-line"></i>
+                                                <span>Deadline: Jan 10, 2026</span>
+                                            </li>
+                                        </ul>
+                                        <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type">Design</span>
+                                    </div>
+                                    <div class="admin-dashboard-last-page-tasks-lower-inners-options">
+                                        <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
+                                            <i class="ri-check-line"></i>
+                                            Approve
+                                        </button>
+                                        <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
+                                            <i class="ri-close-line"></i>
+                                            Reject
+                                        </button>
+                                    </div>
+                                </div>
+                            <%
+                            }
+                        }
+                    %>
                     <div class="admin-dashboard-last-page-tasks-lower-inners">
                         <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
                             <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">

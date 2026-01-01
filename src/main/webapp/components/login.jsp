@@ -24,7 +24,7 @@
                 <label for="choose">I am a</label>
                 <select name="choose" id="choose">
                     <option value="student" selected>Student</option>
-                    <option value="business">Teacher</option>
+                    <option value="business">Business</option>
                     <option value="admin">Admin</option>
                 </select>
             </div>
