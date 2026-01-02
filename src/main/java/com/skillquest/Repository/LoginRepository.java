@@ -150,7 +150,7 @@ public class LoginRepository extends DBConnection {
     public List<TasksDTOs> getAllPendingTasks() {
 
         String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id";
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Pending'";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();
@@ -179,4 +179,6 @@ public class LoginRepository extends DBConnection {
         }
         return allTasks;
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.skillquest.Service;
 
+import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.Repository.ApproveRegistrationRepository;
 import com.skillquest.Repository.RejectRegistrationRepository;
 
@@ -19,5 +20,10 @@ public class RejectRegistrationService {
     public List<Object> getAllUsers(){
 
         return rejectRegistrationRepository.getAllusers();
+    }
+
+    public List<TasksDTOs> getAllPendingTasks(){
+
+        return rejectRegistrationRepository.getAllPendingTasks();
     }
 }

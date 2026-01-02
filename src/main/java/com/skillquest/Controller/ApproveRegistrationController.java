@@ -1,5 +1,6 @@
 package com.skillquest.Controller;
 
+import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.Service.ApproveRegistrationService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -36,9 +37,11 @@ public class ApproveRegistrationController extends HttpServlet {
 
             List<Object> allpendingUsers = approveRegistrationService.getAllPendingUsers();
             List<Object> allUsers = approveRegistrationService.getAllUsers();
+            List<TasksDTOs> allpendingTasks = approveRegistrationService.getAllPendingTasks();
 
             req.setAttribute("allpendingUsers", allpendingUsers);
             req.setAttribute("allUsers", allUsers);
+            req.setAttribute("allpendingTasks", allpendingTasks);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }

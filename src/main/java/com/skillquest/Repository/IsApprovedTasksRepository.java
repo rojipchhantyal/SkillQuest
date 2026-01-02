@@ -12,23 +12,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RejectRegistrationRepository extends DBConnection {
+public class IsApprovedTasksRepository extends DBConnection {
 
-    public boolean rejectUserById(int id){
-        String query = "UPDATE users SET status = ? WHERE id = ?";
+    public void isApproveSave(int id, String isApprove){
+        String query = "UPDATE tasks SET status = ? WHERE task_id = ?";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
-            ps.setString(1, "reject");
+            ps.setString(1, isApprove);
             ps.setInt(2, id);
 
             ps.executeUpdate();
-            return true;
         } catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
     }
+
     public List<Object> getAllPendingUsers(){
         String query = "SELECT * FROM users WHERE status = 'panding'";
         List<Object> allPandingUsers = new ArrayList<>();
@@ -50,7 +49,6 @@ public class RejectRegistrationRepository extends DBConnection {
                     student.setPhone(rs.getString("phone"));
                     student.setLocation(rs.getString("location"));
                     student.setStatus(rs.getString("status"));
-                    student.setRegistredDate(rs.getString("registredDate"));
 
                     System.out.println("adding student");
                     allPandingUsers.add(student);
@@ -65,7 +63,6 @@ public class RejectRegistrationRepository extends DBConnection {
                     business.setPhone(rs.getString("phone"));
                     business.setLocation(rs.getString("location"));
                     business.setStatus(rs.getString("status"));
-                    business.setRegistredDate(rs.getString("registredDate"));
                     System.out.println("adding business");
 
                     allPandingUsers.add(business);

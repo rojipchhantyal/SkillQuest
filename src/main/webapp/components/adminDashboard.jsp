@@ -274,10 +274,10 @@
                                 <div class="admin-dashboard-last-page-tasks-lower-inners">
                                     <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
                                         <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">
-                                            <h3>Logo Design for New Startup</h3>
+                                            <h3><%= tasks.getTitle() %> .</h3>
                                             <span>panding</span>
                                         </div>
-                                        <p>Need a creative logo designer to create a modern brand identity.</p>
+                                        <p><%= tasks.getDescription() %> .</p>
                                         <ul>
                                             <li>
                                                 <i class="ri-file-list-line"></i>
@@ -285,72 +285,41 @@
                                             </li>
                                             <li>
                                                 <i class="ri-map-pin-line"></i>
-                                                <span>Remote</span>
+                                                <span><%= tasks.getLocation() %></span>
                                             </li>
                                             <li>
                                                 <i class="ri-money-dollar-circle-line"></i>
-                                                <span>1000</span>
+                                                <span><%= tasks.getBudget() %></span>
                                             </li>
                                             <li>
                                                 <i class="ri-calendar-event-line"></i>
-                                                <span>Deadline: Jan 10, 2026</span>
+                                                <span>Deadline: <%= tasks.getDeadline() %></span>
                                             </li>
                                         </ul>
-                                        <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type">Design</span>
+                                        <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type"><%= tasks.getTask_type() %></span>
                                     </div>
                                     <div class="admin-dashboard-last-page-tasks-lower-inners-options">
-                                        <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
-                                            <i class="ri-check-line"></i>
-                                            Approve
-                                        </button>
-                                        <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
-                                            <i class="ri-close-line"></i>
-                                            Reject
-                                        </button>
+                                        <form action="<%= application.getContextPath() %>/adminResponseToTasks/<%= tasks.getId() %>" method="post">
+                                            <input style="display: none;" type="text" value="Approved" name="isApproved">
+                                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
+                                                <i class="ri-check-line"></i>
+                                                Approve
+                                            </button>
+                                        </form>
+                                        <form action="<%= application.getContextPath() %>/adminResponseToTasks/<%= tasks.getId() %>" method="post">
+                                            <input style="display: none;" type="text" value="Rejected" name="isApproved">
+                                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
+                                                <i class="ri-close-line"></i>
+                                                Reject
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             <%
                             }
                         }
                     %>
-                    <div class="admin-dashboard-last-page-tasks-lower-inners">
-                        <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
-                            <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">
-                                <h3>Python Automation Script</h3>
-                                <span>panding</span>
-                            </div>
-                            <p>Create automation scripts for data processing tasks.</p>
-                            <ul>
-                                <li>
-                                    <i class="ri-file-list-line"></i>
-                                    <span>NewCo Inc.</span>
-                                </li>
-                                <li>
-                                    <i class="ri-map-pin-line"></i>
-                                    <span>Remote</span>
-                                </li>
-                                <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
-                                    <span>1500</span>
-                                </li>
-                                <li>
-                                    <i class="ri-calendar-event-line"></i>
-                                    <span>Deadline: Jan 10, 2026</span>
-                                </li>
-                            </ul>
-                            <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type">Development</span>
-                        </div>
-                        <div class="admin-dashboard-last-page-tasks-lower-inners-options">
-                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
-                                <i class="ri-check-line"></i>
-                                Approve
-                            </button>
-                            <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
-                                <i class="ri-close-line"></i>
-                                Reject
-                            </button>
-                        </div>
-                    </div>
+
                 </div> 
             </div>
 

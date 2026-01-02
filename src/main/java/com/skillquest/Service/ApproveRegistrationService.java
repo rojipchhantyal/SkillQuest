@@ -1,5 +1,6 @@
 package com.skillquest.Service;
 
+import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.Repository.ApproveRegistrationRepository;
 
 import java.util.List;
@@ -18,5 +19,10 @@ public class ApproveRegistrationService {
     public List<Object> getAllUsers(){
 
         return approveRegistrationRepository.getAllusers();
+    }
+
+    public List<TasksDTOs> getAllPendingTasks(){
+
+        return approveRegistrationRepository.getAllPendingTasks();
     }
 }

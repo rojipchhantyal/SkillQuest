@@ -1,5 +1,6 @@
 package com.skillquest.Controller;
 
+import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.Service.RejectRegistrationService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -39,6 +40,10 @@ public class RejectRegistrationController extends HttpServlet {
 
             List<Object> allUsers = registrationService.getAllUsers();
             req.setAttribute("allUsers", allUsers);
+
+            List<TasksDTOs> allpendingTasks = registrationService.getAllPendingTasks();
+            req.setAttribute("allpendingTasks", allpendingTasks);
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }
