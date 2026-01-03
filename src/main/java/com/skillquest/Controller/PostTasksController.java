@@ -18,7 +18,7 @@ public class PostTasksController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         TasksDTOs tasksDTOs = new TasksDTOs();
 
-        System.out.println("hello");
+        System.out.println("post task controller");
 
         // Collecting the form data
         tasksDTOs.setBusiness_id(Integer.parseInt(req.getParameter("id")));

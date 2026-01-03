@@ -3,8 +3,6 @@ package com.skillquest.Controller;
 import com.skillquest.DTOs.LoginDTOs;
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
-import com.skillquest.Entity.Business;
-import com.skillquest.Entity.Tasks;
 import com.skillquest.Repository.LoginRepository;
 import com.skillquest.Service.LoginService;
 import jakarta.servlet.RequestDispatcher;
@@ -16,7 +14,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
