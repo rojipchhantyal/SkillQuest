@@ -30,4 +30,9 @@ public class LoginService {
 
         return loginRepository.getAllPendingTasks();
     }
+
+    public List<TasksDTOs> getAllAvailableTasks(){
+
+        return loginRepository.getAllAvailableTasks();
+    }
 }
