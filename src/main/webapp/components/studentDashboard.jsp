@@ -1,5 +1,6 @@
 <%@ page import="com.skillquest.DTOs.TasksDTOs" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.skillquest.DTOs.UserInfoDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,6 +114,7 @@
 
                     <%
                     List<TasksDTOs> allTasks = (List<TasksDTOs>) request.getAttribute("allAvailableTasks");
+                    UserInfoDTOs userInfo = (UserInfoDTOs) request.getAttribute("userInfo");
                        if(allTasks != null){
                            for(TasksDTOs tasks : allTasks){
                                 %>
@@ -139,7 +141,10 @@
                                     </ul>
                                     <div class="student-dashboard-last-page-browse-task-lower-inners-button">
                                         <span><%= tasks.getTask_type() %></span>
-                                        <button>Claim Task</button>
+                                        <form action="<%= application.getContextPath() %>/claimTasks/<%= tasks.getId() %>" method="post">
+                                            <input style="display: none;" type="text" name="studentId" value="<%= userInfo.getId() %>">
+                                            <button>Claim Task</button>
+                                        </form>
                                     </div>
                                 </div>
                            <%
@@ -475,7 +480,7 @@
                         <i class="ri-close-line"></i>
                     </div>
                 </div>
-                <form>
+                <form class="main-form">
                     <div class="form-task-info">
                         <h2>Web Development-Ecomerce-Site</h2>
                         <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
@@ -1038,7 +1043,7 @@
         font-weight: 500;
         color: var(--white);
     }
-    form{
+    .main-form{
         width: 100%;
         padding:  18px 24px 28px 24px;
         box-sizing: border-box;
@@ -1064,12 +1069,12 @@
         flex-direction: column;
         gap: 8px;
     }
-    form label{
+    .main-form label{
         font-size: 14px;
         color: var(--white);
         font-weight: 500;
     }
-    form textarea{
+    .main-form textarea{
         height: 24vh;
         width: 100%;
         border: none;
@@ -1082,7 +1087,7 @@
         box-sizing: border-box;
         font-size: 14px;
     }
-    form input{
+    .main-form input{
         height: 36px;
         border: none;
         outline: none;
