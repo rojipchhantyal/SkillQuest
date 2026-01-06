@@ -1,6 +1,8 @@
 package com.skillquest.Controller;
 
+import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.Service.ClaimTasksStudentService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,17 +10,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/claimTasks/*")
 public class ClaimTasksStudentController extends HttpServlet {
 
     ClaimTasksStudentService claimTasksStudentService = new ClaimTasksStudentService();
+    int stuedentId;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String pathVar = req.getPathInfo();
         int taskId = 0;
-        int stuedentId = Integer.parseInt(req.getParameter("studentId"));
+        stuedentId = Integer.parseInt(req.getParameter("studentId"));
 
         if(pathVar != null && pathVar.length() > 0){
             taskId = Integer.parseInt(pathVar.substring(1));
@@ -26,5 +30,13 @@ public class ClaimTasksStudentController extends HttpServlet {
 
         System.out.println(stuedentId + " " + taskId);
         claimTasksStudentService.claimTaskById(stuedentId, taskId);
+
+        //getting all the student claim tasks
+        List<TasksDTOs> allStudentClainTasks = claimTasksStudentService.getAllStudentClaimTasks(stuedentId);
+
+        req.setAttribute("allStudentClaimTasks", allStudentClainTasks);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
+        dispatcher.forward(req, resp);
     }
 }

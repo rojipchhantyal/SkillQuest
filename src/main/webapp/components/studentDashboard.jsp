@@ -157,132 +157,51 @@
         <!-- for my Tasks -->
         <div style="display: none;" class="student-dashboard-last-page-my-tasks" id="student-dashboard-last-page-my-tasks">
             <!-- my task lists -->
-            <div class="student-dashboard-last-page-my-tasks-inners">
-                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>in_progres</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-my-tasks-inners-button">
-                    <span>Design</span>
-                    <button id="pending-task-submit"
-                        data-task-id="1"
-                    >
-                    Submit Task</button>
-                </div>
-            </div>
+            <%
 
-            <div class="student-dashboard-last-page-my-tasks-inners">
-                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>in_progres</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-my-tasks-inners-button">
-                    <span>Design</span>
-                    <button>Submit Task</button>
-                </div>
-            </div>
+            List<TasksDTOs> allStudentClaimTasks = (List<TasksDTOs>) request.getAttribute("allStudentClaimTasks");
 
-            <div class="student-dashboard-last-page-my-tasks-inners">
-                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>in_progres</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-my-tasks-inners-button">
-                    <span>Design</span>
-                    <button>Submit Task</button>
-                </div>
-            </div>
+            if(allStudentClaimTasks != null){
 
-            <div class="student-dashboard-last-page-my-tasks-inners">
-                <div class="student-dashboard-last-page-my-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>in_progres</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-my-tasks-inners-button">
-                    <span>Design</span>
-                    <button>Submit Task</button>
-                </div>
-            </div>
+                for(TasksDTOs claimTasks : allStudentClaimTasks){
+                %>
+                    <div class="student-dashboard-last-page-my-tasks-inners">
+                        <div class="student-dashboard-last-page-my-tasks-inners-tittle">
+                            <h3><%= claimTasks.getTitle() %> .</h3>
+                            <span>in_progres</span>
+                        </div>
+
+                        <p><%= claimTasks.getDescription() %> .</p>
+                        <ul>
+                            <li>
+                                <i class="ri-file-list-line"></i>
+                                <span>NewCo Inc.</span>
+                            </li>
+                            <li>
+                                <i class="ri-map-pin-line"></i>
+                                <span><%= claimTasks.getLocation() %></span>
+                            </li>
+                            <li>
+                                <i class="ri-money-dollar-circle-line"></i>
+                                <span><%= claimTasks.getBudget() %></span>
+                            </li>
+                            <li>
+                                <i class="ri-calendar-event-line"></i>
+                                <span>Deadline: <%= claimTasks.getDeadline() %></span>
+                            </li>
+                        </ul>
+                        <div class="student-dashboard-last-page-my-tasks-inners-button">
+                            <span><%= claimTasks.getTask_type() %></span>
+                            <button id="pending-task-submit"
+                                data-task-id="1"
+                            >
+                            Submit Task</button>
+                        </div>
+                    </div>
+                <%
+                }
+            }
+            %>
         </div>
 
         <!-- for completed tasks -->

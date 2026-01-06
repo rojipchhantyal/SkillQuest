@@ -64,6 +64,7 @@ public class LoginController extends HttpServlet {
 
                     //sending the avialable tasks
 
+
                     List<TasksDTOs> allAvailableTasks = loginService.getAllAvailableTasks();
 
                     req.setAttribute("allAvailableTasks", allAvailableTasks);
