@@ -39,6 +39,7 @@ public class LoginController extends HttpServlet {
             switch (loginDTOs.getRole()){
                 case "admin" :{
                     System.out.println("hello i am admin");
+
                     //get all the panding users
                     List<Object> allpendingUsers = loginService.getAllPendingUsers();
                     System.out.println(allpendingUsers);
@@ -64,10 +65,11 @@ public class LoginController extends HttpServlet {
 
                     //sending the avialable tasks
 
-
                     List<TasksDTOs> allAvailableTasks = loginService.getAllAvailableTasks();
+                    List<TasksDTOs> allStudentClaimTasks = loginService.getAllClaimTasks(userInfoDTOs.getId());
 
                     req.setAttribute("allAvailableTasks", allAvailableTasks);
+                    req.setAttribute("allStudentClaimTasks", allStudentClaimTasks);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
                     dispatcher.forward(req, resp);
                     break;

@@ -1,6 +1,7 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Service.ClaimTasksStudentService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -31,10 +32,18 @@ public class ClaimTasksStudentController extends HttpServlet {
         System.out.println(stuedentId + " " + taskId);
         claimTasksStudentService.claimTaskById(stuedentId, taskId);
 
+        // getting all the available tasks
+        List<TasksDTOs> allAvailableTasks = claimTasksStudentService.getAllAvailableTasks();
+
         //getting all the student claim tasks
         List<TasksDTOs> allStudentClainTasks = claimTasksStudentService.getAllStudentClaimTasks(stuedentId);
 
+        UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
+        userInfoDTOs.setId(stuedentId);
+
+        req.setAttribute("allAvailableTasks", allAvailableTasks);
         req.setAttribute("allStudentClaimTasks", allStudentClainTasks);
+        req.setAttribute("userInfo", userInfoDTOs);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
         dispatcher.forward(req, resp);

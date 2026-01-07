@@ -35,4 +35,9 @@ public class LoginService {
 
         return loginRepository.getAllAvailableTasks();
     }
+
+    public List<TasksDTOs> getAllClaimTasks(int studentId){
+
+        return loginRepository.getAllClaimTasks(studentId);
+    }
 }

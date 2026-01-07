@@ -18,4 +18,9 @@ public class ClaimTasksStudentService {
 
         return claimTasksStudentRepository.getAllStudentClaimTasks(studentId);
     }
+
+    public List<TasksDTOs> getAllAvailableTasks(){
+
+        return claimTasksStudentRepository.getAllAvailableTasks();
+    }
 }
