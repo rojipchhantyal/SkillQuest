@@ -124,7 +124,7 @@
                                     <ul>
                                         <li>
                                             <i class="ri-file-list-line"></i>
-                                            <span>NewCo Inc.</span>
+                                            <span><%= tasks.getBusinessName() %>.</span>
                                         </li>
                                         <li>
                                             <i class="ri-map-pin-line"></i>
@@ -175,7 +175,7 @@
                         <ul>
                             <li>
                                 <i class="ri-file-list-line"></i>
-                                <span>NewCo Inc.</span>
+                                <span><%= claimTasks.getBusinessName() %></span>
                             </li>
                             <li>
                                 <i class="ri-map-pin-line"></i>
@@ -505,7 +505,7 @@
           //hide the other navitation conetent
           browseTaskConetent.style.display = "none";
           completedTaskConetent.style.display = "none";
-          browseTaskConetent.style.display = "none";
+          myTaskConetent.style.display = "none";
 
           //show the task content
           profileConetent.style.display = "flex";
@@ -517,8 +517,8 @@
           completedTaskNav.style.color = "oklch(0.707 0.022 261.325)";
           completedTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
 
-          browseTaskNav.style.color = "oklch(0.707 0.022 261.325)";
-          browseTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+          myTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+          myTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
         });
 
         browseTaskNav.addEventListener('click', () => {
@@ -808,10 +808,10 @@
     .student-dashboard-last-page-my-tasks,
     .student-dashboard-last-page-completed-tasks,
     .student-dashboard-last-page-profile{
-        min-height: 20vh;
+        min-height: 90vh;
         width: 100%;
         display: flex;
-        justify-content: center;
+
         flex-wrap: wrap;
         gap: 24px;
         padding: 24px 24px;

@@ -88,7 +88,7 @@ public class LoginController extends HttpServlet {
             }
         }
         else{
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
             dispatcher.forward(req, resp);
         }
     }

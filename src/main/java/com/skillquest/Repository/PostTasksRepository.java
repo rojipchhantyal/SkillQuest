@@ -1,13 +1,10 @@
 package com.skillquest.Repository;
 
-import com.skillquest.Entity.Business;
-import com.skillquest.Entity.Student;
 import com.skillquest.Entity.Tasks;
 import com.skillquest.Util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PostTasksRepository extends DBConnection {

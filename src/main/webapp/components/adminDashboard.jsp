@@ -281,7 +281,7 @@
                                         <ul>
                                             <li>
                                                 <i class="ri-file-list-line"></i>
-                                                <span>NewCo Inc.</span>
+                                                <span><%= tasks.getBusinessName() %>.</span>
                                             </li>
                                             <li>
                                                 <i class="ri-map-pin-line"></i>

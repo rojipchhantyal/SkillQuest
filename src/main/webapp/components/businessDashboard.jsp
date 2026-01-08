@@ -152,7 +152,7 @@
                                 <option value="Design">Design</option>
                                 <option value="Development">Development</option>
                                 <option value="Writing">Writing</option>
-                                <option value="Writing">Writing</option>
+                                <option value="Video Editing">Video Editing</option>
                             </select>
                         </li>
                         <li>

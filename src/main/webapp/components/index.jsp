@@ -80,10 +80,10 @@
                     <i class="ri-recycle-line"></i>
                     <select name="" id="">
                         <option value="all type" selected>All Types</option>
-                        <option value="">Design</option>
-                        <option value="">Writing</option>
-                        <option value="">Video Editing</option>
-                        <option value="">Deveopment</option>
+                        <option value="Design">Design</option>
+                        <option value="Writing">Writing</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="Development">Development</option>
                     </select>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                                    <ul>
                                        <li>
                                            <i class="ri-file-list-line"></i>
-                                           <span>NewCo Inc.</span>
+                                           <span><%= tasks.getBusinessName() %></span>
                                        </li>
                                        <li>
                                            <i class="ri-map-pin-line"></i>

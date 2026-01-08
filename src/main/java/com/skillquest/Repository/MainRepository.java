@@ -13,7 +13,7 @@ import java.util.List;
 public class MainRepository extends DBConnection {
 
     public List<TasksDTOs> getAllTasks(){
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget " +
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline " +
                 "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved'";
 
 
@@ -32,7 +32,9 @@ public class MainRepository extends DBConnection {
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
                 tasks.setTask_type(rs.getString("task_type"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
+                tasks.setDeadline(rs.getString("deadline"));
 
                 System.out.println("index  tasks repo");
                 allTasks.add(tasks);

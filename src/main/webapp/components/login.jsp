@@ -40,7 +40,7 @@
             <button>Login</button>
             <div class="form-sign-up">
                 <span>Don't have an account? </span>
-                <a href="">Sign up</a>
+                <a href="getStarted.jsp">Sign up</a>
             </div>
         </form>
     </main>

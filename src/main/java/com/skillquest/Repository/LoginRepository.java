@@ -29,7 +29,7 @@ public class LoginRepository extends DBConnection {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-
+                System.out.println("\n\nFound User\n\n");
                 UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
                 userInfoDTOs.setId(rs.getInt("id"));
                 userInfoDTOs.setName(rs.getString("name"));
@@ -43,6 +43,8 @@ public class LoginRepository extends DBConnection {
         } catch (SQLException e){
             e.printStackTrace();
         }
+        System.out.println("\n\nCant found user\n\n");
+        isFound = false;
         return null;
     }
     public List<Object> getAllPendingUsers(){
@@ -148,7 +150,7 @@ public class LoginRepository extends DBConnection {
 
     public List<TasksDTOs> getAllPendingTasks() {
 
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget " +
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline " +
                 "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Pending'";
 
 
@@ -167,7 +169,9 @@ public class LoginRepository extends DBConnection {
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
                 tasks.setTask_type(rs.getString("task_type"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
+                tasks.setDeadline(rs.getString("deadline"));
 
                 System.out.println("\n\n\n\nPending tasks");
                 allTasks.add(tasks);
@@ -215,7 +219,7 @@ public class LoginRepository extends DBConnection {
     public List<TasksDTOs> getAllClaimTasks(int studentId){
 
         String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved' AND t.student_id = ?";
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.student_id = ?";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();

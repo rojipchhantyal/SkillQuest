@@ -13,7 +13,7 @@ import java.util.List;
 public class ClaimTasksStudentRepository extends DBConnection {
 
     public void claimTaskById(int studentId, int taskId){
-        String query = "UPDATE tasks SET student_id = ? WHERE task_id = ?";
+        String query = "UPDATE tasks SET student_id = ?, status = 'Claimed' WHERE task_id = ?";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -30,7 +30,7 @@ public class ClaimTasksStudentRepository extends DBConnection {
     public List<TasksDTOs> getAllStudentClaimTasks(int studentId){
 
         String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved' AND t.student_id = ?";
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.student_id = ?";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();
