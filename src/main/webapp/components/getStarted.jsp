@@ -16,6 +16,15 @@
 <body>
     <main>
         <nav>
+            <%
+            String validMessage = (String) request.getAttribute("validMessage");
+            if(validMessage != null && !validMessage.isEmpty()){
+                %>
+                <p style="position: absolute; z-index: 9999; color: rgba(255, 0, 0, 0.386); max-width: 66%;"><%= validMessage %></p>
+                <%
+            }
+            %>
+
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
                 <span class="logo">SkillQuest</span>
