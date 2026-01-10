@@ -12,6 +12,7 @@ public class TasksDTOs {
     private String location;
     private String budget;
     private String deadline;
+    private String status;
     private String created_at;
 
     public int getId() {
@@ -92,6 +93,14 @@ public class TasksDTOs {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getCreated_at() {

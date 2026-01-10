@@ -80,6 +80,10 @@ public class LoginController extends HttpServlet {
                         req.setAttribute("userInfo", userInfoDTOs);
                     }
 
+                    //get all the tasks that the business posted
+                    List<TasksDTOs> allBusinessPostedTask = loginService.getAllBusinessPostedTask(userInfoDTOs.getId());
+
+                    req.setAttribute("allPostedTasks", allBusinessPostedTask);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/businessDashboard.jsp");
                     dispatcher.forward(req, resp);
                     break;

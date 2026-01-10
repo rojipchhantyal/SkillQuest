@@ -1,3 +1,5 @@
+<%@ page import="com.skillquest.DTOs.TasksDTOs" %>
+<%@ page import="java.util.List" %>
 <%@ page import="com.skillquest.DTOs.UserInfoDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -207,121 +209,68 @@
             <!-- for all tasks -->
             <div class="business-dashboard-last-page-all-task" id="business-dashboard-last-page-all-task">
                 <!-- all tasks lists-->
-                <div class="business-dashboard-last-page-all-task-lower-inners">
-                    <div class="business-dashboard-last-page-all-task-lower-inners-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span>active</span>
-                    </div>
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
-                        <span>Design</span>
-                    </div>
-                </div>
 
-                <div class="business-dashboard-last-page-all-task-lower-inners">
-                    <div class="business-dashboard-last-page-all-task-lower-inners-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
-                        <span>Design</span>
-                    </div>
-                </div>
+                <%
 
-                <div class="business-dashboard-last-page-all-task-lower-inners">
-                    <div class="business-dashboard-last-page-all-task-lower-inners-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span>completed</span>
-                    </div>
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
-                        <span>Design</span>
-                    </div>
-                </div>
-                <div class="business-dashboard-last-page-all-task-lower-inners">
-                    <div class="business-dashboard-last-page-all-task-lower-inners-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span>active</span>
-                    </div>
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="student-dashboard-last-page-browse-task-lower-inners-button">
-                        <span>Design</span>
-                    </div>
-                    </div>
-                </div>
+                List<TasksDTOs> allTasks = (List<TasksDTOs>) request.getAttribute("allPostedTasks");
+                if(allTasks != null){
+                   for(TasksDTOs tasks : allTasks){
+                        %>
+                        <div class="business-dashboard-last-page-all-task-lower-inners">
+                            <div class="business-dashboard-last-page-all-task-lower-inners-tittle">
+                                <h3><%= tasks.getTitle() %> .</h3>
+                                <%
+                                if(tasks.getStatus().equals("Claimed")){
+                                %>
+                                    <span>active</span>
+                                <%
+                                }
+                                else if(tasks.getStatus().equals("Pending")){
+                                %>
+                                    <span id="panding">pending</span>
+                                <%
+                                }
+                                else if(tasks.getStatus().equals("Approved")){
+                                %>
+                                    <span>approved</span>
+                                <%
+                                }
+                                else if(tasks.getStatus().equals("Rejected")){
+                                %>
+                                    <span style="color: red; background-color: rgba(114, 4, 4, 0.429)">rejected</span>
+                                <%
+                                }
+                                %>
+                            </div>
+                            <p><%= tasks.getDescription() %> .</p>
+                            <ul>
+                                <li>
+                                    <i class="ri-file-list-line"></i>
+                                    <span><%= tasks.getBusinessName() %>.</span>
+                                </li>
+                                <li>
+                                    <i class="ri-map-pin-line"></i>
+                                    <span><%= tasks.getLocation() %></span>
+                                </li>
+                                <li>
+                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <span><%= tasks.getBudget() %></span>
+                                </li>
+                                <li>
+                                    <i class="ri-calendar-event-line"></i>
+                                    <span>Deadline: <%= tasks.getDeadline() %></span>
+                                </li>
+                            </ul>
+                            <div class="student-dashboard-last-page-browse-task-lower-inners-button">
+                                <span><%= tasks.getTask_type() %></span>
+                            </div>
+                        </div>
+                        <%
+                   }
+                }
+                %>
+
+            </div>
 
 
             <!-- pending tasks-->

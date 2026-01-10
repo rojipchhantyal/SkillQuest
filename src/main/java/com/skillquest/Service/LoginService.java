@@ -40,4 +40,9 @@ public class LoginService {
 
         return loginRepository.getAllClaimTasks(studentId);
     }
+
+    public List<TasksDTOs> getAllBusinessPostedTask(int businessId){
+
+        return loginRepository.getAllBusinessPostedTask(businessId);
+    }
 }
