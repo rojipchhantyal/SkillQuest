@@ -19,6 +19,9 @@
 </head>
 <body>
     <main>
+    <%
+    UserInfoDTOs userInfo = (UserInfoDTOs) request.getAttribute("userInfo");
+    %>
         <nav>
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
@@ -43,7 +46,7 @@
                 <div class="student-dashboard-tittle-heading">
                     <h1>Student Dashboard</h1>
                 </div>
-                <span>Welcome back, Alex Johnson!</span>
+                <span>Welcome back, <%= userInfo.getName() %>!</span>
             </div>
 
             <div class="student-dashboard-first-page">
@@ -114,7 +117,6 @@
 
                     <%
                     List<TasksDTOs> allTasks = (List<TasksDTOs>) request.getAttribute("allAvailableTasks");
-                    UserInfoDTOs userInfo = (UserInfoDTOs) request.getAttribute("userInfo");
                        if(allTasks != null){
                            for(TasksDTOs tasks : allTasks){
                                 %>

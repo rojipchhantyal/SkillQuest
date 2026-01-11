@@ -123,7 +123,7 @@
                                    </ul>
                                    <div class="home-available-task-page-tasks-list-inners-button">
                                        <span><%= tasks.getTask_type() %></span>
-                                       <button>Claim Task</button>
+                                       <button><a style="text-decoration: none; color: oklch(0.145 0 0);" href="<%= application.getContextPath() %>/components/login.jsp">Claim Task</a></button>
                                    </div>
                                </div>
                             <%
