@@ -20,6 +20,18 @@
                 <h1>Welcome Back</h1>
                 <span>Login to your account</span>
             </div>
+            <%
+                String loginFailed = (String) request.getAttribute("loginFailed");
+                if(loginFailed != null){
+                    %>
+                    <div class="form-failed-to-login">
+                        <span style="font-weight: 500;">Login Failed !</span>
+                        <span><%= loginFailed %></span>
+                    </div>
+                    <%
+                }
+            %>
+
             <div class="form-fields">
                 <label for="choose">I am a</label>
                 <select name="choose" id="choose">
@@ -30,11 +42,11 @@
             </div>
             <div class="form-fields">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email">
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
             </div>
             <div class="form-fields">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter your password">
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
             </div>
             <a class="form-forgot" href="">Forgot password?</a>
             <button>Login</button>
@@ -64,7 +76,7 @@
     }
     main{
         background-color: var(--background);
-        height: 116vh;
+        min-height: 116vh;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -92,7 +104,8 @@
         font-size: 22px;
     }
     form{
-        height: 90vh;
+        /* min-height: 90vh; */
+        padding: 24px 0;
         width: 35.4%;
         border-radius: 16px;
         display: flex;
@@ -114,6 +127,20 @@
     }
     .form-tittle span{
         color: var(--gray);
+    }
+    .form-failed-to-login{
+        height: 12vh;
+        width: 83%;
+        border: 1px solid red;
+        color: red;
+        border-radius: 12px;
+        background-color: rgba(140, 44, 44, 0.179);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.3;
+        font-size: 14px;
     }
     .form-fields{
         height: 10vh;

@@ -92,7 +92,8 @@ public class LoginController extends HttpServlet {
             }
         }
         else{
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
+            req.setAttribute("loginFailed", "Invalid email or password");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/components/login.jsp");
             dispatcher.forward(req, resp);
         }
     }
