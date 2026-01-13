@@ -86,13 +86,13 @@ public class BusinessRegistrationController extends HttpServlet {
 
             if (BusinessRegistrationRepository.isSuccessfullyExcuted) {
                 req.setAttribute("message", "student registered successfully! wait for admin approval to login");
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/login.jsp");
                 System.out.println("yes");
 
                 dispatcher.forward(req, resp);
             } else {
-                req.setAttribute("error", "Registration failed. Please try again letter.");
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
+                req.setAttribute("validMessage", "Registration failed. Please try again letter.");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/getStarted.jsp");
                 System.out.println("no");
                 dispatcher.forward(req, resp);
             }

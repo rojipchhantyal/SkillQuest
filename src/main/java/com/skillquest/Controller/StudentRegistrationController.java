@@ -92,12 +92,12 @@ public class StudentRegistrationController extends HttpServlet {
 
             if (StudentRegistrationRepository.isSuccessfullyExcuted) {
                 req.setAttribute("message", "student registered successfully! wait for admin approval to login");
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/login.jsp");
 
                 dispatcher.forward(req, resp);
             } else {
-                req.setAttribute("error", "Registration failed. Please try again letter.");
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/index.jsp");
+                req.setAttribute("validMessage", "Registration failed. Please try again letter.");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/components/getStarted.jsp");
 
                 dispatcher.forward(req, resp);
             }

@@ -16,15 +16,6 @@
 <body>
     <main>
         <nav>
-            <%
-            String validMessage = (String) request.getAttribute("validMessage");
-            if(validMessage != null && !validMessage.isEmpty()){
-                %>
-                <p style="position: absolute; z-index: 9999; color: rgba(255, 0, 0, 0.386); max-width: 66%;"><%= validMessage %></p>
-                <%
-            }
-            %>
-
             <div class="nav-logo">
                 <span class="logo-circle">SQ</span>
                 <span class="logo">SkillQuest</span>
@@ -66,6 +57,18 @@
                     </div>
                 </div>
             </div>
+
+            <%
+            String errMessage = (String) request.getAttribute("validMessage");
+            if(errMessage != null){
+                %>
+                <!-- for errors -->
+                <div class="form-inner-error">
+                    <span><%= errMessage %> !</span>
+                </div>
+                <%
+            }
+            %>
 
 
             <!-- for student registration -->
@@ -443,6 +446,22 @@
     .form-outer-selector-business:hover{
         border: 1px solid var(--green-bgc);
     }
+    /* for form error div */
+    .form-inner-error{
+        height: 14vh;
+        width: 100%;
+        border: 1px solid red;
+        color: red;
+        border-radius: 12px;
+        background-color: rgba(140, 44, 44, 0.179);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.3;
+        font-size: 14px;
+    }
+
     /* for forms */
     .form-for-student,
     .form-for-business{
