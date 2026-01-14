@@ -91,7 +91,7 @@ public class StudentRegistrationController extends HttpServlet {
             registrationService.registerStudent(studentDTOs);
 
             if (StudentRegistrationRepository.isSuccessfullyExcuted) {
-                req.setAttribute("message", "student registered successfully! wait for admin approval to login");
+                req.setAttribute("message", "student registered successfully! wait for admin approval to login.");
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/components/login.jsp");
 
                 dispatcher.forward(req, resp);

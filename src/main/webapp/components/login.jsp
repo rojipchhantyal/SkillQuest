@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <%
+    String registerMessage = (String) request.getAttribute("message");
+
+    if(registerMessage != null){
+        %>
+        <div class="successfully-register" id="successfully-register">
+            <span> <%= registerMessage %> !</span>
+        </div>
+    <%
+    }
+    registerMessage = null;
+    %>
     <main>
         <div class="skillquest-logo">
             <span class="logo-circle">SQ</span>
@@ -57,6 +69,21 @@
         </form>
     </main>
 </body>
+<script>
+    window.onload = function(){
+        let message = document.getElementById("successfully-register");
+
+        if(message){
+            // Show the message by adding the .show class
+            message.classList.add("show");
+
+            // Hide after 3 seconds
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 5000);
+        }
+    }
+</script>
 </html>
 <style>
     *{
@@ -73,6 +100,28 @@
         --dark-green: #009624;
         --light-green: oklch(0.726563 -0.177442 0.109428/0.1);
         --gray: oklch(0.707 0.022 261.325);
+    }
+    .successfully-register{
+        z-index: 9999;
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        height: 8vh;
+        padding: 0 24px;
+        background-color: rgba(11, 100, 11, 0.344);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--green-bgc);
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid var(--dark-green);
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+    .successfully-register.show{
+        opacity: 1;
     }
     main{
         background-color: var(--background);

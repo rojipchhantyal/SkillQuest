@@ -85,7 +85,7 @@ public class BusinessRegistrationController extends HttpServlet {
             businessRegistrationService.registerBusiness(businessDTOs);
 
             if (BusinessRegistrationRepository.isSuccessfullyExcuted) {
-                req.setAttribute("message", "student registered successfully! wait for admin approval to login");
+                req.setAttribute("message", "business registered successfully! wait for admin approval to login.");
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/components/login.jsp");
                 System.out.println("yes");
 
