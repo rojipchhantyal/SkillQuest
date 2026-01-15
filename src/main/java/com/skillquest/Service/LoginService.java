@@ -2,6 +2,7 @@ package com.skillquest.Service;
 
 import com.skillquest.DTOs.LoginDTOs;
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Repository.LoginRepository;
 
@@ -44,5 +45,10 @@ public class LoginService {
     public List<TasksDTOs> getAllBusinessPostedTask(int businessId){
 
         return loginRepository.getAllBusinessPostedTask(businessId);
+    }
+
+    public TotalCounterDTOs getAllTotalInfo(){
+
+        return loginRepository.getAllTotalInfo();
     }
 }

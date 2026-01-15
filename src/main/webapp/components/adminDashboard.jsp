@@ -2,6 +2,7 @@
 <%@ page import="com.skillquest.Entity.Student" %>
 <%@ page import="com.skillquest.Entity.Business" %>
 <%@ page import="com.skillquest.DTOs.TasksDTOs" %>
+<%@ page import="com.skillquest.DTOs.TotalCounterDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +60,13 @@
 
         <!-- for adimin left side nav -->
         <div class="admin-dashboard-left-nav">
+            <%
+            TotalCounterDTOs totalInfo = (TotalCounterDTOs) request.getAttribute("totalInfo");
+
+            if(totalInfo != null){
+            }
+            %>
+
             <div class="admin-dashboard-tittle">
                 <div class="admin-dashboard-tittle-heading">
                     <h1>Admin Dashboard</h1>
@@ -70,7 +78,7 @@
                     <div class="admin-dashboard-first-page-inners" id="pending-user">
                         <div class="admin-dashboard-first-page-inners-left">
                             <span class="admin-dashboard-first-page-inners-info">Pending Registrations</span>
-                            <span class="admin-dashboard-first-page-inners-count">3</span>
+                            <span class="admin-dashboard-first-page-inners-count"><%= totalInfo.getTotalPendingUserRegistration() %></span>
                         </div>
                         <i class="ri-user-line"></i>
                     </div>
@@ -78,7 +86,7 @@
                     <div class="admin-dashboard-first-page-inners" id="pending-user">
                         <div class="admin-dashboard-first-page-inners-left">
                             <span class="admin-dashboard-first-page-inners-info">Pending Tasks</span>
-                            <span class="admin-dashboard-first-page-inners-count">3</span>
+                            <span class="admin-dashboard-first-page-inners-count"><%= totalInfo.getTotalPendingTasks() %></span>
                         </div>
                         <i class="ri-file-list-line"></i>
                     </div>
@@ -88,7 +96,7 @@
                     <div class="admin-dashboard-first-page-inners" id="pending-user">
                         <div class="admin-dashboard-first-page-inners-left">
                             <span class="admin-dashboard-first-page-inners-info">Total Users</span>
-                            <span class="admin-dashboard-first-page-inners-count">3</span>
+                            <span class="admin-dashboard-first-page-inners-count"><%= totalInfo.getTotalUsers() %></span>
                         </div>
                         <i class="ri-user-line"></i>
                     </div>
@@ -96,7 +104,7 @@
                     <div class="admin-dashboard-first-page-inners" id="pending-user">
                         <div class="admin-dashboard-first-page-inners-left">
                             <span class="admin-dashboard-first-page-inners-info">Total Tasks</span>
-                            <span class="admin-dashboard-first-page-inners-count">3</span>
+                            <span class="admin-dashboard-first-page-inners-count"><%= totalInfo.getTotalTasks() %></span>
                         </div>
                         <i class="ri-file-copy-2-fill"></i>
                     </div>

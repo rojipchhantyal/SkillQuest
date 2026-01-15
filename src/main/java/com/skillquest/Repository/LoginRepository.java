@@ -2,6 +2,7 @@ package com.skillquest.Repository;
 
 import com.skillquest.DTOs.LoginDTOs;
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Entity.Business;
 import com.skillquest.Entity.Student;
@@ -284,5 +285,71 @@ public class LoginRepository extends DBConnection {
             e.printStackTrace();
         }
         return allTasks;
+    }
+
+    public TotalCounterDTOs getAllTotalInfo(){
+        String query = "SELECT COUNT(*) AS totalPendingUserRegistration FROM users WHERE status = 'panding'";
+
+        String query2 = "SELECT COUNT(*) AS totalPendingTasks FROM tasks WHERE status = 'Pending'";
+
+        String query3 = "SELECT COUNT(*) AS totalUsers FROM users WHERE status = 'approved'";
+
+        String query4 = "SELECT COUNT(*) AS totalTasks FROM tasks WHERE status IN ('Approved', 'Claimed', 'Completed')";
+
+        TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                totalCounterDTOs.setTotalPendingUserRegistration(rs.getLong("totalPendingUserRegistration"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query2)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setTotalPendingTasks(rs.getLong("totalPendingTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query3)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setTotalUsers(rs.getLong("totalUsers"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query4)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setTotalTasks(rs.getLong("totalTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return totalCounterDTOs;
     }
 }

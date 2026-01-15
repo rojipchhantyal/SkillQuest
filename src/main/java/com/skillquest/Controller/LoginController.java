@@ -2,6 +2,7 @@ package com.skillquest.Controller;
 
 import com.skillquest.DTOs.LoginDTOs;
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Repository.LoginRepository;
 import com.skillquest.Service.LoginService;
@@ -50,9 +51,12 @@ public class LoginController extends HttpServlet {
                     //getting all the pending tasks
                     List<TasksDTOs> allpendingTasks = loginService.getAllPendingTasks();
 
+                    TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
+
                     req.setAttribute("allpendingUsers", allpendingUsers);
                     req.setAttribute("allUsers", allUsers);
                     req.setAttribute("allpendingTasks", allpendingTasks);
+                    req.setAttribute("totalInfo", totalCounterDTOs);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
                     dispatcher.forward(req, resp);
                     break;
