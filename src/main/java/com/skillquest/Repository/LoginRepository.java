@@ -352,4 +352,56 @@ public class LoginRepository extends DBConnection {
 
         return totalCounterDTOs;
     }
+
+    public TotalCounterDTOs getAllStudentInfo(int studentId){
+        String query = "SELECT COUNT(*) AS totalCompleteTasks FROM tasks WHERE student_id = ? AND status = 'Completed'";
+
+        String query2 = "SELECT COUNT(*) AS totalActiveTasks FROM tasks WHERE student_id = ? AND status = 'Claimed'";
+
+//        String query3 = "SELECT COUNT(*) AS totalUsers FROM users WHERE status = 'approved'";
+
+        TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                totalCounterDTOs.setTaskCompleted(rs.getLong("totalCompleteTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query2)) {
+
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setTotalClaimedTasks(rs.getLong("totalActiveTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+//        try (Connection con = getConnection();
+//             PreparedStatement ps = con.prepareStatement(query3)) {
+//
+//            ResultSet rs = ps.executeQuery();
+//
+//            if(rs.next()) {
+//                totalCounterDTOs.setTotalUsers(rs.getLong("totalUsers"));
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+        return totalCounterDTOs;
+    }
 }

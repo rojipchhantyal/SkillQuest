@@ -6,6 +6,10 @@ public class TotalCounterDTOs {
     private long TotalUsers ;
     private long TotalTasks ;
 
+    private long taskCompleted;
+    private long totalEarning;
+    private long totalClaimedTasks;
+
     public long getTotalPendingUserRegistration() {
         return TotalPendingUserRegistration;
     }
@@ -36,5 +40,29 @@ public class TotalCounterDTOs {
 
     public void setTotalTasks(long totalTasks) {
         TotalTasks = totalTasks;
+    }
+
+    public long getTaskCompleted() {
+        return taskCompleted;
+    }
+
+    public void setTaskCompleted(long taskCompleted) {
+        this.taskCompleted = taskCompleted;
+    }
+
+    public long getTotalEarning() {
+        return totalEarning;
+    }
+
+    public void setTotalEarning(long totalEarning) {
+        this.totalEarning = totalEarning;
+    }
+
+    public long getTotalClaimedTasks() {
+        return totalClaimedTasks;
+    }
+
+    public void setTotalClaimedTasks(long totalClaimedTasks) {
+        this.totalClaimedTasks = totalClaimedTasks;
     }
 }

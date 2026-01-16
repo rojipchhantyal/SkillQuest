@@ -1,6 +1,7 @@
 <%@ page import="com.skillquest.DTOs.TasksDTOs" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.skillquest.DTOs.UserInfoDTOs" %>
+<%@ page import="com.skillquest.DTOs.TotalCounterDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,10 @@
         </nav>
         <!-- for dashboard left navigation -->
         <div class="student-dashboard-left-nav">
+
+            <%
+            TotalCounterDTOs totalInfo = (TotalCounterDTOs) request.getAttribute("totalInfo");
+            %>
             <div class="student-dashboard-tittle">
                 <div class="student-dashboard-tittle-heading">
                     <h1>Student Dashboard</h1>
@@ -53,7 +58,7 @@
                 <div class="student-dashboard-first-page-inners" id="pending-user">
                     <div class="student-dashboard-first-page-inners-left">
                         <span class="student-dashboard-first-page-inners-info">Tasks Completed</span>
-                        <span class="student-dashboard-first-page-inners-count">2</span>
+                        <span class="student-dashboard-first-page-inners-count"><%= totalInfo.getTaskCompleted() %></span>
                     </div>
                     <i class="ri-gift-2-line"></i>
                 </div>
@@ -69,7 +74,7 @@
                 <div class="student-dashboard-first-page-inners" id="pending-user">
                     <div class="student-dashboard-first-page-inners-left">
                         <span class="student-dashboard-first-page-inners-info">Active Tasks</span>
-                        <span class="student-dashboard-first-page-inners-count">3</span>
+                        <span class="student-dashboard-first-page-inners-count"><%= totalInfo.getTotalClaimedTasks() %></span>
                     </div>
                     <i class="ri-history-line"></i>
                 </div>

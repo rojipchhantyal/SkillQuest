@@ -51,4 +51,9 @@ public class LoginService {
 
         return loginRepository.getAllTotalInfo();
     }
+
+    public TotalCounterDTOs getAllStudentInfo(int studentId){
+
+        return loginRepository.getAllStudentInfo(studentId);
+    }
 }
