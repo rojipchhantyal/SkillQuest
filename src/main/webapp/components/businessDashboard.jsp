@@ -1,6 +1,7 @@
 <%@ page import="com.skillquest.DTOs.TasksDTOs" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.skillquest.DTOs.UserInfoDTOs" %>
+<%@ page import="com.skillquest.DTOs.TotalCounterDTOs" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +47,11 @@
         <!-- for dashboard left navigation -->
         <div class="business-dashboard-left-nav">
             <div class="business-dashboard-tittle">
+
+                <%
+                TotalCounterDTOs totalInfo = (TotalCounterDTOs) request.getAttribute("totalInfo");
+                %>
+
                 <div class="business-dashboard-tittle-compartment">
                     <div class="business-dashboard-tittle-heading">
                         <h1>Business Dashboard</h1>
@@ -67,7 +73,7 @@
                     <div class="business-dashboard-first-page-inners" id="pending-user">
                         <div class="business-dashboard-first-page-inners-left">
                             <span class="business-dashboard-first-page-inners-info">Total Tasks</span>
-                            <span class="business-dashboard-first-page-inners-count">2</span>
+                            <span class="business-dashboard-first-page-inners-count"><%= totalInfo.getAllBusinessTasks() %></span>
                         </div>
                         <i class="ri-handbag-line"></i>
                     </div>
@@ -75,7 +81,7 @@
                     <div class="business-dashboard-first-page-inners" id="pending-user">
                         <div class="business-dashboard-first-page-inners-left">
                             <span class="business-dashboard-first-page-inners-info">Approved</span>
-                            <span class="business-dashboard-first-page-inners-count">3</span>
+                            <span class="business-dashboard-first-page-inners-count"><%= totalInfo.getAllBusinessApprovedTasks() %></span>
                         </div>
                         <i class="ri-check-line"></i>
                     </div>
@@ -85,7 +91,7 @@
                     <div class="business-dashboard-first-page-inners" id="pending-user">
                         <div class="business-dashboard-first-page-inners-left">
                             <span class="business-dashboard-first-page-inners-info">Pending</span>
-                            <span class="business-dashboard-first-page-inners-count">1</span>
+                            <span class="business-dashboard-first-page-inners-count"><%= totalInfo.getAllBusinessPendingTasks() %></span>
                         </div>
                         <i class="ri-timer-2-line"></i>
                     </div>
@@ -93,7 +99,7 @@
                     <div class="business-dashboard-first-page-inners" id="pending-user">
                         <div class="business-dashboard-first-page-inners-left">
                             <span class="business-dashboard-first-page-inners-info">Completed</span>
-                            <span class="business-dashboard-first-page-inners-count">5</span>
+                            <span class="business-dashboard-first-page-inners-count"><%= totalInfo.getAllBusinessCompletedTasks() %></span>
                         </div>
                         <i class="ri-check-double-line"></i>
                     </div>

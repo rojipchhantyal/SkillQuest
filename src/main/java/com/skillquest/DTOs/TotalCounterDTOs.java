@@ -1,14 +1,23 @@
 package com.skillquest.DTOs;
 
 public class TotalCounterDTOs {
+
+    //for admin total counter
     private long TotalPendingUserRegistration ;
     private long TotalPendingTasks ;
     private long TotalUsers ;
     private long TotalTasks ;
 
+    //for student total counter
     private long taskCompleted;
     private long totalEarning;
     private long totalClaimedTasks;
+
+    //for business total counter
+    private long allBusinessTasks;
+    private long allBusinessPendingTasks;
+    private long allBusinessApprovedTasks;
+    private long allBusinessCompletedTasks;
 
     public long getTotalPendingUserRegistration() {
         return TotalPendingUserRegistration;
@@ -64,5 +73,37 @@ public class TotalCounterDTOs {
 
     public void setTotalClaimedTasks(long totalClaimedTasks) {
         this.totalClaimedTasks = totalClaimedTasks;
+    }
+
+    public long getAllBusinessTasks() {
+        return allBusinessTasks;
+    }
+
+    public void setAllBusinessTasks(long allBusinessTasks) {
+        this.allBusinessTasks = allBusinessTasks;
+    }
+
+    public long getAllBusinessPendingTasks() {
+        return allBusinessPendingTasks;
+    }
+
+    public void setAllBusinessPendingTasks(long allBusinessPendingTasks) {
+        this.allBusinessPendingTasks = allBusinessPendingTasks;
+    }
+
+    public long getAllBusinessApprovedTasks() {
+        return allBusinessApprovedTasks;
+    }
+
+    public void setAllBusinessApprovedTasks(long allBusinessApprovedTasks) {
+        this.allBusinessApprovedTasks = allBusinessApprovedTasks;
+    }
+
+    public long getAllBusinessCompletedTasks() {
+        return allBusinessCompletedTasks;
+    }
+
+    public void setAllBusinessCompletedTasks(long allBusinessCompletedTasks) {
+        this.allBusinessCompletedTasks = allBusinessCompletedTasks;
     }
 }

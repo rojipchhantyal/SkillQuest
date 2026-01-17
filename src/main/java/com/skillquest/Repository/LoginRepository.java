@@ -404,4 +404,73 @@ public class LoginRepository extends DBConnection {
 
         return totalCounterDTOs;
     }
+
+    public TotalCounterDTOs getAllBusinessInfo(int businessId){
+        String query = "SELECT COUNT(*) AS totalBusinessTasks FROM tasks WHERE business_id = ?";
+
+        String query2 = "SELECT COUNT(*) AS totalBusinessApprovedTasks FROM tasks WHERE business_id = ? AND status = 'Approved'";
+
+        String query3 = "SELECT COUNT(*) AS totalBusinessPendingTasks FROM tasks WHERE business_id = ? AND status = 'Pending'";
+
+        String query4 = "SELECT COUNT(*) AS totalBusinessCompletedTasks FROM tasks WHERE business_id = ? AND status = 'Completed'";
+
+        TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                totalCounterDTOs.setAllBusinessTasks(rs.getLong("totalBusinessTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query2)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setAllBusinessApprovedTasks(rs.getLong("totalBusinessApprovedTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query3)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setAllBusinessPendingTasks(rs.getLong("totalBusinessPendingTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query4)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setAllBusinessCompletedTasks(rs.getLong("totalBusinessCompletedTasks"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalCounterDTOs;
+    }
 }
