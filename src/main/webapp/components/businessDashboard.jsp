@@ -282,175 +282,49 @@
             <!-- pending tasks-->
             <div style="display: none;" class="business-dashboard-last-page-pending-tasks" id="business-dashboard-last-page-pending-tasks">
                 <!--all pending taskslists -->
-                <div class="business-dashboard-last-page-pending-tasks-inners">
-                    <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-pending-tasks-inners-button">
-                        <span>Design</span>
-                        <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                            <button id="edit-pending-task">Edit</button>
-                            <button id="delete-pending-task">Delete</button>
-                        </div>
-                    </div>
-                </div>
+                <%
+                List<TasksDTOs> allPendingTasks = (List<TasksDTOs>) request.getAttribute("allPendingTasks");
+                if(allPendingTasks != null){
+                   for(TasksDTOs tasks : allPendingTasks){
+                        %>
+                        <div class="business-dashboard-last-page-pending-tasks-inners">
+                            <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
+                                <h3><%= tasks.getTitle() %> .</h3>
+                                <span id="panding">pending</span>
+                            </div>
 
-                <div class="business-dashboard-last-page-pending-tasks-inners">
-                    <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-pending-tasks-inners-button">
-                        <span>Design</span>
-                        <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                            <button id="edit-pending-task">Edit</button>
-                            <button id="delete-pending-task">Delete</button>
+                            <p><%= tasks.getDescription() %> .</p>
+                            <ul>
+                                <li>
+                                    <i class="ri-file-list-line"></i>
+                                    <span><%= tasks.getBusinessName() %>.</span>
+                                </li>
+                                <li>
+                                    <i class="ri-map-pin-line"></i>
+                                    <span><%= tasks.getLocation() %></span>
+                                </li>
+                                <li>
+                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <span><%= tasks.getBudget() %></span>
+                                </li>
+                                <li>
+                                    <i class="ri-calendar-event-line"></i>
+                                    <span>Deadline: <%= tasks.getDeadline() %></span>
+                                </li>
+                            </ul>
+                            <div class="business-dashboard-last-page-pending-tasks-inners-button">
+                                <span>Design</span>
+                                <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
+                                    <button id="edit-pending-task">Edit</button>
+                                    <button id="delete-pending-task">Delete</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                   <%
+                   }
+               }
+               %>
 
-                <div class="business-dashboard-last-page-pending-tasks-inners">
-                    <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-pending-tasks-inners-button">
-                        <span>Design</span>
-                        <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                            <button id="edit-pending-task">Edit</button>
-                            <button id="delete-pending-task">Delete</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="business-dashboard-last-page-pending-tasks-inners">
-                    <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-pending-tasks-inners-button">
-                        <span>Design</span>
-                        <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                            <button id="edit-pending-task">Edit</button>
-                            <button id="delete-pending-task">Delete</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="business-dashboard-last-page-pending-tasks-inners">
-                    <div class="business-dashboard-last-page-pending-tasks-inner-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span id="panding">pending</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-pending-tasks-inners-button">
-                        <span>Design</span>
-                        <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                            <button id="edit-pending-task">Edit</button>
-                            <button id="delete-pending-task">Delete</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- for active tasks -->
