@@ -66,4 +66,9 @@ public class LoginService {
 
         return loginRepository.getAllBusinessPendingTasks(businessId);
     }
+
+    public List<TasksDTOs> getAllBusinessActiveTasks(int businessId){
+
+        return loginRepository.getAllBusinessActiveTasks(businessId);
+    }
 }

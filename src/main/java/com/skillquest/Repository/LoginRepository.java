@@ -505,4 +505,36 @@ public class LoginRepository extends DBConnection {
         }
         return allPendingTasks;
     }
+
+    public List<TasksDTOs> getAllBusinessActiveTasks(int businessId){
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.business_id = ?";
+
+
+        List<TasksDTOs> allPendingTasks = new ArrayList<>();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                //check if its student or business
+                TasksDTOs tasks = new TasksDTOs();
+                tasks.setId(rs.getInt("task_id"));
+                tasks.setBusiness_id(rs.getInt("business_id"));
+                tasks.setBusinessName(rs.getString("university_businessName"));
+                tasks.setTitle(rs.getString("title"));
+                tasks.setDescription(rs.getString("description"));
+                tasks.setTask_type(rs.getString("task_type"));
+                tasks.setBudget(String.valueOf(rs.getFloat("budget")));
+                tasks.setDeadline(rs.getString("deadline"));
+
+                allPendingTasks.add(tasks);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allPendingTasks;
+    }
 }

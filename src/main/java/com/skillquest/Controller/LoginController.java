@@ -96,8 +96,12 @@ public class LoginController extends HttpServlet {
                     //all the total counter of th business
                     TotalCounterDTOs totalCounterDTOs =  loginService.getAllBusinessInfo(userInfoDTOs.getId());
 
+                    //all the business active tasks
+                    List<TasksDTOs> allBusinessActiveTasks = loginService.getAllBusinessActiveTasks(userInfoDTOs.getId());
+
                     req.setAttribute("allPostedTasks", allBusinessPostedTask);
                     req.setAttribute("allPendingTasks", allBusinessPendingTasks);
+                    req.setAttribute("allActiveTasks", allBusinessActiveTasks);
                     req.setAttribute("totalInfo", totalCounterDTOs);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/businessDashboard.jsp");
                     dispatcher.forward(req, resp);
