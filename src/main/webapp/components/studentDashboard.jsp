@@ -214,94 +214,47 @@
         <!-- for completed tasks -->
         <div style="display: none;" class="student-dashboard-last-page-completed-tasks" id="student-dashboard-last-page-completed-tasks">
             <!-- my completed task lists -->
-            <div class="student-dashboard-last-page-completed-tasks-inners">
-                <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>completed</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-completed-tasks-inners-button">
-                    <span>Design</span>
-                </div>
-            </div>
+            <%
+            List<TasksDTOs> allStudentCompletedTasks = (List<TasksDTOs>) request.getAttribute("allStudentCompletedTasks");
 
-            <div class="student-dashboard-last-page-completed-tasks-inners">
-                <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>completed</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-completed-tasks-inners-button">
-                    <span>Design</span>
-                </div>
-            </div>
-            <div class="student-dashboard-last-page-completed-tasks-inners">
-                <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>completed</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-completed-tasks-inners-button">
-                    <span>Design</span>
-                </div>
-            </div>
+            if(allStudentCompletedTasks != null){
+
+                for(TasksDTOs claimTasks : allStudentCompletedTasks){
+                    %>
+                    <div class="student-dashboard-last-page-completed-tasks-inners">
+                        <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
+                            <h3><%= claimTasks.getTitle() %> .</h3>
+                            <span>completed</span>
+                        </div>
+
+                        <p><%= claimTasks.getDescription() %> .</p>
+                        <ul>
+                            <li>
+                                <i class="ri-file-list-line"></i>
+                                <span><%= claimTasks.getBusinessName() %></span>
+                            </li>
+                            <li>
+                                <i class="ri-map-pin-line"></i>
+                                <span><%= claimTasks.getLocation() %></span>
+                            </li>
+                            <li>
+                                <i class="ri-money-dollar-circle-line"></i>
+                                <span><%= claimTasks.getBudget() %></span>
+                            </li>
+                            <li>
+                                <i class="ri-calendar-event-line"></i>
+                                <span>Deadline: <%= claimTasks.getDeadline() %></span>
+                            </li>
+                        </ul>
+                        <div class="student-dashboard-last-page-completed-tasks-inners-button">
+                            <span><%= claimTasks.getTask_type() %></span>
+                        </div>
+                    </div>
+                <%
+                }
+            }
+            %>
+
             <div class="student-dashboard-last-page-completed-tasks-inners">
                 <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
                     <h3>Web Development-Ecomerce-Site</h3>

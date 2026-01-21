@@ -76,4 +76,9 @@ public class LoginService {
 
         return loginRepository.getAllBusinessCompletedTasks(businessId);
     }
+
+    public List<TasksDTOs> getAllStudentCompletedTasks(int studentId){
+
+        return loginRepository.getAllStudentCompletedTasks(studentId);
+    }
 }
