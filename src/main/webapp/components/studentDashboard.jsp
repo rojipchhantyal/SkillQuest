@@ -199,8 +199,8 @@
                         </ul>
                         <div class="student-dashboard-last-page-my-tasks-inners-button">
                             <span><%= claimTasks.getTask_type() %></span>
-                            <button id="pending-task-submit"
-                                data-task-id="1"
+                            <button class="active-task-submit"
+                                data-task-id="<%= claimTasks.getId() %>"
                             >
                             Submit Task</button>
                         </div>
@@ -359,7 +359,7 @@
                         <i class="ri-close-line"></i>
                     </div>
                 </div>
-                <form class="main-form">
+                <form class="main-form" id="complete-Task-sender" action="" method="post" enctype="multipart/form-data">
                     <div class="form-task-info">
                         <h2>Web Development-Ecomerce-Site</h2>
                         <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
@@ -508,27 +508,38 @@
 
         // for submit task forms
         const form = document.getElementById("student-dashboard-last-page-my-task-inners-form-outer");
-        const submitBtn = document.getElementById("pending-task-submit");
+        const submitBtn = document.querySelectorAll(".active-task-submit")
 
-        // function for opening the form
-        submitBtn.addEventListener('click', () => {
-          console.log("open the form to submit the task");
-          console.log(form);
+        // collecting the id of the completed task and setting to the form which send the id to controller
+        //first collect all the buttons in class then to each button add listener
+        submitBtn.forEach(button => {
 
-          //collect the data send form btn dataset
-          const taskId = submitBtn.dataset.taskId;
-          console.log(taskId);
+            button.addEventListener('click', function(){
 
-          //button will send the id and title disc of the task got form db and send here from here we will show the form with this data
-          form.style.display = "flex";
+              console.log("open the form to submit the task");
+              console.log(form);
 
+              //collect the data send form btn dataset
+              const taskId = button.dataset.taskId;
+              console.log(taskId);
 
+              //button will send the id and title disc of the task got form db and send here from here we will show the form with this data
+              form.style.display = "flex";
+
+              //creating dynamic url using js
+              const mainForm = document.getElementById("complete-Task-sender");
+              mainForm.action = "<%= application.getContextPath() %>/submitCompleteTasks/" + taskId;
+
+              console.log("/submitCompleteTasks/" + taskId);
+            });
         });
+
         // function for close the add task form
         function closeSubmitTask(){
           console.log("closing the form to submit the task");
           form.style.display = "none";
         }
+
 
     </script>
 </body>
