@@ -201,6 +201,10 @@
                             <span><%= claimTasks.getTask_type() %></span>
                             <button class="active-task-submit"
                                 data-task-id="<%= claimTasks.getId() %>"
+                                data-task-title="<%= claimTasks.getTitle() %>"
+                                data-task-discription="<%= claimTasks.getDescription() %>"
+                                data-business-id="<%= claimTasks.getBusiness_id() %>"
+                                data-student-id="<%= claimTasks.getStudent_id() %>"
                             >
                             Submit Task</button>
                         </div>
@@ -254,36 +258,6 @@
                 }
             }
             %>
-
-            <div class="student-dashboard-last-page-completed-tasks-inners">
-                <div class="student-dashboard-last-page-completed-tasks-inners-tittle">
-                    <h3>Web Development-Ecomerce-Site</h3>
-                    <span>completed</span>
-                </div>
-                
-                <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                <ul>
-                    <li>
-                        <i class="ri-file-list-line"></i>
-                        <span>NewCo Inc.</span>
-                    </li>
-                    <li>
-                        <i class="ri-map-pin-line"></i>
-                        <span>Remote</span>
-                    </li>
-                    <li>
-                        <i class="ri-money-dollar-circle-line"></i>
-                        <span>1000</span>
-                    </li>
-                    <li>
-                        <i class="ri-calendar-event-line"></i>
-                        <span>Deadline: Jan 10, 2026</span>
-                    </li>
-                </ul>
-                <div class="student-dashboard-last-page-completed-tasks-inners-button">
-                    <span>Design</span>
-                </div>
-            </div>
         </div>
         
         <!-- for profile -->
@@ -360,9 +334,11 @@
                     </div>
                 </div>
                 <form class="main-form" id="complete-Task-sender" action="" method="post" enctype="multipart/form-data">
+                    <input type="number" style="display: none;" id="business-id" name="business-id">
+                    <input type="number" style="display: none;" id="student-id" name="student-id">
                     <div class="form-task-info">
-                        <h2>Web Development-Ecomerce-Site</h2>
-                        <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                        <h2 id="form-title-js"></h2>
+                        <p id="form-disc-js"></p>
                     </div>
 
                     <div class="form-fields">
@@ -529,6 +505,18 @@
               //creating dynamic url using js
               const mainForm = document.getElementById("complete-Task-sender");
               mainForm.action = "<%= application.getContextPath() %>/submitCompleteTasks/" + taskId;
+
+              const taskTitle = button.dataset.taskTitle;
+              const taskDisc = button.dataset.taskDiscription;
+
+              document.getElementById("form-title-js").textContent = taskTitle;
+              document.getElementById("form-disc-js").textContent = taskDisc;
+
+              const businessId = button.dataset.businessId;
+              const studentId = button.dataset.studentId;
+                console.log(studentId);
+              document.getElementById("business-id").value = businessId;
+              document.getElementById("student-id").value = studentId;
 
               console.log("/submitCompleteTasks/" + taskId);
             });

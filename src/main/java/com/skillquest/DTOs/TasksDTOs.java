@@ -15,6 +15,13 @@ public class TasksDTOs {
     private String status;
     private String created_at;
 
+    //completed tasks infos
+    private String fileName;
+    private String fileType;
+    private String githubLink;
+    private String businessMsg;
+    private String completeDate;
+
     public int getId() {
         return id;
     }
@@ -109,5 +116,45 @@ public class TasksDTOs {
 
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+
+    public String getGithubLink() {
+        return githubLink;
+    }
+
+    public void setGithubLink(String githubLink) {
+        this.githubLink = githubLink;
+    }
+
+    public String getBusinessMsg() {
+        return businessMsg;
+    }
+
+    public void setBusinessMsg(String businessMsg) {
+        this.businessMsg = businessMsg;
+    }
+
+    public String getCompleteDate() {
+        return completeDate;
+    }
+
+    public void setCompleteDate(String completeDate) {
+        this.completeDate = completeDate;
     }
 }

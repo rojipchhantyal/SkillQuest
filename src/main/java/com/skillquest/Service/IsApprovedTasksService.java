@@ -1,6 +1,7 @@
 package com.skillquest.Service;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.Repository.IsApprovedTasksRepository;
 
 import java.util.List;
@@ -26,5 +27,10 @@ public class IsApprovedTasksService {
     public List<TasksDTOs> getAllPendingTasks(){
 
         return isApprovedTasksRepository.getAllPendingTasks();
+    }
+
+    public TotalCounterDTOs getAllTotalInfo() {
+
+        return isApprovedTasksRepository.getAllTotalInfo();
     }
 }

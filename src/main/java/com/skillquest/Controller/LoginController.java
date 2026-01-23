@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
 
                     req.setAttribute("allAvailableTasks", allAvailableTasks);
                     req.setAttribute("allStudentClaimTasks", allStudentClaimTasks);
-                    req.setAttribute("allStudentCompletedTasks", allStudentClaimTasks);
+                    req.setAttribute("allStudentCompletedTasks", allStudentCompletedTasks);
                     req.setAttribute("totalInfo", totalCounterDTOs);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
                     dispatcher.forward(req, resp);

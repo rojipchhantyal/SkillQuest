@@ -1,6 +1,7 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.Service.IsApprovedTasksService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -36,10 +37,12 @@ public class IsApproveTasksController extends HttpServlet {
         List<Object> allpendingUsers = isApprovedTasksService.getAllPendingUsers();
         List<Object> allUsers = isApprovedTasksService.getAllUsers();
         List<TasksDTOs> allpendingTasks = isApprovedTasksService.getAllPendingTasks();
+        TotalCounterDTOs totalCounterDTOs = isApprovedTasksService.getAllTotalInfo();
 
         req.setAttribute("allpendingUsers", allpendingUsers);
         req.setAttribute("allUsers", allUsers);
         req.setAttribute("allpendingTasks", allpendingTasks);
+        req.setAttribute("totalInfo", totalCounterDTOs);
 
         req.setAttribute("allUsers", allUsers);
         RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");

@@ -406,44 +406,25 @@
                             </ul>
                             <div class="business-dashboard-last-page-completed-tasks-inners-button">
                                 <span><%= tasks.getTask_type()%></span>
-                                <button onclick="openViewDetailTask(1)">View In Details</button>
+                                <button class="view-in-details"
+                                    data-task-title="<%= tasks.getTitle() %>"
+                                    data-task-disc="<%= tasks.getDescription() %>"
+                                    data-business-name="<%= tasks.getBusinessName() %>"
+                                    data-task-location="<%= tasks.getLocation() %>"
+                                    data-task-budget="<%= tasks.getBudget() %>"
+                                    data-task-deadline="<%= tasks.getDeadline() %>"
+                                    data-task-type="<%= tasks.getTask_type() %>"
+                                    data-task-filename="<%= tasks.getFileName() %>"
+                                    data-task-message="<%= tasks.getBusinessMsg() %>"
+                                    data-task-github="<%= tasks.getGithubLink() %>"
+                                    data-task-compdate="<%= tasks.getCompleteDate() %>"
+                                >View In Details</button>
                             </div>
                         </div>
                    <%
                    }
                 }
                 %>
-
-                <-- <div class="business-dashboard-last-page-completed-tasks-inners">
-                    <div class="business-dashboard-last-page-completed-tasks-inners-tittle">
-                        <h3>Web Development-Ecomerce-Site</h3>
-                        <span>completed</span>
-                    </div>
-                    
-                    <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
-                    <ul>
-                        <li>
-                            <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
-                        </li>
-                        <li>
-                            <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
-                        </li>
-                        <li>
-                            <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
-                        </li>
-                        <li>
-                            <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
-                        </li>
-                    </ul>
-                    <div class="business-dashboard-last-page-completed-tasks-inners-button">
-                        <span>Design</span>
-                        <button id="view-completed-task-details">View In Details</button>
-                    </div>
-                </div> -->
             </div>
 
             <!-- business profile -->
@@ -514,47 +495,47 @@
                 </div>
                 <div class="business-dashboard-last-page-completed-tasks-outer-inners-info">
                     <div class="completed-task-view-details-fields">
-                        <h2>Web Development-Ecomerce-Site</h2>
-                        <p>Need a talented designer to create modern UI/UX for our fitness mobile app.</p>
+                        <h2 id="task-title"></h2>
+                        <p id="task-disc"></p>
                     </div>
 
                     <ul>
                         <li>
                             <i class="ri-file-list-line"></i>
-                            <span>NewCo Inc.</span>
+                            <span id="business-name"></span>
                         </li>
                         <li>
                             <i class="ri-map-pin-line"></i>
-                            <span>Remote</span>
+                            <span id="task-location"></span>
                         </li>
                         <li>
                             <i class="ri-money-dollar-circle-line"></i>
-                            <span>1000</span>
+                            <span id="task-budget"></span>
                         </li>
                         <li>
                             <i class="ri-calendar-event-line"></i>
-                            <span>Deadline: Jan 10, 2026</span>
+                            <span id="task-deadline"></span>
                         </li>
                     </ul>
 
                     <div class="completed-task-view-details-fields" id="completed-task-view-details-fields-type-of-task">
-                        <span>Design</span>
+                        <span id="task-type"></span>
                     </div>
 
                     <div class="completed-task-view-details-fields">
                         <label>Your Task File</label>
-                        <p>file Name</p>
-                        <button>Download Here</button>
+                        <p id="task-file-name"></p>
+                        <a id="download-file" href="" download>Download Here</a>
                     </div>
                     
                     <div class="completed-task-view-details-fields">
-                        <label>Message From Student</label>
-                        <textarea readonly name="message-business" id="message-business">Student message will shown here.</textarea>
+                        <label id="student-message">Message From Student</label>
+                        <textarea readonly name="message-business" id="message-business"></textarea>
                     </div>
                         
                     <div class="completed-task-view-details-fields">
                         <label>Get Project By Github</label>
-                        <a href="https://github.com/rojipchhantyal/SkillQuest">click me</a>
+                        <a id="goto-github" href="" target="_blank">click me</a>
                     </div>
 
                     <div" class="completed-task-view-details-fields" id="completed-task-view-details-fields-last">
@@ -742,12 +723,41 @@
 
         // for view details
         const inDetailsTask = document.getElementById("business-dashboard-last-page-completed-tasks-outer");
+        const submitBtn = document.querySelectorAll(".view-in-details")
+        submitBtn.forEach(button => {
 
-        function openViewDetailTask(id){
-          console.log(id+"\nOpen view details");
+            button.addEventListener('click', function(){
 
-          inDetailsTask.style.display = "flex";
-        }
+                //collecting all the data set of buttons
+                const taskTitle = button.dataset.taskTitle;
+                const taskDisc = button.dataset.taskDisc;
+                const businessName = button.dataset.businessName;
+                const taskLocation = button.dataset.taskLocation;
+                const taskBudget = button.dataset.taskBudget;
+                const taskDeadline = button.dataset.taskDeadline;
+                const taskType = button.dataset.taskType;
+                const taskFileName = button.dataset.taskFilename;
+                const taskMessage = button.dataset.taskMessage;
+                const taskGithub = button.dataset.taskGithub;
+                const taskCompDate = button.dataset.taskCompdate;
+
+                //showing to in the view details form fields
+                document.getElementById("task-title").textContent = taskTitle;
+                document.getElementById("task-disc").textContent = taskDisc;
+                document.getElementById("business-name").textContent = businessName;
+                document.getElementById("task-location").textContent = taskLocation;
+                document.getElementById("task-budget").textContent = taskBudget;
+                document.getElementById("task-deadline").textContent = "DeadLine: "+taskDeadline;
+                document.getElementById("task-type").textContent = taskType;
+                document.getElementById("task-file-name").textContent = taskFileName;
+                document.getElementById("message-business").value = taskMessage;
+                document.getElementById("download-file").href = "<%= application.getContextPath() %>/uploads/"+taskFileName;
+                document.getElementById("goto-github").href = taskGithub;
+
+                inDetailsTask.style.display = "flex";
+            });
+        });
+
         function closevewDetailTask(){
           console.log("closing the view details");
 
@@ -1526,7 +1536,8 @@
         padding: 2px 12px;
         border-radius: 12px;
     }
-    .completed-task-view-details-fields button{
+    .completed-task-view-details-fields button,
+    #download-file{
         height: 38px;
         width: 100%;
         border: none;
@@ -1539,7 +1550,8 @@
         color: var(--lightter-background);
         margin-top: 2px;
     }
-    .completed-task-view-details-fields button:hover{
+    .completed-task-view-details-fields button:hover,
+    #download-file:hover{
         background-color: var(--dark-green);
     }
     .business-dashboard-last-page-completed-tasks-outer-inners-info textarea{
