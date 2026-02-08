@@ -40,6 +40,11 @@
                         <span>Home</span>
                     </a>
                 </li>
+                <li>
+                    <a href="">
+                        <i class="ri-logout-box-line"></i>
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="nav-cover"></div>
@@ -315,8 +320,22 @@
                             <div class="business-dashboard-last-page-pending-tasks-inners-button">
                                 <span><%= tasks.getTask_type()%></span>
                                 <div class="business-dashboard-last-page-pending-tasks-inners-button-right">
-                                    <button id="edit-pending-task">Edit</button>
-                                    <button id="delete-pending-task">Delete</button>
+                                    <button id="edit-pending-task" class="edit-pending-task"
+                                        data-task-id="<%= tasks.getId() %>"
+                                        data-title="<%= tasks.getTitle() %>"
+                                        data-description="<%= tasks.getDescription() %>"
+                                        data-business-name="<%= tasks.getBusinessName() %>"
+                                        data-location="<%= tasks.getLocation() %>"
+                                        data-budget="<%= tasks.getBudget() %>"
+                                        data-deadline="<%= tasks.getDeadline() %>"
+                                        data-task-type="<%= tasks.getTask_type() %>"
+                                        data-business-id="<%= tasks.getBusiness_id() %>">
+                                        Edit
+                                    </button>
+
+                                    <button id="delete-pending-task">
+                                        <a href="<%= application.getContextPath() %>/deletePendingTask/<%= tasks.getId() %>?businessId=<%=tasks.getBusiness_id()%>">Delete</a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -325,6 +344,74 @@
                }
                %>
 
+            </div>
+
+            <!-- form for editing tasks -->
+            <div style="display: none; justify-content: center; background-color: rgba(0, 0, 0, 0.744); position: fixed; z-index: 99999; left: 0;" class="business-dashboard-post-task-wrapper" id="business-dashboard-edit-task-wrapper">
+                <div class="business-dashboard-post-task">
+                    <div class="business-dashboard-post-task-tittle">
+                        <h2>Edit Task</h2>
+                    </div>
+                    <div class="business-dashboard-post-task-tittle-cover"></div>
+                    <form id="edit-task-form" action="" method="post">
+
+                        <input style="display: none" type="text" name="id" id="edit-task-id">
+                        <input style="display: none" type="text" name="businessId" id="business_id">
+
+                        <div class="form-fields">
+                            <label for="edit-taskTittle">Task Title</label>
+                            <input type="text" name="taskTittle" id="edit-taskTittle" placeholder="e.g., Mobile app UI/UX Design">
+                        </div>
+
+                        <div class="form-fields">
+                            <label for="edit-taskDescription">Description</label>
+                            <textarea name="taskDescription" id="edit-taskDescription" placeholder="Describe the task in details.."></textarea>
+                        </div>
+
+                        <ul>
+                            <li>
+                                <label for="edit-taskType">Task Type</label>
+                                <select name="taskType" id="edit-taskType">
+                                    <option value="Design">Design</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Writing">Writing</option>
+                                    <option value="Video Editing">Video Editing</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label for="edit-location">Location</label>
+                                <div class="inputs">
+                                    <i class="ri-map-pin-line"></i>
+                                    <input type="text" name="location" id="edit-location" placeholder="e.g., Remote, Kathmandu Nepal">
+                                </div>
+                            </li>
+                            <li>
+                                <label for="edit-budget">Budget</label>
+                                <div class="inputs">
+                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <input type="number" name="budget" id="edit-budget" placeholder="100">
+                                </div>
+                            </li>
+                            <li>
+                                <label for="edit-deadline">Deadline</label>
+                                <div class="inputs">
+                                    <i class="ri-calendar-2-line"></i>
+                                    <input type="date" name="deadline" id="edit-deadline">
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="form-button-field">
+                            <button onclick="closeEditTask()" id="form-button-field-cancle" type="button">Cancel</button>
+                            <button id="form-button-field-submit">Update Task</button>
+                        </div>
+                    </form>
+
+                    <!-- form hider button -->
+                    <div class="business-dashboard-post-task-hider" onclick="closeEditTask()">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
             </div>
 
             <!-- for active tasks -->
@@ -721,10 +808,39 @@
           form.style.display = "none";
         }
 
+        const editFormWrapper = document.getElementById("business-dashboard-edit-task-wrapper");
+        const editForm = document.getElementById("edit-task-form");
+        const editButtons = document.querySelectorAll(".edit-pending-task");
+
+        editButtons.forEach(button => {
+            button.addEventListener("click", function() {
+
+                editFormWrapper.style.display = "flex";
+
+                editForm.action = "<%= application.getContextPath() %>/updateTask/" + button.dataset.taskId;
+
+                document.getElementById("edit-task-id").value = button.dataset.taskId;
+                document.getElementById("edit-taskTittle").value = button.dataset.title;
+                document.getElementById("edit-taskDescription").value = button.dataset.description;
+                document.getElementById("edit-taskType").value = button.dataset.taskType;
+                document.getElementById("edit-location").value = button.dataset.location;
+                document.getElementById("edit-budget").value = button.dataset.budget;
+                document.getElementById("edit-deadline").value = button.dataset.deadline;
+                document.getElementById("business_id").value = button.dataset.businessId;
+
+            });
+        });
+
+        // close function
+        function closeEditTask() {
+            editFormWrapper.style.display = "none";
+            editForm.reset(); // clears old values
+        }
+
         // for view details
         const inDetailsTask = document.getElementById("business-dashboard-last-page-completed-tasks-outer");
-        const submitBtn = document.querySelectorAll(".view-in-details")
-        submitBtn.forEach(button => {
+        const viewBtn = document.querySelectorAll(".view-in-details")
+        viewBtn.forEach(button => {
 
             button.addEventListener('click', function(){
 
@@ -1604,5 +1720,9 @@
     }
     .business-dashboard-last-page-completed-tasks-outer-inners-hider:hover i{
         color: var(--white);
+    }
+    #delete-pending-task a{
+        color: var(--red);
+        text-decoration: none;
     }
 </style>

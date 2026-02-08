@@ -1,9 +1,9 @@
 package com.skillquest.Controller;
 
-import com.skillquest.DTOs.LoginDTOs;
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
+import com.skillquest.Service.DeletePendingTasksService;
 import com.skillquest.Service.LoginService;
 import com.skillquest.Service.PostTasksService;
 import jakarta.servlet.RequestDispatcher;
@@ -16,30 +16,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/postTask")
-public class PostTasksController extends HttpServlet {
+@WebServlet("/deletePendingTask/*")
+public class DeletePendingTasksController extends HttpServlet {
 
-    PostTasksService postTasksService = new PostTasksService();
+    DeletePendingTasksService deletePendingTasksService = new DeletePendingTasksService();
     LoginService loginService = new LoginService();
+    PostTasksService postTasksService = new PostTasksService();
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        TasksDTOs tasksDTOs = new TasksDTOs();
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        int businessId = Integer.parseInt(req.getParameter("id"));
+        int businessId = Integer.parseInt(req.getParameter("businessId"));
 
-        System.out.println("post task controller");
+        String pathVar = req.getPathInfo();
+        int taskId = 0;
 
-        // Collecting the form data
-        tasksDTOs.setBusiness_id(businessId);
-        tasksDTOs.setTitle(req.getParameter("taskTittle"));
-        tasksDTOs.setDescription(req.getParameter("taskDescription"));
-        tasksDTOs.setTask_type(req.getParameter("taskType"));
-        tasksDTOs.setLocation(req.getParameter("location"));
-        tasksDTOs.setBudget(req.getParameter("budget"));
-        tasksDTOs.setDeadline(req.getParameter("deadline"));
+        if(pathVar != null && !pathVar.isEmpty()){
+            taskId = Integer.parseInt(pathVar.substring(1));
+        }
+        else{
+            //here return to the page with message
+        }
 
-        postTasksService.saveTasks(tasksDTOs);
+        deletePendingTasksService.deletePendingTaskById(taskId);
 
         //get all the tasks that the business posted
         List<TasksDTOs> allBusinessPostedTask = loginService.getAllBusinessPostedTask(businessId);
@@ -65,8 +64,8 @@ public class PostTasksController extends HttpServlet {
         req.setAttribute("allCompletedTasks", allBusinessCompletedTasks);
         req.setAttribute("totalInfo", totalCounterDTOs);
         req.setAttribute("userInfo", userInfoDTOs);
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/components/businessDashboard.jsp");
         dispatcher.forward(req, resp);
-
     }
 }

@@ -1,6 +1,7 @@
 package com.skillquest.Service;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Entity.Tasks;
 import com.skillquest.Repository.PostTasksRepository;
 import com.skillquest.Util.CurrentTimeInFormated;
@@ -24,5 +25,10 @@ public class PostTasksService {
 
         postTasksRepository.saveTasks(tasks);
 
+    }
+
+    public UserInfoDTOs getUserInfo(int businessId){
+
+        return postTasksRepository.getUserInfo(businessId);
     }
 }

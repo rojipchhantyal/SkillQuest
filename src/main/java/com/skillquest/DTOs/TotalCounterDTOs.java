@@ -19,6 +19,9 @@ public class TotalCounterDTOs {
     private long allBusinessApprovedTasks;
     private long allBusinessCompletedTasks;
 
+    //for both student and business
+    private int fund;
+
     public long getTotalPendingUserRegistration() {
         return TotalPendingUserRegistration;
     }
@@ -105,5 +108,13 @@ public class TotalCounterDTOs {
 
     public void setAllBusinessCompletedTasks(long allBusinessCompletedTasks) {
         this.allBusinessCompletedTasks = allBusinessCompletedTasks;
+    }
+
+    public int getFund() {
+        return fund;
+    }
+
+    public void setFund(int fund) {
+        this.fund = fund;
     }
 }

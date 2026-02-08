@@ -39,6 +39,11 @@
                         <span>Home</span>
                     </a>
                 </li>
+                <li>
+                    <a href="">
+                        <i class="ri-logout-box-line"></i>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- for dashboard left navigation -->
@@ -66,9 +71,9 @@
             <div class="student-dashboard-first-page-inners" id="pending-user">
                     <div class="student-dashboard-first-page-inners-left">
                         <span class="student-dashboard-first-page-inners-info">Total Earnings</span>
-                        <span class="student-dashboard-first-page-inners-count">$ 3000</span>
+                        <span class="student-dashboard-first-page-inners-count"><%= totalInfo.getFund() %></span>
                     </div>
-                    <i class="ri-money-dollar-circle-line"></i>
+                    <i class="ri-wallet-2-line"></i>
                 </div>
 
                 <div class="student-dashboard-first-page-inners" id="pending-user">
@@ -190,7 +195,7 @@
                             </li>
                             <li>
                                 <i class="ri-money-dollar-circle-line"></i>
-                                <span><%= claimTasks.getBudget() %></span>
+                                <span><%= claimTasks.getStudent_id() %></span>
                             </li>
                             <li>
                                 <i class="ri-calendar-event-line"></i>
@@ -335,7 +340,7 @@
                 </div>
                 <form class="main-form" id="complete-Task-sender" action="" method="post" enctype="multipart/form-data">
                     <input type="number" style="display: none;" id="business-id" name="business-id">
-                    <input type="number" style="display: none;" id="student-id" name="student-id">
+                    <input type="text" style="display: none;" id="student-id" name="student-id">
                     <div class="form-task-info">
                         <h2 id="form-title-js"></h2>
                         <p id="form-disc-js"></p>
@@ -514,7 +519,7 @@
 
               const businessId = button.dataset.businessId;
               const studentId = button.dataset.studentId;
-                console.log(studentId);
+                console.log("student id"+studentId);
               document.getElementById("business-id").value = businessId;
               document.getElementById("student-id").value = studentId;
 

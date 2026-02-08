@@ -1,10 +1,12 @@
 package com.skillquest.Repository;
 
+import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Entity.Tasks;
 import com.skillquest.Util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PostTasksRepository extends DBConnection {
@@ -29,5 +31,29 @@ public class PostTasksRepository extends DBConnection {
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public UserInfoDTOs getUserInfo(int businessId){
+
+        UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
+
+        String query = "SELECT id, name, university_businessName, role FROM users WHERE id = ?";
+
+        try(Connection con = getConnection();
+            PreparedStatement ps = con.prepareStatement(query)){
+            ps.setInt(1, businessId);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                userInfoDTOs.setId(rs.getInt("id"));
+                userInfoDTOs.setName(rs.getString("name"));
+                userInfoDTOs.setBusinessName(rs.getString("university_businessName"));
+                userInfoDTOs.setRole(rs.getString("role"));
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return userInfoDTOs;
     }
 }

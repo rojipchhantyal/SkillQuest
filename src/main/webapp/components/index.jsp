@@ -42,7 +42,7 @@
             </div>
             <ul class="nav-navigation">
                 <li>
-                    <a href="">
+                    <a href="<%= application.getContextPath() %>/components/login.jsp">
                         <span>Post Tasks</span>
                     </a>
                 </li>
@@ -67,18 +67,18 @@
             </div>
         </div>
         <div class="home-available-task-page">
-            <div class="home-available-task-page-search">
+            <form class="home-available-task-page-search" action="<%= application.getContextPath() %>/searchTasks" method="get">
                 <div class="home-available-task-page-search-inners">
                     <i class="ri-search-line"></i>
-                    <input type="text" name="" id="" placeholder="Search tasks..">
+                    <input type="text" name="tittle" id="" placeholder="Search tasks..">
                 </div>
                 <div class="home-available-task-page-search-inners">
                     <i class="ri-map-pin-line"></i>
-                    <input type="text" name="" id="" placeholder="Location..">
+                    <input type="text" name="location" id="" placeholder="Location..">
                 </div>
                 <div class="home-available-task-page-search-inners">
                     <i class="ri-recycle-line"></i>
-                    <select name="" id="">
+                    <select name="type" id="">
                         <option value="all type" selected>All Types</option>
                         <option value="Design">Design</option>
                         <option value="Writing">Writing</option>
@@ -86,11 +86,24 @@
                         <option value="Development">Development</option>
                     </select>
                 </div>
-            </div>
+                <button style="border: none;" type="submit">
+                    <i id="last-search-icon" class="ri-search-line"></i>
+                </button>
+            </form>
             <div class="home-available-task-page-tasks">
                 <div class="home-available-task-page-tasks-tittle">
                     <h2>Available Tasks</h2>
-                    <span>6 tasks found</span>
+                    <span>
+                    <%
+                     Integer totalTaskCounter = (Integer)request.getAttribute("taskCounter");
+                     if( totalTaskCounter != null){
+                        out.print(totalTaskCounter);
+                     }
+                     else{
+                        out.print(0);
+                     }
+                     %>
+                      tasks found</span>
                 </div>
                 <div class="home-available-task-page-tasks-list">
                     <!-- lists of the tasks -->
@@ -144,7 +157,7 @@
         </div>
     </main>
     <footer>
-        <p>© 2024 SkillQuest. All rights reserved.</p>
+        <p> SkillQuest. </p>
     </footer>
 </body>
 </html>
@@ -299,6 +312,19 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+    #last-search-icon{
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--gray);
+        background-color: var(--background);
+        padding: 8px;
+        border-radius: 8px;
+        transition: all ease-in-out 0.3s;
+    }
+    #last-search-icon:hover{
+        color: var(--dark-green);
+        background-color: var(--gray);
     }
     .home-available-task-page-search-inners{
         background-color: var(--background);

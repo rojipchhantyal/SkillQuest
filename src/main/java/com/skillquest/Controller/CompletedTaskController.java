@@ -1,8 +1,13 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
+import com.skillquest.Service.ClaimTasksStudentService;
 import com.skillquest.Service.CompletedTaskService;
+import com.skillquest.Service.LoginService;
 import com.skillquest.Util.CurrentTimeInFormated;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,12 +22,14 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @WebServlet("/submitCompleteTasks/*")
 @MultipartConfig
 public class CompletedTaskController extends HttpServlet {
 
     CompletedTaskService completedTaskService = new CompletedTaskService();
+    LoginService loginService = new LoginService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,17 +52,25 @@ public class CompletedTaskController extends HttpServlet {
         int businessId = Integer.parseInt(req.getParameter("business-id"));
         int studentId = Integer.parseInt(req.getParameter("student-id"));
 
-        System.out.println("asdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
-        System.out.println(studentId);
-
-        // Save file to disk (uploads folder)
+        /// Save file to disk (uploads folder)
         String uploadDir = getServletContext().getRealPath("/uploads");
         File uploadFolder = new File(uploadDir);
-        if (!uploadFolder.exists()) uploadFolder.mkdirs();
 
+        // Ensure the uploads directory exists
+        if (!uploadFolder.exists()) {
+            uploadFolder.mkdirs();
+        }
+
+        // Create a File object for the uploaded file
         File file = new File(uploadFolder, fileName);
+
+        // Copy the uploaded file into the folder, replacing if it already exists
         try (InputStream input = filePart.getInputStream()) {
             Files.copy(input, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+            resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "File upload failed.");
+            return; // stop execution if file save fails
         }
 
         TasksDTOs tasksDTOs = new TasksDTOs();
@@ -68,6 +83,29 @@ public class CompletedTaskController extends HttpServlet {
         tasksDTOs.setGithubLink(githubLink);
         tasksDTOs.setCompleteDate(CurrentTimeInFormated.getCurrentTimeInFormated());
 
+        //redirect to the student dashboard with the data
+        //sending the avialable tasks
+
+        List<TasksDTOs> allAvailableTasks = completedTaskService.getAllAvailableTasks();
+
+        List<TasksDTOs> allStudentClaimTasks = completedTaskService.getAllStudentClaimTasks(studentId);
+
+
+        TotalCounterDTOs totalCounterDTOs = loginService.getAllStudentInfo(studentId);
+
+        List<TasksDTOs> allStudentCompletedTasks = loginService.getAllStudentCompletedTasks(studentId);
+
+        UserInfoDTOs userInfoDTOs = completedTaskService.getUserInfo(studentId);
+
+        req.setAttribute("allAvailableTasks", allAvailableTasks);
+        req.setAttribute("allStudentClaimTasks", allStudentClaimTasks);
+        req.setAttribute("allStudentCompletedTasks", allStudentCompletedTasks);
+        req.setAttribute("totalInfo", totalCounterDTOs);
+        req.setAttribute("userInfo", userInfoDTOs);
+
         completedTaskService.saveCompletedTasks(taskId, tasksDTOs);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
+        dispatcher.forward(req, resp);
     }
 }

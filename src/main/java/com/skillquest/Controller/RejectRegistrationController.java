@@ -1,6 +1,8 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
+import com.skillquest.Service.LoginService;
 import com.skillquest.Service.RejectRegistrationService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -16,6 +18,7 @@ import java.util.List;
 public class RejectRegistrationController extends HttpServlet {
 
     RejectRegistrationService registrationService = new RejectRegistrationService();
+    LoginService loginService = new LoginService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -44,6 +47,8 @@ public class RejectRegistrationController extends HttpServlet {
             List<TasksDTOs> allpendingTasks = registrationService.getAllPendingTasks();
             req.setAttribute("allpendingTasks", allpendingTasks);
 
+            TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
         }
@@ -53,6 +58,9 @@ public class RejectRegistrationController extends HttpServlet {
 
             List<Object> allpendingUsers = registrationService.getAllPendingUsers();
             req.setAttribute("allpendingUsers", allpendingUsers);
+
+            TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
+            req.setAttribute("totalInfo", totalCounterDTOs);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);

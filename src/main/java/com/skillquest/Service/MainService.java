@@ -14,4 +14,9 @@ public class MainService {
         System.out.println("index task service");
         return mainRepository.getAllTasks();
     }
+
+    public int getTotalAvailableTasks(){
+
+        return mainRepository.getTotalAvailableTasks();
+    }
 }

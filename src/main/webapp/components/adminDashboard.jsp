@@ -369,12 +369,23 @@
                                             </span>
                                         </div>
                                         <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
-                                            <span>Tasks Completed: 5</span>
+                                            <span>Location: <%= student.getLocation()%></span>
                                         </div>
                                     </div>
                                     <div class="admin-dashboard-last-page-users-lower-inners-options">
-                                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
-                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                                        <button class="admin-dashboard-last-page-users-lower-inners-options-accept" id="admin-dashboard-last-page-users-lower-inners-options-accept"
+                                            data-name="<%= student.getFullName() %>"
+                                            data-email="<%= student.getEmail() %>"
+                                            data-ubname="<%= student.getUniversityName() %>"
+                                            data-mbType="<%= student.getMajor() %>"
+                                            data-phone="<%= student.getPhone() %>"
+                                            data-location="<%= student.getLocation() %>"
+                                            data-role="<%= student.getRole() %>"
+                                            data-rdate="<%= student.getRegistredDate() %>"
+                                        >View Details</button>
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">
+                                            <a href="<%= application.getContextPath() %>/banUser/<%= student.getStudentId() %>">Ban User</a>
+                                        </button>
                                     </div>
                                 </div>
                                 <%
@@ -399,12 +410,23 @@
                                             </span>
                                         </div>
                                         <div class="admin-dashboard-last-page-users-lower-inners-info-extra-info">
-                                            <span>Tasks Posted: 8</span>
+                                            <span>Location: <%= business.getLocation()%></span>
                                         </div>
                                     </div>
                                     <div class="admin-dashboard-last-page-users-lower-inners-options">
-                                        <button id="admin-dashboard-last-page-users-lower-inners-options-accept">View Details</button>
-                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">Ban User</button>
+                                        <button class="admin-dashboard-last-page-users-lower-inners-options-accept" id="admin-dashboard-last-page-users-lower-inners-options-accept"
+                                            data-name="<%= business.getContactName() %>"
+                                            data-email="<%= business.getEmail() %>"
+                                            data-ubname="<%= business.getBusinessName() %>"
+                                            data-mbType="<%= business.getBusinesstype() %>"
+                                            data-phone="<%= business.getPhone() %>"
+                                            data-location="<%= business.getLocation() %>"
+                                            data-role="<%= business.getRole() %>"
+                                            data-rdate="<%= business.getRegistredDate() %>"
+                                        >View Details</button>
+                                        <button id="admin-dashboard-last-page-users-lower-inners-options-reject">
+                                            <a href="<%= application.getContextPath() %>/banUser/<%= business.getBusinessId() %>">Ban User</a>
+                                        </button>
                                     </div>
                                 </div>
                                 <%
@@ -415,7 +437,52 @@
                 </div>
             </div>
         </div>
-        
+        <div class="admin-dashboard-last-page-users-lower-user-details" id="admin-dashboard-last-page-users-lower-user-details">
+            <div class="admin-dashboard-last-page-users-lower-user-details-inner">
+
+                <div id="close-details">
+                    <i class="ri-close-large-line"></i>
+                </div>
+
+                <div class="admin-dashboard-last-page-users-lower-user-details-inner-top">
+                    <i class="ri-user-line"></i>
+                    <span id="name"></span>
+                    <span id="email"></span>
+                </div>
+                <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom">
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span id="unameOr" class="data-lable"></span>
+                        <span id="uname" class="data"></span>
+                    </div>
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span id="majorOr" class="data-lable"></span>
+                        <span id="major" class="data"></span>
+                    </div>
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span class="data-lable">Phone :</span>
+                        <span id="phone" class="data"></span>
+                    </div>
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span class="data-lable">Location :</span>
+                        <span id="location" class="data"></span>
+                    </div>
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span class="data-lable">Role :</span>
+                        <span id="role" class="data"></span>
+                    </div>
+
+                    <div class="admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields">
+                        <span class="data-lable">Registred Date :</span>
+                        <span id="regDate" class="data"></span>
+                    </div>
+                </div>
+            <div>
+        <div>
     </main>
     <script>
         // check if the search input is focus of not
@@ -502,6 +569,41 @@
 
           manageUserNav.style.color = "oklch(0.707 0.022 261.325)";
           manageUserNav.borderColor = "rgba(255, 0, 0, 0)";
+        });
+
+        // for submit task forms
+        const details = document.getElementById("admin-dashboard-last-page-users-lower-user-details");
+        const submitBtns = document.querySelectorAll(".admin-dashboard-last-page-users-lower-inners-options-accept")
+
+        submitBtns.forEach(button => {
+            button.addEventListener('click', function() {
+                // show the details panel
+                details.style.display = "flex";
+
+                // fill in the user details section
+                document.getElementById("name").textContent = button.dataset.name;
+                document.getElementById("email").textContent = button.dataset.email;
+                document.getElementById("uname").textContent = button.dataset.ubname;
+                document.getElementById("major").textContent = button.dataset.mbtype;
+                document.getElementById("phone").textContent = button.dataset.phone;
+                document.getElementById("location").textContent = button.dataset.location;
+                document.getElementById("role").textContent = button.dataset.role;
+                document.getElementById("regDate").textContent = button.dataset.rdate;
+
+                // role check: change labels if it's a business
+                if (button.dataset.role.toLowerCase() === "business") {
+                    document.getElementById("unameOr").textContent = "Business Name :";
+                    document.getElementById("majorOr").textContent = "Business Type :";
+                } else {
+                    document.getElementById("unameOr").textContent = "University Name :";
+                    document.getElementById("majorOr").textContent = "Major :";
+                }
+            });
+        });
+
+        // close button logic
+        document.getElementById("close-details").addEventListener("click", function() {
+            details.style.display = "none";
         });
     </script>
 </body>
@@ -1025,5 +1127,93 @@
     #admin-dashboard-last-page-users-lower-inners-options-accept:hover{
         background-color: var(--green-bgc);
         color: var(--background);
+    }
+    #admin-dashboard-last-page-users-lower-inners-options-reject a{
+        color: var(--red);
+        text-decoration: none;
+        transition: all ease-in 0.3s;
+    }
+    #admin-dashboard-last-page-users-lower-inners-options-reject:hover a{
+        color: var(--white);
+    }
+    .admin-dashboard-last-page-users-lower-user-details{
+        position: fixed;
+        top: 0;
+        z-index: 9999999;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.84);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner{
+        width: 52%;
+        background-color: var(--background);
+        border-radius: 12px;
+        padding: 52px 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner-top{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner-top span{
+        color: var(--gray);
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner i{
+        font-size: 24px;
+        font-weight: 500;
+        background-color: var(--dark-green);
+        padding: 18px;
+        border-radius: 50%;
+        margin-bottom: 4px;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner span{
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner-bottom{
+        width: 80%;
+        display: grid;
+        font-size: 16px;
+        font-weight: 500;
+        gap: 12px;
+        grid-template-columns: 50% 50%;
+    }
+    .admin-dashboard-last-page-users-lower-user-details-inner-bottom-fields{
+        background-color: var(--lightter-background);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+    .data{
+        color: var(--gray);
+    }
+    .data-lable{
+        color: var(--dark-green);
+    }
+    #close-details{
+        position: absolute;
+        top: 22px;
+        right: 22px;
+    }
+    #close-details i{
+        padding: 0;
+        background-color: rgba(245, 222, 179, 0);
+        color: var(--white);
+        transition: all ease-in-out 0.3s;
+    }
+    #close-details:hover i{
+        color: var(--red);
     }
 </style>

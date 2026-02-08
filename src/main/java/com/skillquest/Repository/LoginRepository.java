@@ -72,6 +72,8 @@ public class LoginRepository extends DBConnection {
                     student.setStatus(rs.getString("status"));
                     student.setRegistredDate(rs.getString("registredDate"));
 
+                    System.out.println(rs.getString("registredDate"));
+
                     System.out.println("adding student");
                     allPandingUsers.add(student);
                 }
@@ -86,6 +88,7 @@ public class LoginRepository extends DBConnection {
                     business.setLocation(rs.getString("location"));
                     business.setStatus(rs.getString("status"));
                     business.setRegistredDate(rs.getString("registredDate"));
+                    System.out.println(rs.getString("registredDate"));
                     System.out.println("adding business");
 
                     allPandingUsers.add(business);
@@ -122,6 +125,15 @@ public class LoginRepository extends DBConnection {
                     student.setLocation(rs.getString("location"));
                     student.setStatus(rs.getString("status"));
                     student.setRegistredDate(rs.getString("registredDate"));
+
+                    student.getFullName();
+                    student.getLocation();
+                    student.getMajor();
+                    student.getPhone();
+                    student.getUniversityName();
+                    student.getRole();
+                    student.getRegistredDate();
+                    student.getEmail();
 
                     System.out.println("\n\n\n\nstudent with approved");
                     allUsers.add(student);
@@ -220,7 +232,7 @@ public class LoginRepository extends DBConnection {
 
     public List<TasksDTOs> getAllClaimTasks(int studentId){
 
-        String query = "SELECT t.task_id, t.student_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline " +
+        String query = "SELECT t.task_id, t.student_id, t.business_id, u.university_businessName, t.title, t.location, t.description, t.task_type, t.budget, t.deadline " +
                 "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.student_id = ?";
 
 
@@ -235,11 +247,15 @@ public class LoginRepository extends DBConnection {
                 //check if its student or business
                 TasksDTOs tasks = new TasksDTOs();
                 tasks.setId(rs.getInt("task_id"));
-                tasks.setStudent_id(rs.getInt("student_id"));
+                tasks.setStudent_id(studentId);
+
+                System.out.println(tasks.getStudent_id());
+
                 tasks.setBusiness_id(rs.getInt("business_id"));
                 tasks.setBusinessName(rs.getString("university_businessName"));
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setTask_type(rs.getString("task_type"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
@@ -359,10 +375,11 @@ public class LoginRepository extends DBConnection {
 
         String query2 = "SELECT COUNT(*) AS totalActiveTasks FROM tasks WHERE student_id = ? AND status = 'Claimed'";
 
-//        String query3 = "SELECT COUNT(*) AS totalUsers FROM users WHERE status = 'approved'";
+        String query3 = "SELECT fund FROM users WHERE id = ?";
 
         TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
 
+        //for student completed tasks
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
@@ -376,6 +393,7 @@ public class LoginRepository extends DBConnection {
             e.printStackTrace();
         }
 
+        //for student claim tasks
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query2)) {
 
@@ -390,18 +408,20 @@ public class LoginRepository extends DBConnection {
             e.printStackTrace();
         }
 
-//        try (Connection con = getConnection();
-//             PreparedStatement ps = con.prepareStatement(query3)) {
-//
-//            ResultSet rs = ps.executeQuery();
-//
-//            if(rs.next()) {
-//                totalCounterDTOs.setTotalUsers(rs.getLong("totalUsers"));
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        //for student fund
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query3)) {
+
+            ps.setInt(1, studentId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setFund(rs.getInt("fund"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return totalCounterDTOs;
     }
@@ -414,6 +434,8 @@ public class LoginRepository extends DBConnection {
         String query3 = "SELECT COUNT(*) AS totalBusinessPendingTasks FROM tasks WHERE business_id = ? AND status = 'Pending'";
 
         String query4 = "SELECT COUNT(*) AS totalBusinessCompletedTasks FROM tasks WHERE business_id = ? AND status = 'Completed'";
+
+        String query5 = "SELECT fund FROM users WHERE id = ?";
 
         TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
 
@@ -472,6 +494,20 @@ public class LoginRepository extends DBConnection {
             e.printStackTrace();
         }
 
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query5)) {
+
+            ps.setInt(1, businessId);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs.next()) {
+                totalCounterDTOs.setFund(rs.getInt("fund"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return totalCounterDTOs;
     }
 
@@ -495,6 +531,7 @@ public class LoginRepository extends DBConnection {
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
                 tasks.setTask_type(rs.getString("task_type"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
 
@@ -526,6 +563,7 @@ public class LoginRepository extends DBConnection {
                 tasks.setBusinessName(rs.getString("university_businessName"));
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setTask_type(rs.getString("task_type"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));

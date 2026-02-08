@@ -1,5 +1,6 @@
 package com.skillquest.Repository;
 
+import com.skillquest.DTOs.SearchKeywordDTOs;
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.Util.DBConnection;
@@ -11,19 +12,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainRepository extends DBConnection {
+public class SearchTasksRepository extends DBConnection {
 
-    public List<TasksDTOs> getAllTasks(){
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved'";
 
+    public List<TasksDTOs> searchTask(SearchKeywordDTOs searchKeywordDTOs){
+
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, " +
+                "t.title, t.description, t.task_type, t.location, t.budget, t.deadline " +
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved' " +
+                "AND (t.title LIKE ? OR t.location LIKE ? OR t.task_type LIKE ?)";
 
         List<TasksDTOs> allTasks = new ArrayList<>();
 
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
+            ps.setString(1, searchKeywordDTOs.getTittle());
+            ps.setString(2, searchKeywordDTOs.getLocation());
+            ps.setString(3, searchKeywordDTOs.getType());
+
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
                 //check if its student or business
                 TasksDTOs tasks = new TasksDTOs();
@@ -37,30 +46,37 @@ public class MainRepository extends DBConnection {
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
 
-                System.out.println("index  tasks repo");
                 allTasks.add(tasks);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return allTasks;
     }
 
-    public int getTotalAvailableTasks(){
-        String query = "SELECT COUNT(*) AS totalAvailableTaskCount FROM tasks WHERE status = 'Approved'";
-
+    public int getCountTask(SearchKeywordDTOs searchKeywordDTOs){
+        String countQuery = "SELECT COUNT(*) AS total " +
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved' " +
+                "AND (t.title LIKE ? OR t.location LIKE ? OR t.task_type LIKE ?)";
 
         TotalCounterDTOs totalCounterDTOs = new TotalCounterDTOs();
 
         int taskCounter = 0;
 
         try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(query)) {
+             PreparedStatement ps = con.prepareStatement(countQuery)) {
+
+            ps.setString(1, searchKeywordDTOs.getTittle());
+            ps.setString(2, searchKeywordDTOs.getLocation());
+            ps.setString(3, searchKeywordDTOs.getType());
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                taskCounter = rs.getInt("totalAvailableTaskCount");
+                taskCounter = rs.getInt("total");
+
+                System.out.println(taskCounter);
 
             }
 

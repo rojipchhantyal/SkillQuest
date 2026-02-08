@@ -1,8 +1,11 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
 import com.skillquest.Service.ClaimTasksStudentService;
+import com.skillquest.Service.CompletedTaskService;
+import com.skillquest.Service.LoginService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +20,8 @@ import java.util.List;
 public class ClaimTasksStudentController extends HttpServlet {
 
     ClaimTasksStudentService claimTasksStudentService = new ClaimTasksStudentService();
+    LoginService loginService = new LoginService();
+
     int stuedentId;
 
     @Override
@@ -38,14 +43,21 @@ public class ClaimTasksStudentController extends HttpServlet {
         //getting all the student claim tasks
         List<TasksDTOs> allStudentClainTasks = claimTasksStudentService.getAllStudentClaimTasks(stuedentId);
 
-        UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
-        userInfoDTOs.setId(stuedentId);
+        TotalCounterDTOs totalCounterDTOs = loginService.getAllStudentInfo(stuedentId);
+
+        List<TasksDTOs> allStudentCompletedTasks = loginService.getAllStudentCompletedTasks(stuedentId);
+
+        UserInfoDTOs userInfoDTOs = claimTasksStudentService.getUserInfo(stuedentId);
 
         req.setAttribute("allAvailableTasks", allAvailableTasks);
         req.setAttribute("allStudentClaimTasks", allStudentClainTasks);
+        req.setAttribute("allStudentCompletedTasks", allStudentCompletedTasks);
+        req.setAttribute("totalInfo", totalCounterDTOs);
         req.setAttribute("userInfo", userInfoDTOs);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/components/studentDashboard.jsp");
+
+
         dispatcher.forward(req, resp);
     }
 }
