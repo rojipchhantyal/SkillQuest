@@ -126,7 +126,7 @@
                                            <span><%= tasks.getLocation() %></span>
                                        </li>
                                        <li>
-                                           <i class="ri-money-dollar-circle-line"></i>
+                                           <i class="ri-cash-line"></i>
                                            <span><%= tasks.getBudget() %></span>
                                        </li>
                                        <li>

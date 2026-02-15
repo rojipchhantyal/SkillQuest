@@ -37,6 +37,11 @@ public class LoginService {
         return loginRepository.getAllAvailableTasks();
     }
 
+    public List<TasksDTOs> getAllCompletionPendingTasks(){
+
+        return loginRepository.getAllCompletionPendingTasks();
+    }
+
     public List<TasksDTOs> getAllClaimTasks(int studentId){
 
         return loginRepository.getAllClaimTasks(studentId);

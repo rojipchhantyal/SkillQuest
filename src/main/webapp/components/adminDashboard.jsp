@@ -46,13 +46,18 @@
             </div>
             <ul class="nav-navigation">
                 <li>
-                    <a href="">
+                    <a href="#">
                         <span>Browse Tasks</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./assets/components/login.html">
+                    <a href="<%= application.getContextPath() %>">
                         <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<%= application.getContextPath() %>/components/login.jsp">
+                        <i class="ri-logout-box-line"></i>
                     </a>
                 </li>
             </ul>
@@ -115,12 +120,18 @@
                 <div class="admin-dashboard-second-page-navigation-nav">
                     <div class="admin-dashboard-second-page-navigation-nav-inners" id="admin-dashboard-second-page-navigation-nav-registration">
                         <i class="ri-group-line"></i>
-                        <span>Registrations</span>
+                        <span>Pending Registrations</span>
                     </div>
                     <div class="admin-dashboard-second-page-navigation-nav-inners" id="admin-dashboard-second-page-navigation-nav-tasks">
-                        <i class="ri-group-line"></i>
-                        <span>Tasks</span>
+                        <i class="ri-file-copy-2-fill"></i>
+                        <span>Pending Tasks</span>
                     </div>
+
+                    <div class="admin-dashboard-second-page-navigation-nav-inners" id="admin-dashboard-second-page-navigation-nav-completed-tasks">
+                        <i class="ri-file-copy-2-fill"></i>
+                        <span>Pending Completions</span>
+                    </div>
+
                     <div class="admin-dashboard-second-page-navigation-nav-inners" id="admin-dashboard-second-page-navigation-nav-manage-user">
                         <i class="ri-group-line"></i>
                         <span>Manages Users</span>
@@ -296,7 +307,7 @@
                                                 <span><%= tasks.getLocation() %></span>
                                             </li>
                                             <li>
-                                                <i class="ri-money-dollar-circle-line"></i>
+                                                <i class="ri-cash-line"></i>
                                                 <span><%= tasks.getBudget() %></span>
                                             </li>
                                             <li>
@@ -330,6 +341,93 @@
 
                 </div> 
             </div>
+
+            <!-- Pending Completion Tasks -->
+            <div class="admin-dashboard-last-page-tasks" id="admin-dashboard-last-page-completed-tasks" style="display: none;">
+
+                <div class="admin-dashboard-last-page-tasks-upper">
+                    <h2>Pending Completion Approvals</h2>
+                </div>
+
+                <div class="admin-dashboard-last-page-tasks-lower">
+
+                    <%
+                    List<TasksDTOs> allCompletionTasks = (List<TasksDTOs>) request.getAttribute("allPendingCompletionTasks");
+
+                    if(allCompletionTasks != null){
+                        for(TasksDTOs tasks : allCompletionTasks){
+                    %>
+
+                        <div class="admin-dashboard-last-page-tasks-lower-inners">
+
+                            <div class="admin-dashboard-last-page-tasks-lower-inners-infos">
+                                <div class="admin-dashboard-last-page-tasks-lower-inners-infos-title">
+                                    <h3><%= tasks.getTitle() %></h3>
+                                    <span style="width: fit-content;">completion pending</span>
+                                </div>
+
+                                <p><%= tasks.getDescription() %></p>
+
+                                <ul>
+                                    <p>Task details: </p>
+                                    <li>
+                                        <i class="ri-calendar-event-line"></i>
+                                        <span>Deadline: <%= tasks.getDeadline() %></span>
+                                    </li>
+                                    <li>
+                                        <i class="ri-cash-line"></i>
+                                        <span><%= tasks.getBudget() %></span>
+                                    </li>
+
+                                    <p style="margin-top: 6px;">Task receive: </p>
+                                    <li>
+                                        <i class="ri-file-copy-2-fill"></i>
+                                        <span><%= tasks.getFileName() %></span>
+                                    </li>
+
+                                    <li>
+                                        <i class="ri-calendar-event-line"></i>
+                                        <span><%= tasks.getCompleteDate() %></span>
+                                    </li>
+                                </ul>
+
+                                <span class="admin-dashboard-last-page-tasks-lower-inners-infos-task-type">
+                                    <%= tasks.getTask_type() %>
+                                </span>
+
+                            </div>
+
+                            <!-- options for reject and approve the completion tasks -->
+                            <div class="admin-dashboard-last-page-tasks-lower-inners-options">
+
+                                <!-- approve -->
+                                <form action="<%= application.getContextPath() %>/adminCompletionResponse/<%= tasks.getId() %>" method="post">
+                                    <input type="hidden" name="status" value="approve">
+                                    <input type="hidden" name="budget" value="<%=tasks.getBudget()%>">
+                                    <input type="hidden" name="studentId" value="<%=tasks.getStudent_id()%>">
+                                    <button id="admin-dashboard-last-page-tasks-lower-inners-options-accept">
+                                        <i class="ri-check-line"></i> Approve
+                                    </button>
+                                </form>
+
+                                <!-- reject -->
+                                <form action="<%= application.getContextPath() %>/adminCompletionResponse/<%= tasks.getId() %>" method="post">
+                                    <input type="hidden" name="status" value="reject">
+                                    <input type="hidden" name="budget" value="<%=tasks.getBudget()%>">
+                                    <input type="hidden" name="studentId" value="<%=tasks.getStudent_id()%>">
+                                    <button id="admin-dashboard-last-page-tasks-lower-inners-options-reject">
+                                        <i class="ri-close-line"></i> Reject
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <%
+                        }
+                    }
+                    %>
+                </div>
+            </div>
+
 
             <!-- for user mantenance -->
             <div  style="display: none;" class="admin-dashboard-last-page-users" id="admin-dashboard-last-page-users">
@@ -508,6 +606,12 @@
         const taskConetent = document.getElementById("admin-dashboard-last-page-tasks");
         const manageUserContent = document.getElementById("admin-dashboard-last-page-users");
 
+        // completion nav + content
+        const completionTaskNav = document.getElementById("admin-dashboard-second-page-navigation-nav-completed-tasks");
+
+        const completionTaskContent = document.getElementById("admin-dashboard-last-page-completed-tasks");
+
+
         taskNav.addEventListener('click', () => {
           console.log("task");
           //change the elements
@@ -517,6 +621,8 @@
           //hide the other navitation conetent
           registerationContent.style.display = "none";
           manageUserContent.style.display = "none";
+          completionTaskContent.style.display = "none";
+
 
           //show the task content
           taskConetent.style.display = "block";
@@ -527,6 +633,9 @@
 
           manageUserNav.style.color = "oklch(0.707 0.022 261.325)";
           manageUserNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+          completionTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+          completionTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
         });
 
         manageUserNav.addEventListener('click', () => {
@@ -538,6 +647,7 @@
           // hide the other content
           taskConetent.style.display = "none";
           registerationContent.style.display = "none";
+          completionTaskContent.style.display = "none";
 
           //show the own content
           manageUserContent.style.display = "block";
@@ -548,6 +658,9 @@
 
           taskNav.style.color = "oklch(0.707 0.022 261.325)";
           taskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+
+          completionTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+          completionTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
         });
 
         registrationNav.addEventListener('click', () => {
@@ -559,6 +672,7 @@
           //hide other contents
           taskConetent.style.display = "none";
           manageUserContent.style.display = "none";
+          completionTaskContent.style.display = "none";
 
           //show your contents
           registerationContent.style.display = "block";
@@ -569,6 +683,36 @@
 
           manageUserNav.style.color = "oklch(0.707 0.022 261.325)";
           manageUserNav.borderColor = "rgba(255, 0, 0, 0)";
+
+          completionTaskNav.style.color = "oklch(0.707 0.022 261.325)";
+          completionTaskNav.style.borderColor = "rgba(255, 0, 0, 0)";
+        });
+
+        completionTaskNav.addEventListener('click', () => {
+
+            console.log("completion tasks");
+
+            // highlight selected
+            completionTaskNav.style.color = "#00C853";
+            completionTaskNav.style.borderColor = "#00C853";
+
+            // hide other sections
+            registerationContent.style.display = "none";
+            taskConetent.style.display = "none";
+            manageUserContent.style.display = "none";
+
+            // show this section
+            completionTaskContent.style.display = "block";
+
+            // reset others
+            registrationNav.style.color = "oklch(0.707 0.022 261.325)";
+            registrationNav.style.borderColor = "transparent";
+
+            taskNav.style.color = "oklch(0.707 0.022 261.325)";
+            taskNav.style.borderColor = "transparent";
+
+            manageUserNav.style.color = "oklch(0.707 0.022 261.325)";
+            manageUserNav.style.borderColor = "transparent";
         });
 
         // for submit task forms

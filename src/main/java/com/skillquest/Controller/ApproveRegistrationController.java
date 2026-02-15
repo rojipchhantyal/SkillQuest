@@ -42,10 +42,13 @@ public class ApproveRegistrationController extends HttpServlet {
             List<Object> allUsers = approveRegistrationService.getAllUsers();
             List<TasksDTOs> allpendingTasks = approveRegistrationService.getAllPendingTasks();
             TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
+            List<TasksDTOs> allCompletionPending = loginService.getAllCompletionPendingTasks();
+
 
             req.setAttribute("allpendingUsers", allpendingUsers);
             req.setAttribute("allUsers", allUsers);
             req.setAttribute("allpendingTasks", allpendingTasks);
+            req.setAttribute("allPendingCompletionTasks", allCompletionPending);
             req.setAttribute("totalInfo", totalCounterDTOs);
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);

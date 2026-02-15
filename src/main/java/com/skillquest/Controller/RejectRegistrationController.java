@@ -47,7 +47,11 @@ public class RejectRegistrationController extends HttpServlet {
             List<TasksDTOs> allpendingTasks = registrationService.getAllPendingTasks();
             req.setAttribute("allpendingTasks", allpendingTasks);
 
+            List<TasksDTOs> allCompletionPending = loginService.getAllCompletionPendingTasks();
+            req.setAttribute("allPendingCompletionTasks", allCompletionPending);
+
             TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
+            req.setAttribute("totalInfo", totalCounterDTOs);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);
@@ -61,6 +65,9 @@ public class RejectRegistrationController extends HttpServlet {
 
             TotalCounterDTOs totalCounterDTOs = loginService.getAllTotalInfo();
             req.setAttribute("totalInfo", totalCounterDTOs);
+
+            List<TasksDTOs> allCompletionPending = loginService.getAllCompletionPendingTasks();
+            req.setAttribute("allPendingCompletionTasks", allCompletionPending);
 
             RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");
             dispatcher.forward(req, resp);

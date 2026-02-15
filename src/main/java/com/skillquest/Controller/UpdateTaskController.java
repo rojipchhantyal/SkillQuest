@@ -1,7 +1,12 @@
 package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
+import com.skillquest.DTOs.TotalCounterDTOs;
+import com.skillquest.DTOs.UserInfoDTOs;
+import com.skillquest.Service.LoginService;
+import com.skillquest.Service.PostTasksService;
 import com.skillquest.Service.UpdateTaskService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,11 +14,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/updateTask/*")
 public class UpdateTaskController extends HttpServlet {
 
     UpdateTaskService updateTaskService = new UpdateTaskService();
+
+    LoginService loginService = new LoginService();
+    PostTasksService postTasksService = new PostTasksService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +54,32 @@ public class UpdateTaskController extends HttpServlet {
 
         updateTaskService.updateTasks(taskId, tasksDTOs);
 
+        //get all the tasks that the business posted
+        List<TasksDTOs> allBusinessPostedTask = loginService.getAllBusinessPostedTask(businessId);
 
+        //getting all the pending tasks of the business
+
+        List<TasksDTOs> allBusinessPendingTasks = loginService.getAllBusinessPendingTasks(businessId);
+
+        //all the total counter of th business
+        TotalCounterDTOs totalCounterDTOs =  loginService.getAllBusinessInfo(businessId);
+
+        //all the business active tasks
+        List<TasksDTOs> allBusinessActiveTasks = loginService.getAllBusinessActiveTasks(businessId);
+
+        //all business completed tasks
+        List<TasksDTOs> allBusinessCompletedTasks = loginService.getAllBusinessCompletedTasks(businessId);
+
+        UserInfoDTOs userInfoDTOs = postTasksService.getUserInfo(businessId);
+
+        req.setAttribute("allPostedTasks", allBusinessPostedTask);
+        req.setAttribute("allPendingTasks", allBusinessPendingTasks);
+        req.setAttribute("allActiveTasks", allBusinessActiveTasks);
+        req.setAttribute("allCompletedTasks", allBusinessCompletedTasks);
+        req.setAttribute("totalInfo", totalCounterDTOs);
+        req.setAttribute("userInfo", userInfoDTOs);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/components/businessDashboard.jsp");
+        dispatcher.forward(req, resp);
 
     }
 }

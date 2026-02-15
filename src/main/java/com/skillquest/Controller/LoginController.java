@@ -48,6 +48,9 @@ public class LoginController extends HttpServlet {
                     // getting all the users
                     List<Object> allUsers = loginService.getALlUsers();
 
+                    //getting all the pending completion tasks
+                    List<TasksDTOs> allCompletionPending = loginService.getAllCompletionPendingTasks();
+
                     //getting all the pending tasks
                     List<TasksDTOs> allpendingTasks = loginService.getAllPendingTasks();
 
@@ -55,6 +58,7 @@ public class LoginController extends HttpServlet {
 
                     req.setAttribute("allpendingUsers", allpendingUsers);
                     req.setAttribute("allUsers", allUsers);
+                    req.setAttribute("allPendingCompletionTasks", allCompletionPending);
                     req.setAttribute("allpendingTasks", allpendingTasks);
                     req.setAttribute("totalInfo", totalCounterDTOs);
                     RequestDispatcher dispatcher = req.getRequestDispatcher("/components/adminDashboard.jsp");

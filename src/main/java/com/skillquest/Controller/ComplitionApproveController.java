@@ -2,7 +2,7 @@ package com.skillquest.Controller;
 
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.TotalCounterDTOs;
-import com.skillquest.Service.BanUserService;
+import com.skillquest.Service.ComplitionApproveService;
 import com.skillquest.Service.LoginService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,26 +14,41 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/banUser/*")
-public class BanUserController extends HttpServlet {
+@WebServlet("/adminCompletionResponse/*")
+public class ComplitionApproveController extends HttpServlet {
 
-    BanUserService banUserService = new BanUserService();
+    ComplitionApproveService complitionApproveService = new ComplitionApproveService();
     LoginService loginService = new LoginService();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int taskId = 0;
 
-        String pathVar = req.getPathInfo();
-        int userId = 0;
+        String pathInfo = req.getPathInfo();
 
-        if(pathVar != null && !pathVar.isEmpty()){
-            userId = Integer.parseInt(pathVar.substring(1));
+        if(pathInfo != null && !pathInfo.isEmpty()){
+            taskId = Integer.parseInt(pathInfo.substring(1));
+        }
+
+        //we collect form field to know what we performing
+        String perform = req.getParameter("status");
+
+        //collect the amount and student id
+        double amount = Double.parseDouble(req.getParameter("budget"));
+        int intAmount = (int) amount;
+        int studentId = Integer.parseInt(req.getParameter("studentId"));
+
+        System.out.println(intAmount);
+
+        if(perform.equals("approve")){
+            complitionApproveService.markAsAccepted(taskId);
+
+            //updaing the student fund
+            complitionApproveService.addFundToStudent(intAmount, studentId);
         }
         else{
-            //here return to the page with message
+            complitionApproveService.markAsRejected(taskId);
         }
-
-        banUserService.banUserById(userId);
 
         List<Object> allpendingUsers = loginService.getAllPendingUsers();
         System.out.println(allpendingUsers);

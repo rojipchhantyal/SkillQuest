@@ -37,7 +37,7 @@ public class PostTasksRepository extends DBConnection {
 
         UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
 
-        String query = "SELECT id, name, university_businessName, role FROM users WHERE id = ?";
+        String query = "SELECT id, name, university_businessName, major_businessType, role, email, phone, location FROM users WHERE id = ?";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -49,6 +49,20 @@ public class PostTasksRepository extends DBConnection {
                 userInfoDTOs.setName(rs.getString("name"));
                 userInfoDTOs.setBusinessName(rs.getString("university_businessName"));
                 userInfoDTOs.setRole(rs.getString("role"));
+                userInfoDTOs.setMajor_businessType(rs.getString("major_businessType"));
+                userInfoDTOs.setEmail(rs.getString("email"));
+                userInfoDTOs.setLocation(rs.getString("location"));
+                userInfoDTOs.setPhone(rs.getString("phone"));
+
+                //for first letter
+                String role = rs.getString("role");
+
+                if(role.equals("student")){
+                    userInfoDTOs.setFirstLetter(rs.getString("name").toUpperCase().substring(0,1));
+                }
+                else{
+                    userInfoDTOs.setFirstLetter(rs.getString("university_businessName").toUpperCase().substring(0,1));
+                }
             }
 
         } catch (SQLException e){

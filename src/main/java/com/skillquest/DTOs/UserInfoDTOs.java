@@ -6,6 +6,12 @@ public class UserInfoDTOs {
     private String name;
     private String role;
     private String businessName;
+    private String major_businessType;
+    private String location;
+    private String phone;
+    private String email;
+    private String firstLetter;
+
 
     public int getId() {
         return id;
@@ -37,5 +43,45 @@ public class UserInfoDTOs {
 
     public void setBusinessName(String businessName) {
         this.businessName = businessName;
+    }
+
+    public String getMajor_businessType() {
+        return major_businessType;
+    }
+
+    public void setMajor_businessType(String major_businessType) {
+        this.major_businessType = major_businessType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstLetter() {
+        return firstLetter;
+    }
+
+    public void setFirstLetter(String firstLetter) {
+        this.firstLetter = firstLetter;
     }
 }

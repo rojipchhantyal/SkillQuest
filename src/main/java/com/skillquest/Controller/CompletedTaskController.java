@@ -3,7 +3,6 @@ package com.skillquest.Controller;
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.DTOs.UserInfoDTOs;
-import com.skillquest.Service.ClaimTasksStudentService;
 import com.skillquest.Service.CompletedTaskService;
 import com.skillquest.Service.LoginService;
 import com.skillquest.Util.CurrentTimeInFormated;

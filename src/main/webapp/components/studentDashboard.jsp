@@ -30,17 +30,17 @@
             </div>
             <ul class="nav-navigation">
                 <li>
-                    <a href="">
+                    <a href="#">
                         <span>Browse Tasks</span>
                     </a>
                 </li>
                 <li>
-                    <a href="./assets/components/login.html">
+                    <a href="<%= application.getContextPath() %>">
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<%= application.getContextPath() %>/components/login.jsp">
                         <i class="ri-logout-box-line"></i>
                     </a>
                 </li>
@@ -143,7 +143,7 @@
                                             <span><%= tasks.getLocation() %></span>
                                         </li>
                                         <li>
-                                            <i class="ri-money-dollar-circle-line"></i>
+                                            <i class="ri-cash-line"></i>
                                             <span><%= tasks.getBudget() %></span>
                                         </li>
                                         <li>
@@ -180,7 +180,9 @@
                     <div class="student-dashboard-last-page-my-tasks-inners">
                         <div class="student-dashboard-last-page-my-tasks-inners-tittle">
                             <h3><%= claimTasks.getTitle() %> .</h3>
-                            <span>in_progres</span>
+                            <span>
+                                <%= claimTasks.getProgression().equals("CheckingAdmin") ? "waiting for admin" : "in_progress" %>
+                            </span>
                         </div>
 
                         <p><%= claimTasks.getDescription() %> .</p>
@@ -194,8 +196,8 @@
                                 <span><%= claimTasks.getLocation() %></span>
                             </li>
                             <li>
-                                <i class="ri-money-dollar-circle-line"></i>
-                                <span><%= claimTasks.getStudent_id() %></span>
+                                <i class="ri-cash-line"></i>
+                                <span><%= claimTasks.getBudget() %></span>
                             </li>
                             <li>
                                 <i class="ri-calendar-event-line"></i>
@@ -207,6 +209,7 @@
                             <button class="active-task-submit"
                                 data-task-id="<%= claimTasks.getId() %>"
                                 data-task-title="<%= claimTasks.getTitle() %>"
+                                data-task-amount="<%= claimTasks.getBudget() %>"
                                 data-task-discription="<%= claimTasks.getDescription() %>"
                                 data-business-id="<%= claimTasks.getBusiness_id() %>"
                                 data-student-id="<%= claimTasks.getStudent_id() %>"
@@ -240,14 +243,14 @@
                         <ul>
                             <li>
                                 <i class="ri-file-list-line"></i>
-                                <span><%= claimTasks.getBusinessName() %></span>
+                                <span><%= claimTasks.getBusinessName() %> ram ram</span>
                             </li>
                             <li>
                                 <i class="ri-map-pin-line"></i>
                                 <span><%= claimTasks.getLocation() %></span>
                             </li>
                             <li>
-                                <i class="ri-money-dollar-circle-line"></i>
+                                <i class="ri-cash-line"></i>
                                 <span><%= claimTasks.getBudget() %></span>
                             </li>
                             <li>
@@ -271,59 +274,43 @@
                 <div class="student-dashboard-last-page-profile-inner-top">
                     <div class="student-dashboard-last-page-profile-inner-top-tittle">
                         <div class="student-dashboard-last-page-profile-inner-top-tittle-avatar">
-                            A
+                            <%=userInfo.getFirstLetter()%>
                         </div>
                         <div class="student-dashboard-last-page-profile-inner-top-tittle-content">
-                            <h2>Alex Johnson</h2>
-                            <p>New York University</p>
-                            <p id="student-dashboard-last-page-profile-inner-top-tittle-content-last">Computer Science • Junior</p>
+                            <h2><%=userInfo.getName()%></h2>
+                            <p><%=userInfo.getBusinessName()%></p>
+                            <p id="student-dashboard-last-page-profile-inner-top-tittle-content-last"><%=userInfo.getMajor_businessType()%></p>
                         </div>
                     </div>
-                    <div class="student-dashboard-last-page-profile-inner-top-button">
-                        <button>Edit Profile</button>
-                    </div>
                 </div>
-                <div class="student-dashboard-last-page-profile-inner-bio">
-                    <span>Bio</span>
-                    <p>Passionate about web development and UI/UX design. Looking to gain real-world experience while earning.</p>
-                </div>
+
                 <div class="student-dashboard-last-page-profile-inner-detials">
                     <li>
                         <span><i class="ri-mail-line"></i>
                             Email
                         </span>
-                        <p>alex.johnson@university.edu</p>
+                        <p><%=userInfo.getEmail()%></p>
                     </li>
 
                     <li>
                         <span><i class="ri-phone-line"></i>
                             Phone
                         </span>
-                        <p>+1 234 567 8900</p>
+                        <p><%=userInfo.getPhone()%></p>
                     </li>
 
                     <li>
                         <span><i class="ri-map-pin-line"></i>
                             Location
                         </span>
-                        <p>Kathmandu, Nepal</p>
+                        <p><%=userInfo.getLocation()%></p>
                     </li>
                     <li>
                         <span><i class="ri-graduation-cap-line"></i>
                             University
                         </span>
-                        <p>Tribhuvan University</p>
+                        <p><%=userInfo.getBusinessName()%></p>
                     </li>
-                </div>
-                <div class="student-dashboard-last-page-profile-inner-skills">
-                    <p>Skills</p>
-                    <ul>
-                        <span>C-programming</span>
-                        <span>Java</span>
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>DSA</span>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -346,6 +333,8 @@
                         <p id="form-disc-js"></p>
                     </div>
 
+                    <input style="display: none;" type="text" name="submit-amount" id="submit-form-amount">
+
                     <div class="form-fields">
                         <!-- for file to upload -->
                         <label for="task-file">Upload File</label>
@@ -365,9 +354,9 @@
                     </div>
 
                     <!-- buttons to send and  cancle the task -->
-                    <div" class="form-buttons">
+                    <div class="form-buttons">
                         <button onclick="closeSubmitTask()" id="form-buttons-cancle" type="button">Cancle Task</button>
-                        <button id="form-buttons-submit">Submit Task</button>
+                        <button id="form-buttons-submit" type="button" onclick="preventReSubmit(this)">Submit Task</button>
                     </div>
                 </form>
             </div>
@@ -519,9 +508,12 @@
 
               const businessId = button.dataset.businessId;
               const studentId = button.dataset.studentId;
-                console.log("student id"+studentId);
+              console.log("student id"+studentId);
               document.getElementById("business-id").value = businessId;
               document.getElementById("student-id").value = studentId;
+
+              document.getElementById("submit-form-amount").value = button.dataset.taskAmount
+              console.log(button.dataset.taskAmount);
 
               console.log("/submitCompleteTasks/" + taskId);
             });
@@ -533,7 +525,13 @@
           form.style.display = "none";
         }
 
+        //function to prevent the resubmit
+        function preventReSubmit(btn){
+            console.log("disable button "+btn);
+            btn.disabled = true;
 
+            btn.form.submit();
+        }
     </script>
 </body>
 </html>
@@ -875,7 +873,7 @@
     }
     .student-dashboard-last-page-my-tasks-inners-tittle span,
     .student-dashboard-last-page-completed-tasks-inners-tittle span{
-        padding: 2px 8px 4px 8px;
+        padding: 2px 2px 4px 2px;
         height: fit-content;
         background-color: rgba(96, 20, 20, 0.389);
         color: var(--red);
@@ -1027,7 +1025,7 @@
         color: var(--white);
     }
     /* for profile */
-    .student-dashboard-last-page-profile{
+     .student-dashboard-last-page-profile{
         height: 92vh;
         width: 100%;
         padding-top: 0;
@@ -1041,6 +1039,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        gap: 24px;
         background-color: var(--background);
     }
     .student-dashboard-last-page-profile-inner-top{
@@ -1072,7 +1072,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-
     }
     .student-dashboard-last-page-profile-inner-top-tittle-content h2{
         font-size: 32px;
@@ -1123,8 +1122,9 @@
     .student-dashboard-last-page-profile-inner-detials{
         display: grid;
         grid-template-columns: 346px 346px;
-        gap: 20px;
+        gap: 24px;
         margin-bottom: 24px;
+        margin-left: 42px;
     }
     .student-dashboard-last-page-profile-inner-detials li{
         list-style: none;

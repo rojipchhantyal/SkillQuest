@@ -20,7 +20,7 @@ public class LoginRepository extends DBConnection {
     public static boolean isFound = false;
 
     public UserInfoDTOs findUser(LoginDTOs loginDTOs){
-        String query = "SELECT id, name, university_businessName, role FROM users WHERE email = ? AND password = ? AND role = ? AND (status = 'approved' OR status = 'admin')";
+        String query = "SELECT id, name, university_businessName, major_businessType, role, email, phone, location FROM users WHERE email = ? AND password = ? AND role = ? AND (status = 'approved' OR status = 'admin')";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -36,6 +36,20 @@ public class LoginRepository extends DBConnection {
                 userInfoDTOs.setName(rs.getString("name"));
                 userInfoDTOs.setBusinessName(rs.getString("university_businessName"));
                 userInfoDTOs.setRole(rs.getString("role"));
+                userInfoDTOs.setMajor_businessType(rs.getString("major_businessType"));
+                userInfoDTOs.setEmail(rs.getString("email"));
+                userInfoDTOs.setLocation(rs.getString("location"));
+                userInfoDTOs.setPhone(rs.getString("phone"));
+
+                //for first letter
+                String role = rs.getString("role");
+
+                if(role.equals("student")){
+                    userInfoDTOs.setFirstLetter(rs.getString("name").toUpperCase().substring(0,1));
+                }
+                else{
+                    userInfoDTOs.setFirstLetter(rs.getString("university_businessName").toUpperCase().substring(0,1));
+                }
 
                 isFound = true;
                 return userInfoDTOs;
@@ -100,6 +114,39 @@ public class LoginRepository extends DBConnection {
         }
 
         return allPandingUsers;
+    }
+
+    public List<TasksDTOs> getAllCompletionPendingTasks(){
+        String query = "SELECT t.task_id, t.business_id, t.student_id, c.submitted_at, c.file_name, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN completed_tasks c ON t.task_id = c.task_id WHERE t.status = 'Completed' AND progression = 'CheckingAdmin'";
+
+
+        List<TasksDTOs> allCompletionPendingTasks = new ArrayList<>();
+
+        try (Connection con = getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                TasksDTOs tasks = new TasksDTOs();
+                tasks.setId(rs.getInt("task_id"));
+                tasks.setBusiness_id(rs.getInt("business_id"));
+                tasks.setStudent_id(rs.getInt("student_id"));
+                tasks.setFileName(rs.getString("file_name"));
+                tasks.setCompleteDate(rs.getString("submitted_at"));
+                tasks.setTitle(rs.getString("title"));
+                tasks.setDescription(rs.getString("description"));
+                tasks.setTask_type(rs.getString("task_type"));
+                tasks.setLocation(rs.getString("location"));
+                tasks.setBudget(String.valueOf(rs.getFloat("budget")));
+                tasks.setDeadline(rs.getString("deadline"));
+
+                allCompletionPendingTasks.add(tasks);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return allCompletionPendingTasks;
     }
 
     public List<Object> getAllUsers(){
@@ -232,8 +279,8 @@ public class LoginRepository extends DBConnection {
 
     public List<TasksDTOs> getAllClaimTasks(int studentId){
 
-        String query = "SELECT t.task_id, t.student_id, t.business_id, u.university_businessName, t.title, t.location, t.description, t.task_type, t.budget, t.deadline " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.student_id = ?";
+        String query = "SELECT t.task_id, t.student_id, t.business_id, u.university_businessName, t.title, t.location, t.description, t.task_type, t.budget, t.deadline, t.progression " +
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.student_id = ? AND (t.status = 'Claimed' OR t.progression = 'CheckingAdmin')";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();
@@ -259,6 +306,7 @@ public class LoginRepository extends DBConnection {
                 tasks.setTask_type(rs.getString("task_type"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
+                tasks.setProgression(rs.getString("progression"));
 
                 System.out.println("all Task claim by "+studentId);
                 allTasks.add(tasks);
@@ -371,9 +419,9 @@ public class LoginRepository extends DBConnection {
     }
 
     public TotalCounterDTOs getAllStudentInfo(int studentId){
-        String query = "SELECT COUNT(*) AS totalCompleteTasks FROM tasks WHERE student_id = ? AND status = 'Completed'";
+        String query = "SELECT COUNT(*) AS totalCompleteTasks FROM tasks WHERE student_id = ? AND status = 'Completed' AND progression = 'Completed'";
 
-        String query2 = "SELECT COUNT(*) AS totalActiveTasks FROM tasks WHERE student_id = ? AND status = 'Claimed'";
+        String query2 = "SELECT COUNT(*) AS totalActiveTasks FROM tasks WHERE student_id = ? AND (status = 'Claimed' OR progression = 'CheckingAdmin')";
 
         String query3 = "SELECT fund FROM users WHERE id = ?";
 
@@ -429,11 +477,12 @@ public class LoginRepository extends DBConnection {
     public TotalCounterDTOs getAllBusinessInfo(int businessId){
         String query = "SELECT COUNT(*) AS totalBusinessTasks FROM tasks WHERE business_id = ?";
 
+        //watch leter
         String query2 = "SELECT COUNT(*) AS totalBusinessApprovedTasks FROM tasks WHERE business_id = ? AND status = 'Approved'";
 
         String query3 = "SELECT COUNT(*) AS totalBusinessPendingTasks FROM tasks WHERE business_id = ? AND status = 'Pending'";
 
-        String query4 = "SELECT COUNT(*) AS totalBusinessCompletedTasks FROM tasks WHERE business_id = ? AND status = 'Completed'";
+        String query4 = "SELECT COUNT(*) AS totalBusinessCompletedTasks FROM tasks WHERE business_id = ? AND status = 'Completed' AND progression = 'Completed'";
 
         String query5 = "SELECT fund FROM users WHERE id = ?";
 
@@ -545,7 +594,7 @@ public class LoginRepository extends DBConnection {
     }
 
     public List<TasksDTOs> getAllBusinessActiveTasks(int businessId){
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.business_id = ?";
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN users u ON t.business_id = u.id WHERE (t.status = 'Claimed' OR t.progression = 'CheckingAdmin') AND t.business_id = ?";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();
@@ -585,7 +634,7 @@ public class LoginRepository extends DBConnection {
                 + "FROM tasks t "
                 + "JOIN users u ON t.business_id = u.id "
                 + "JOIN completed_tasks ct ON t.task_id = ct.task_id "
-                + "WHERE t.status = 'Completed' AND t.business_id = ?";
+                + "WHERE t.status = 'Completed' AND progression = 'Completed' AND t.business_id = ?";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();
@@ -630,7 +679,7 @@ public class LoginRepository extends DBConnection {
 
     public List<TasksDTOs> getAllStudentCompletedTasks(int studentId){
 
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN users u ON t.student_id = u.id WHERE t.status = 'Completed' AND t.student_id = ?";
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.location, t.budget, t.deadline, t.status FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Completed' AND progression = 'Completed' AND t.student_id = ?";
 
 
         List<TasksDTOs> allTasks = new ArrayList<>();

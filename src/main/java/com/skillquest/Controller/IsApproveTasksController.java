@@ -3,6 +3,7 @@ package com.skillquest.Controller;
 import com.skillquest.DTOs.TasksDTOs;
 import com.skillquest.DTOs.TotalCounterDTOs;
 import com.skillquest.Service.IsApprovedTasksService;
+import com.skillquest.Service.LoginService;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import java.util.List;
 public class IsApproveTasksController extends HttpServlet {
 
     IsApprovedTasksService isApprovedTasksService = new IsApprovedTasksService();
+    LoginService loginService = new LoginService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +40,9 @@ public class IsApproveTasksController extends HttpServlet {
         List<Object> allUsers = isApprovedTasksService.getAllUsers();
         List<TasksDTOs> allpendingTasks = isApprovedTasksService.getAllPendingTasks();
         TotalCounterDTOs totalCounterDTOs = isApprovedTasksService.getAllTotalInfo();
+
+        List<TasksDTOs> allCompletionPending = loginService.getAllCompletionPendingTasks();
+        req.setAttribute("allPendingCompletionTasks", allCompletionPending);
 
         req.setAttribute("allpendingUsers", allpendingUsers);
         req.setAttribute("allUsers", allUsers);

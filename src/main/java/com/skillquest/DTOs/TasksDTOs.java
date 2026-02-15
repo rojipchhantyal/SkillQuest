@@ -15,6 +15,8 @@ public class TasksDTOs {
     private String status;
     private String created_at;
 
+    private String progression;
+
     //completed tasks infos
     private String fileName;
     private String fileType;
@@ -120,6 +122,14 @@ public class TasksDTOs {
 
     public String getFileName() {
         return fileName;
+    }
+
+    public String getProgression() {
+        return progression;
+    }
+
+    public void setProgression(String progression) {
+        this.progression = progression;
     }
 
     public void setFileName(String fileName) {

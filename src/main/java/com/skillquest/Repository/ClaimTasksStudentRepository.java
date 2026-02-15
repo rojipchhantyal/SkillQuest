@@ -30,9 +30,8 @@ public class ClaimTasksStudentRepository extends DBConnection {
 
     public List<TasksDTOs> getAllStudentClaimTasks(int studentId){
 
-        String query = "SELECT t.task_id, t.student_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline " +
-                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Claimed' AND t.student_id = ?";
-
+        String query = "SELECT t.task_id, t.location, t.student_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.progression, t.budget, t.deadline " +
+                "FROM tasks t JOIN users u ON t.business_id = u.id WHERE (t.status = 'Claimed' OR t.progression = 'CheckingAdmin') AND t.student_id = ?";
 
         List<TasksDTOs> allTasks = new ArrayList<>();
 
@@ -50,9 +49,11 @@ public class ClaimTasksStudentRepository extends DBConnection {
                 tasks.setBusinessName(rs.getString("university_businessName"));
                 tasks.setTitle(rs.getString("title"));
                 tasks.setDescription(rs.getString("description"));
+                tasks.setLocation(rs.getString("location"));
                 tasks.setTask_type(rs.getString("task_type"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
+                tasks.setProgression(rs.getString("progression"));
 
                 System.out.println("all Task claim by "+studentId);
                 allTasks.add(tasks);
@@ -65,7 +66,7 @@ public class ClaimTasksStudentRepository extends DBConnection {
     }
 
     public List<TasksDTOs> getAllAvailableTasks(){
-        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline " +
+        String query = "SELECT t.task_id, t.business_id, u.university_businessName, t.title, t.description, t.task_type, t.budget, t.deadline, t.location " +
                 "FROM tasks t JOIN users u ON t.business_id = u.id WHERE t.status = 'Approved'";
 
 
@@ -86,6 +87,7 @@ public class ClaimTasksStudentRepository extends DBConnection {
                 tasks.setTask_type(rs.getString("task_type"));
                 tasks.setBudget(String.valueOf(rs.getFloat("budget")));
                 tasks.setDeadline(rs.getString("deadline"));
+                tasks.setLocation(rs.getString("location"));
 
                 System.out.println("all available task form claim student controller");
                 allTasks.add(tasks);
@@ -101,7 +103,7 @@ public class ClaimTasksStudentRepository extends DBConnection {
 
         UserInfoDTOs userInfoDTOs = new UserInfoDTOs();
 
-        String query = "SELECT id, name, university_businessName, role FROM users WHERE id = ?";
+        String query = "SELECT id, name, university_businessName, major_businessType, role, email, phone, location FROM users WHERE id = ?";
 
         try(Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(query)){
@@ -113,6 +115,20 @@ public class ClaimTasksStudentRepository extends DBConnection {
                 userInfoDTOs.setName(rs.getString("name"));
                 userInfoDTOs.setBusinessName(rs.getString("university_businessName"));
                 userInfoDTOs.setRole(rs.getString("role"));
+                userInfoDTOs.setMajor_businessType(rs.getString("major_businessType"));
+                userInfoDTOs.setEmail(rs.getString("email"));
+                userInfoDTOs.setLocation(rs.getString("location"));
+                userInfoDTOs.setPhone(rs.getString("phone"));
+
+                //for first letter
+                String role = rs.getString("role");
+
+                if(role.equals("student")){
+                    userInfoDTOs.setFirstLetter(rs.getString("name").toUpperCase().substring(0,1));
+                }
+                else{
+                    userInfoDTOs.setFirstLetter(rs.getString("university_businessName").toUpperCase().substring(0,1));
+                }
             }
 
         } catch (SQLException e){

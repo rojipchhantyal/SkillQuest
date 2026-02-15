@@ -31,17 +31,17 @@
             </div>
             <ul class="nav-navigation">
                 <li>
-                    <a href="">
+                    <a href="#">
                         <span>Browse Tasks</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<%= application.getContextPath() %>">
                         <span>Home</span>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<%= application.getContextPath() %>/components/login.jsp">
                         <i class="ri-logout-box-line"></i>
                     </a>
                 </li>
@@ -178,7 +178,7 @@
                         <li>
                             <label for="budget">Budget</label>
                             <div class="inputs">
-                                <i class="ri-money-dollar-circle-line"></i>
+                                <i class="ri-cash-line"></i>
                                 <input type="number" name="budget" id="budget" placeholder="100">
                             </div>
                         </li>
@@ -236,6 +236,11 @@
                                     <span>active</span>
                                 <%
                                 }
+                                if(tasks.getStatus().equals("Completed")){
+                                %>
+                                    <span>completed</span>
+                                <%
+                                }
                                 else if(tasks.getStatus().equals("Pending")){
                                 %>
                                     <span id="panding">pending</span>
@@ -264,7 +269,7 @@
                                     <span><%= tasks.getLocation() %></span>
                                 </li>
                                 <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <i class="ri-cash-line"></i>
                                     <span><%= tasks.getBudget() %></span>
                                 </li>
                                 <li>
@@ -309,7 +314,7 @@
                                     <span><%= tasks.getLocation() %></span>
                                 </li>
                                 <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <i class="ri-cash-line"></i>
                                     <span><%= tasks.getBudget() %></span>
                                 </li>
                                 <li>
@@ -388,7 +393,7 @@
                             <li>
                                 <label for="edit-budget">Budget</label>
                                 <div class="inputs">
-                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <i class="ri-cash-line"></i>
                                     <input type="number" name="budget" id="edit-budget" placeholder="100">
                                 </div>
                             </li>
@@ -439,7 +444,7 @@
                                     <span><%= tasks.getLocation() %></span>
                                 </li>
                                 <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <i class="ri-cash-line"></i>
                                     <span><%= tasks.getBudget() %></span>
                                 </li>
                                 <li>
@@ -483,7 +488,7 @@
                                     <span><%= tasks.getLocation() %></span>
                                 </li>
                                 <li>
-                                    <i class="ri-money-dollar-circle-line"></i>
+                                    <i class="ri-cash-line"></i>
                                     <span><%= tasks.getBudget() %></span>
                                 </li>
                                 <li>
@@ -520,52 +525,35 @@
                     <div class="business-dashboard-last-page-profile-inner-top">
                         <div class="business-dashboard-last-page-profile-inner-top-tittle">
                             <div class="business-dashboard-last-page-profile-inner-top-tittle-avatar">
-                                T
+                                <%=userInfo.getFirstLetter()%>
                             </div>
                             <div class="business-dashboard-last-page-profile-inner-top-tittle-content">
-                                <h2>TechStartup Inc.!</h2>
-                                <p id="business-dashboard-last-page-profile-inner-top-tittle-content-last">Startup</p>
+                                <h2><%=userInfo.getBusinessName()%></h2>
+                                <p id="business-dashboard-last-page-profile-inner-top-tittle-content-last"><%=userInfo.getMajor_businessType()%></p>
                             </div>
                         </div>
-                        <div class="business-dashboard-last-page-profile-inner-top-button">
-                            <button>Edit Profile</button>
-                        </div>
-                    </div>
-                    <div class="business-dashboard-last-page-profile-inner-bio">
-                        <span>Bio</span>
-                        <p>We are a growing software development company focused on building modern web and mobile applications. We collaborate with students and fresh developers by providing real-world tasks and project-based opportunities to help them gain practical experience while earning.</p>
                     </div>
                     <div class="business-dashboard-last-page-profile-inner-detials">
                         <li>
                             <span><i class="ri-mail-line"></i>
                                 Email
                             </span>
-                            <p>contact@technovasolutions.com</p>
+                            <p><%=userInfo.getEmail()%></p>
                         </li>
 
                         <li>
                             <span><i class="ri-phone-line"></i>
                                 Phone
                             </span>
-                            <p>+1 234 567 8901</p>
+                            <p><%=userInfo.getPhone()%></p>
                         </li>
 
                         <li>
                             <span><i class="ri-map-pin-line"></i>
                                 Location
                             </span>
-                            <p>Kathmandu, Nepal</p>
+                            <p><%=userInfo.getLocation()%></p>
                         </li>
-                    </div>
-                    <div class="business-dashboard-last-page-profile-inner-skills">
-                        <p>Skills Required</p>
-                        <ul>
-                            <span>C-programming</span>
-                            <span>Java</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>DSA</span>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -596,7 +584,7 @@
                             <span id="task-location"></span>
                         </li>
                         <li>
-                            <i class="ri-money-dollar-circle-line"></i>
+                            <i class="ri-cash-line"></i>
                             <span id="task-budget"></span>
                         </li>
                         <li>
@@ -1435,7 +1423,12 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        gap: 24px;
         background-color: var(--background);
+    }
+    #business-dashboard-last-page-profile{
+        height: 82vh;
     }
     .business-dashboard-last-page-profile-inner-top{
         height: 96px;
@@ -1517,8 +1510,9 @@
     .business-dashboard-last-page-profile-inner-detials{
         display: grid;
         grid-template-columns: 346px 346px;
-        gap: 20px;
+        gap: 24px;
         margin-bottom: 24px;
+        margin-left: 42px;
     }
     .business-dashboard-last-page-profile-inner-detials li{
         list-style: none;
